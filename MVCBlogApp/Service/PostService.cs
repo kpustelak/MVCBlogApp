@@ -55,7 +55,7 @@ public class PostService : IPostService
         return post;
     }
 
-    public async Task<List<ShortPostModelDto>> GetListOfPosts(int pageNumber, int pageSize)
+    public async Task<List<ShortPostModelDto>> GetListOfPostsWithPaginationAsync(int pageNumber, int pageSize)
     {
         var posts = await _context.Posts
             .Where(x => x.IsPublished) 
@@ -83,5 +83,23 @@ public class PostService : IPostService
     
         _context.Posts.Remove(post);
         await _context.SaveChangesAsync();
+    }
+
+    public async Task<List<ShortPostModelDto>> GetListOfPostsAsync(int top)
+    {
+        var posts = await _context.Posts
+            .Where(x => x.IsPublished == true)
+            .OrderByDescending(x => x.CreatedAt)
+            .Take(top)
+            .Select(x => new ShortPostModelDto
+            {
+                Id = x.Id,
+                Title = x.Title,
+                Slug = x.Slug,
+                CreatedAt = x.CreatedAt,
+                IsPublished = x.IsPublished
+            })
+            .ToListAsync();
+        return posts;
     }
 }
