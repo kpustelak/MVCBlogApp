@@ -1,0 +1,45 @@
+@model MVCBlogApp.Models.DTO.Post.AddOrEditPostDto
+
+@{
+    ViewBag.Title = "Create new post";
+    Layout = "_Layout";
+}
+
+<h2>Create new post!!!</h2>
+
+<form asp-action="AddNewPost" method="post">
+    <table>
+        <tr>
+            <td><label asp-for="Title">Enter title:</label></td>
+            <td>
+                <input asp-for="Title" type="text" />
+                <span asp-validation-for="Title"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Content">Enter content:</label></td>
+            <td>
+                <textarea asp-for="Content" rows="10" cols="50"></textarea>
+                <span asp-validation-for="Content"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Slug">Slug:</label></td>
+            <td>
+                <input asp-for="Slug" type="text" />
+                <span asp-validation-for="Slug"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="IsPublished">Published:</label></td>
+            <td>
+                <input asp-for="IsPublished" type="checkbox" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button type="submit">Add Post</button>
+            </td>
+        </tr>
+    </table>
+</form>
