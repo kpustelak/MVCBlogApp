@@ -1,6 +1,12 @@
+using MVCBlogApp.Models.DTO.Post;
+using MVCBlogApp.Models.Entities;
+
 namespace MVCBlogApp.Interface;
 
-public class IPostPublishingService
+public interface IPostPublishingService
 {
-    
+    Task AddNewPostAsync(AddOrEditPostDto addPostDto);
+    Task<Post> EditPostAsync(AddOrEditPostDto newPostData, int postId);
+    Task DeletePostAsync(int postId);
+    Task<Post> GetWholePostAsync(int postId);
 }

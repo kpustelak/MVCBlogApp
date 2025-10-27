@@ -6,10 +6,10 @@ namespace MVCBlogApp.Controllers;
 
 public class PostPublishingController : Controller
 {
-    private readonly IPostService  _postService;
-    public PostPublishingController(IPostService postService)
+    private readonly IPostPublishingService  _postPublishingService;
+    public PostPublishingController(IPostPublishingService postPublishingService)
     {
-        _postService = postService;
+        _postPublishingService = postPublishingService;
     }
 
     [HttpGet]
@@ -25,10 +25,37 @@ public class PostPublishingController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddNewPost(AddOrEditPostDto addPostDto)
+    public async Task<IActionResult> AddNewPostAsync(AddOrEditPostDto addPostDto)
     {
-        await _postService.AddNewPostAsync(addPostDto);
+        await _postPublishingService.AddNewPostAsync(addPostDto);
         return RedirectToAction("Index");
+    }
+
+    [HttpDelete]
+    public async Task<IActionResult> DeletePostAsync(int postId)
+    {
+        await _postPublishingService.DeletePostAsync(postId);
+        return RedirectToAction("Index");
+    }
+    [HttpGet("id")]
+    public async Task<IActionResult> EditPost(int postId)
+    {
+        var post = await _postPublishingService.GetWholePostAsync(postId);
+        var postToEdit = new AddOrEditPostDto
+        {
+            Title = post.Title,
+            Content = post.Content,
+            Slug = post.Slug,
+            IsPublished = post.IsPublished
+        };
+        return View(postToEdit);
+    }
+    
+    [HttpPut("id")]
+    public async Task<IActionResult> EditPost(AddOrEditPostDto editPostDto,int postId)
+    {
+        var post = await _postPublishingService.EditPostAsync(editPostDto, postId);
+        return Ok(post);
     }
     
 }
