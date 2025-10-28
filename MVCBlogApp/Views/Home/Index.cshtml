@@ -1,8 +1,124 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model MVCBlogApp.Models.HomeViewModel;
+
+<link rel="stylesheet" href="~/css/blog-main.css"/>
+@{
+ViewData["Title"] = "Blog home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="blog-container">
+    <div class="sidebar">
+        <div class="profile-section">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&h=200&fit=crop" alt="Profile" class="profile-img">
+            <div class="profile-name">Kornel Pustelak</div>
+            <div class="profile-role">Author</div>
+        </div>
+
+        <div class="nav-menu">
+            <div class="nav-item active">
+                <span class="nav-icon">🏠</span>
+                <span>Home</span>
+            </div>
+            @*Dodać tutaj kod do obsługi pobierania kategorii*@
+            
+            
+            
+            <div class="nav-item">
+                <span class="nav-icon">💻</span>
+                <span>Coding</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon">🧰</span>
+                <span>Homelab</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><i class="bi bi-wordpress"></i></span>
+                <span>Wordpress</span>
+            </div>
+        </div>
+
+        <div class="download-section">
+            <p class="download-text">Find me:</p>
+            <button class="download-btn github"><i class="bi bi-github"></i> Github</button>
+            <button class="download-btn linkedin"><i class="bi bi-linkedin"></i> Linkedin</button>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div class="header-section">
+            <div class="greeting">☀️ Welcome to my blog!</div>
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Search here...">
+                <button class="search-btn">🔍</button>
+            </div>
+        </div>
+        
+        <div class="hero-banner">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">Study the past if you would define the future</h1>
+            </div>
+        </div>
+        
+        <div class="cards-row">
+            <div class="feature-card">
+                <img src="https://images.unsplash.com/photo-1545239705-1564e58b9e4a?w=400&h=400&fit=crop" alt="Architecture" class="feature-img">
+                <div class="feature-content">
+                    <div class="feature-category">Coding</div>
+                    <div class="feature-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                    <div class="feature-meta">
+                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="Author" class="author-img">
+                        <span>Kornel Pustelak</span>
+                        <span>•</span>
+                        <span>2 days ago</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-cards-container">
+                <div class="info-card">
+                    <span class="info-icon">📄</span>
+                    <div class="info-text">
+                        <div class="info-label">Latest posts of this month</div>
+                        <a href="#" class="info-link">See more →</a>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <span class="info-icon">📋</span>
+                    <div class="info-text">
+                        <div class="info-label">Top posts of this month</div>
+                        <a href="#" class="info-link">See more →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="posts-grid">
+            <div class="post-card">
+                <img src="https://images.unsplash.com/photo-1582139329536-e7284fece509?w=600&h=400&fit=crop" alt="Food" class="post-img">
+                <div class="post-content">
+                    <div class="post-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit?</div>
+                    <div class="post-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed ornare turpis. Duis libero lorem, faucibus lobortis ante id...</div>
+                    <a href="#" class="read-more">See more →</a>
+                </div>
+            </div>
+
+            <div class="post-card">
+                <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=600&h=400&fit=crop" alt="Nature" class="post-img">
+                <div class="post-content">
+                    <div class="post-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                    <div class="post-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed ornare turpis. Duis libero lorem, faucibus lobortis ante id...</div>
+                    <a href="#" class="read-more">See more →</a>
+                </div>
+            </div>
+
+            <div class="post-card">
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&h=400&fit=crop" alt="Business" class="post-img">
+                <div class="post-content">
+                    <div class="post-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                    <div class="post-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed ornare turpis. Duis libero lorem, faucibus lobortis ante id...</div>
+                    <a href="#" class="read-more">See more →</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

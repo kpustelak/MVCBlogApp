@@ -57,5 +57,4 @@ public class PostPublishingController : Controller
         var post = await _postPublishingService.EditPostAsync(editPostDto, postId);
         return Ok(post);
     }
-    
 }

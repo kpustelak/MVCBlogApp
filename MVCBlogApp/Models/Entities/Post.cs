@@ -10,4 +10,7 @@ public class Post
     public string UpdatedAt { get; set; }
     public bool IsPublished { get; set; }
     public int ViewCount { get; set; }
+    
+    public int PostCategoryId { get; set; }
+    public virtual PostCategory PostCategory { get; set; }
 }

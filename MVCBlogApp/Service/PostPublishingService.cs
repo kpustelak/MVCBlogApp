@@ -26,8 +26,8 @@ public class PostPublishingService : IPostPublishingService
         };
         _context.Posts.Add(post);
         await _context.SaveChangesAsync();
-    }
 
+    }
     public async Task DeletePostAsync(int postId)
     {
         var post = await _context.Posts.FirstOrDefaultAsync(x => x.Id == postId);
@@ -37,6 +37,12 @@ public class PostPublishingService : IPostPublishingService
         _context.Posts.Remove(post);
         await _context.SaveChangesAsync();
     }
+
+    public Task<Post> GetWholePostAsync(int postId)
+    {
+        throw new NotImplementedException();
+    }
+
 
     public async Task<Post> EditPostAsync(AddOrEditPostDto newPostData, int postId)
     {

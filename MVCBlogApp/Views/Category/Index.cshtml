@@ -1,0 +1,29 @@
+@model MVCBlogApp.Models.DTO.Category.AddOrEditCategoryDto;
+@{
+    ViewData["Title"] = "Category page";
+}
+
+<form method="post">
+    <table>
+        <tr>
+            <td><label asp-for="Name">Enter category name:</label></td>
+            <td>
+                <input asp-for="Name" type="text" />
+                <span asp-validation-for="Name"></span>
+            </td>
+        </tr>
+        
+        <tr>
+            <td><label asp-for="IconBootstrapLink">Enter category bootstrap icon:</label></td>
+            <td>
+                <input asp-for="IconBootstrapLink" type="text" />
+                <span asp-validation-for="IconBootstrapLink"></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button type="submit">Add Category</button>
+            </td>
+        </tr>
+    </table>
+</form>

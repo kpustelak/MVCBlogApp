@@ -1,28 +1,29 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using MVCBlogApp.Interface;
 using MVCBlogApp.Models;
+using MVCBlogApp.Models.Entities;
 
 namespace MVCBlogApp.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    private readonly ICategoryService _categoryService;
+    public HomeController(ICategoryService categoryService)
     {
-        _logger = logger;
+        _categoryService = categoryService;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
+        var categories = await _categoryService.GetCategories();
+        var homeViewModel = new HomeViewModel
+        {
+            PostCategories = categories
+        };
+        return View(homeViewModel);
     }
-
-    public IActionResult Privacy()
-    {
-        return View();
-    }
-
+    
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
