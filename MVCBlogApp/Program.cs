@@ -15,6 +15,7 @@ builder.Services.AddScoped<IPostService, PostService>();
 builder.Services.AddScoped<ICategoryManagmentService, CategoryManagmentService>();
 builder.Services.AddScoped<IPostPublishingService, PostPublishingService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddTransient<DbSeeder>();
 
 var app = builder.Build();
 
@@ -34,5 +35,11 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+using (var scope = app.Services.CreateScope())
+{
+    var seeder = scope.ServiceProvider.GetRequiredService<DbSeeder>();
+    seeder.SeedCategories();
+}
 
 app.Run();

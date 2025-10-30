@@ -1,4 +1,3 @@
-using MVCBlogApp.Migrations;
 using PostCategory = MVCBlogApp.Models.Entities.PostCategory;
 
 namespace MVCBlogApp.Models;

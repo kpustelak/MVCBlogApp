@@ -20,6 +20,7 @@ public class PostPublishingService : IPostPublishingService
             Title = addPostDto.Title,
             Slug = addPostDto.Slug,
             Content = addPostDto.Content,
+            PostCategoryId = addPostDto.PostCategoryId,
             IsPublished = addPostDto.IsPublished,
             CreatedAt = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss"),
             UpdatedAt = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss")

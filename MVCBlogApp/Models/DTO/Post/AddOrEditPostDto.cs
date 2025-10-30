@@ -6,4 +6,5 @@ public class AddOrEditPostDto
     public string Content { get; set; } = String.Empty;
     public string Slug { get; set; } =  String.Empty;
     public bool IsPublished { get; set; } = false;
+    public int PostCategoryId { get; set; }
 }

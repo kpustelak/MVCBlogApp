@@ -104,7 +104,7 @@ namespace MVCBlogApp.Migrations
                     b.HasOne("MVCBlogApp.Models.Entities.PostCategory", "PostCategory")
                         .WithMany("Posts")
                         .HasForeignKey("PostCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("PostCategory");

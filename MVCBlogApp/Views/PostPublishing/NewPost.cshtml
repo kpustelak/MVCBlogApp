@@ -1,4 +1,4 @@
-@model MVCBlogApp.Models.DTO.Post.AddOrEditPostDto
+@model MVCBlogApp.Models.ViewModel.NewPostView
 
 @{
     ViewBag.Title = "Create new post";
@@ -10,30 +10,38 @@
 <form asp-action="AddNewPost" method="post">
     <table>
         <tr>
-            <td><label asp-for="Title">Enter title:</label></td>
+            <td><label asp-for="PostDto.Title">Enter title:</label></td>
             <td>
-                <input asp-for="Title" type="text" />
-                <span asp-validation-for="Title"></span>
+                <input asp-for="PostDto.Title" type="text" />
+                <span asp-validation-for="PostDto.Title"></span>
             </td>
         </tr>
         <tr>
-            <td><label asp-for="Content">Enter content:</label></td>
+            <td><label asp-for="PostDto.PostCategoryId">Select category:</label></td>
             <td>
-                <textarea asp-for="Content" rows="10" cols="50"></textarea>
-                <span asp-validation-for="Content"></span>
+                <select asp-for="PostDto.PostCategoryId" asp-items="@(new SelectList(Model.PostCategories, "Id", "Name"))">
+                </select>
+                <span asp-validation-for="PostDto.PostCategoryId"></span>
             </td>
         </tr>
         <tr>
-            <td><label asp-for="Slug">Slug:</label></td>
+            <td><label asp-for="PostDto.Content">Enter content:</label></td>
             <td>
-                <input asp-for="Slug" type="text" />
-                <span asp-validation-for="Slug"></span>
+                <textarea asp-for="PostDto.Content" rows="10" cols="50"></textarea>
+                <span asp-validation-for="PostDto.Content"></span>
             </td>
         </tr>
         <tr>
-            <td><label asp-for="IsPublished">Published:</label></td>
+            <td><label asp-for="PostDto.Slug">Slug:</label></td>
             <td>
-                <input asp-for="IsPublished" type="checkbox" />
+                <input asp-for="PostDto.Slug" type="text" />
+                <span asp-validation-for="PostDto.Slug"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="PostDto.IsPublished">Published:</label></td>
+            <td>
+                <input asp-for="PostDto.IsPublished" type="checkbox" />
             </td>
         </tr>
         <tr>

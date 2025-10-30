@@ -1,15 +1,20 @@
 using Microsoft.AspNetCore.Mvc;
 using MVCBlogApp.Interface;
+using MVCBlogApp.Models;
 using MVCBlogApp.Models.DTO.Post;
+using MVCBlogApp.Models.ViewModel;
 
 namespace MVCBlogApp.Controllers;
 
 public class PostPublishingController : Controller
 {
     private readonly IPostPublishingService  _postPublishingService;
-    public PostPublishingController(IPostPublishingService postPublishingService)
+    private readonly ICategoryService _categoryService;
+    public PostPublishingController(IPostPublishingService postPublishingService,
+        ICategoryService categoryService)
     {
         _postPublishingService = postPublishingService;
+        _categoryService = categoryService;
     }
 
     [HttpGet]
@@ -19,15 +24,15 @@ public class PostPublishingController : Controller
     }
 
     [HttpGet]
-    public IActionResult NewPost()
+    public async Task<IActionResult> NewPost()
     {
-        return View();
+        return View(new NewPostView { PostCategories = await _categoryService.GetCategories() });
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddNewPostAsync(AddOrEditPostDto addPostDto)
+    public async Task<IActionResult> AddNewPostAsync(NewPostView postView)
     {
-        await _postPublishingService.AddNewPostAsync(addPostDto);
+        await _postPublishingService.AddNewPostAsync(postView.PostDto);
         return RedirectToAction("Index");
     }
 
@@ -37,6 +42,7 @@ public class PostPublishingController : Controller
         await _postPublishingService.DeletePostAsync(postId);
         return RedirectToAction("Index");
     }
+    
     [HttpGet("id")]
     public async Task<IActionResult> EditPost(int postId)
     {
@@ -46,7 +52,8 @@ public class PostPublishingController : Controller
             Title = post.Title,
             Content = post.Content,
             Slug = post.Slug,
-            IsPublished = post.IsPublished
+            IsPublished = post.IsPublished,
+            PostCategoryId = post.PostCategoryId
         };
         return View(postToEdit);
     }

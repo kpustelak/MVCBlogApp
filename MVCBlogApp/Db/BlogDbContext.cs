@@ -13,4 +13,14 @@ public class BlogDbContext : DbContext
     {
         
     }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Post>()
+            .HasOne(p => p.PostCategory)
+            .WithMany(pc => pc.Posts) 
+            .HasForeignKey(p => p.PostCategoryId)
+            .OnDelete(DeleteBehavior.Restrict);
+    
+        base.OnModelCreating(modelBuilder);
+    }
 }

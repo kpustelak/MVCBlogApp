@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCBlogApp.Migrations
 {
     [DbContext(typeof(BlogDbContext))]
-    [Migration("20251027203426_PostCategory")]
-    partial class PostCategory
+    [Migration("20251028164854_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -107,7 +107,7 @@ namespace MVCBlogApp.Migrations
                     b.HasOne("MVCBlogApp.Models.Entities.PostCategory", "PostCategory")
                         .WithMany("Posts")
                         .HasForeignKey("PostCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("PostCategory");
