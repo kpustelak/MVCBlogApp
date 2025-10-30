@@ -1,13 +1,18 @@
-@model MVCBlogApp.Models.ViewModel.NewPostView
+@model MVCBlogApp.Models.ViewModel.Post.EditPostView
 
 @{
-    ViewBag.Title = "Create new post";
+    ViewBag.Title = Model.EditedPostId == null ? "Add Post" : "Edit Post";
     Layout = "_Layout";
 }
 
-<h2>Create new post!!!</h2>
+<h2>@ViewBag.Title</h2>
 
-<form asp-action="AddNewPost" method="post">
+<form asp-controller="PostPublishing" asp-action="Save" method="post">
+    @if (Model.EditedPostId != null)
+    {
+        <input type="hidden" asp-for="EditedPostId" />
+    }
+
     <table>
         <tr>
             <td><label asp-for="PostDto.Title">Enter title:</label></td>
@@ -46,7 +51,9 @@
         </tr>
         <tr>
             <td colspan="2">
-                <button type="submit">Add Post</button>
+                <button type="submit">
+                    @(Model.EditedPostId == null ? "Add Post" : "Save Changes")
+                </button>
             </td>
         </tr>
     </table>

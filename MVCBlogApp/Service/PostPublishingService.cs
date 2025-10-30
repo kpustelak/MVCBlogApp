@@ -13,7 +13,7 @@ public class PostPublishingService : IPostPublishingService
     {
         _context = context;
     }
-    public async Task AddNewPostAsync(AddOrEditPostDto addPostDto)
+    public async Task AddPostAsync(AddOrEditPostDto addPostDto)
     {
         var post = new Post
         {
@@ -25,6 +25,7 @@ public class PostPublishingService : IPostPublishingService
             CreatedAt = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss"),
             UpdatedAt = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss")
         };
+        
         _context.Posts.Add(post);
         await _context.SaveChangesAsync();
 
@@ -39,23 +40,23 @@ public class PostPublishingService : IPostPublishingService
         await _context.SaveChangesAsync();
     }
 
-    public Task<Post> GetWholePostAsync(int postId)
+    public async Task<Post?> GetWholePostAsync(int postId)
     {
-        throw new NotImplementedException();
+        return await _context.Posts.FirstOrDefaultAsync(x => x.Id == postId);
     }
-
-
+    
     public async Task<Post> EditPostAsync(AddOrEditPostDto newPostData, int postId)
     {
         var post = await _context.Posts.FirstOrDefaultAsync(x => x.Id == postId);
         if (post ==  null)
             throw new Exception("File you are trying to edit is not existing.");
+        
         post.Title = newPostData.Title;
         post.Slug = newPostData.Slug;
         post.Content = newPostData.Content;
         post.IsPublished = newPostData.IsPublished;
         post.UpdatedAt = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss");
-        _context.Posts.Update(post);
+        
         await _context.SaveChangesAsync();
         return post;
     }

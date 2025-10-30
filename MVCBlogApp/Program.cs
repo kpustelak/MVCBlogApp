@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using MVCBlogApp.Db;
 using MVCBlogApp.Interface;
@@ -16,6 +17,7 @@ builder.Services.AddScoped<ICategoryManagmentService, CategoryManagmentService>(
 builder.Services.AddScoped<IPostPublishingService, PostPublishingService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddTransient<DbSeeder>();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 
