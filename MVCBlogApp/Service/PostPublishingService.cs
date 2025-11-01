@@ -13,7 +13,7 @@ public class PostPublishingService : IPostPublishingService
     {
         _context = context;
     }
-    public async Task AddPostAsync(AddOrEditPostDto addPostDto)
+    public async Task<Post> AddPostAsync(AddOrEditPostDto addPostDto)
     {
         var post = new Post
         {
@@ -28,7 +28,7 @@ public class PostPublishingService : IPostPublishingService
         
         _context.Posts.Add(post);
         await _context.SaveChangesAsync();
-
+        return post;
     }
     public async Task DeletePostAsync(int postId)
     {

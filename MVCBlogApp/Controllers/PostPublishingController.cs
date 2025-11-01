@@ -13,13 +13,16 @@ public class PostPublishingController : Controller
     private readonly IPostPublishingService  _postPublishingService;
     private readonly ICategoryService _categoryService;
     private readonly IMapper _mapper;
+    private readonly ILogger<PostPublishingController> _logger;
     public PostPublishingController(IPostPublishingService postPublishingService,
         ICategoryService categoryService,
-        IMapper mapper)
+        IMapper mapper,
+        ILogger<PostPublishingController> logger)
     {
         _postPublishingService = postPublishingService;
         _categoryService = categoryService;
         _mapper = mapper;
+        _logger = logger;
     }
 
     [HttpGet]
@@ -55,9 +58,11 @@ public class PostPublishingController : Controller
 
         if (model.EditedPostId.HasValue && model.EditedPostId > 0) {
             await _postPublishingService.EditPostAsync(model.PostDto, model.EditedPostId.Value);
+            _logger.LogInformation("Post {0}: successfully edited", model.EditedPostId);
             TempData["Message"] = "Post edited successfully";
         } else {
-            await _postPublishingService.AddPostAsync(model.PostDto);
+            var post = await _postPublishingService.AddPostAsync(model.PostDto);
+            _logger.LogInformation("Post {0}: successfully added", post.Id);
             TempData["Message"] = "Post added successfully";
         }
     
@@ -70,6 +75,7 @@ public class PostPublishingController : Controller
     {
         if (postId is > 0) {
             await _postPublishingService.DeletePostAsync(postId);
+            _logger.LogInformation("Post {0}: successfully deleted", postId);
             TempData["Message"] = "Post deleted successfully";
         } else {
             TempData["Warning"] = "Post id is not valid";            
