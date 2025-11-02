@@ -5,56 +5,56 @@
     Layout = "_Layout";
 }
 
-<h2>@ViewBag.Title</h2>
+<link rel="stylesheet" href="~/css/post-edit.css"/>
 
-<form asp-controller="PostPublishing" asp-action="Save" method="post">
-    @if (Model.EditedPostId != null)
-    {
-        <input type="hidden" asp-for="EditedPostId" />
-    }
+<div class="post-edit-container">
+    <div class="post-edit-wrapper">
+        <h2>@ViewBag.Title</h2>
 
-    <table>
-        <tr>
-            <td><label asp-for="PostDto.Title">Enter title:</label></td>
-            <td>
-                <input asp-for="PostDto.Title" type="text" />
-                <span asp-validation-for="PostDto.Title"></span>
-            </td>
-        </tr>
-        <tr>
-            <td><label asp-for="PostDto.PostCategoryId">Select category:</label></td>
-            <td>
-                <select asp-for="PostDto.PostCategoryId" asp-items="@(new SelectList(Model.PostCategories, "Id", "Name"))">
-                </select>
-                <span asp-validation-for="PostDto.PostCategoryId"></span>
-            </td>
-        </tr>
-        <tr>
-            <td><label asp-for="PostDto.Content">Enter content:</label></td>
-            <td>
-                <textarea asp-for="PostDto.Content" rows="10" cols="50"></textarea>
+        <form asp-controller="PostPublishing" asp-action="Save" method="post">
+            @if (Model.EditedPostId != null)
+            {
+                <input type="hidden" asp-for="EditedPostId" />
+            }
+            
+            <div class="top-fields-container">
+                <div class="field-group">
+                    <label asp-for="PostDto.Title">Title</label>
+                    <input asp-for="PostDto.Title" type="text" placeholder="Enter your post title..." />
+                    <span asp-validation-for="PostDto.Title"></span>
+                </div>
+
+                <div class="field-group">
+                    <label asp-for="PostDto.PostCategoryId">Category</label>
+                    <select asp-for="PostDto.PostCategoryId" asp-items="@(new SelectList(Model.PostCategories, "Id", "Name"))">
+                        <option value="">-- Choose a category --</option>
+                    </select>
+                    <span asp-validation-for="PostDto.PostCategoryId"></span>
+                </div>
+
+                <div class="field-group">
+                    <label asp-for="PostDto.Slug">Slug</label>
+                    <input asp-for="PostDto.Slug" type="text" placeholder="post-url-slug" />
+                    <span asp-validation-for="PostDto.Slug"></span>
+                </div>
+
+                <div class="field-group checkbox-field">
+                    <input asp-for="PostDto.IsPublished" type="checkbox" />
+                    <label asp-for="PostDto.IsPublished">Published</label>
+                </div>
+            </div>
+            
+            <div class="editor-container">
+                <label asp-for="PostDto.Content">Content</label>
+                <textarea asp-for="PostDto.Content" placeholder="Write your post content here..."></textarea>
                 <span asp-validation-for="PostDto.Content"></span>
-            </td>
-        </tr>
-        <tr>
-            <td><label asp-for="PostDto.Slug">Slug:</label></td>
-            <td>
-                <input asp-for="PostDto.Slug" type="text" />
-                <span asp-validation-for="PostDto.Slug"></span>
-            </td>
-        </tr>
-        <tr>
-            <td><label asp-for="PostDto.IsPublished">Published:</label></td>
-            <td>
-                <input asp-for="PostDto.IsPublished" type="checkbox" />
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
+            </div>
+            
+            <div style="margin-top: 2rem; display: flex; gap: 1rem;">
                 <button type="submit">
                     @(Model.EditedPostId == null ? "Add Post" : "Save Changes")
                 </button>
-            </td>
-        </tr>
-    </table>
-</form>
+            </div>
+        </form>
+    </div>
+</div>

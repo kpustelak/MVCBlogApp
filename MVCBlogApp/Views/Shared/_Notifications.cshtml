@@ -1,0 +1,54 @@
+@if (TempData["SuccessMessage"] != null || 
+     TempData["ErrorMessage"] != null || 
+     TempData["WarningMessage"] != null || 
+     TempData["InfoMessage"] != null)
+{
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            toastr.options = {
+                "debug": false,
+                "newestOnTop": true,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <text>
+                toastr.success('@Html.Raw(TempData["SuccessMessage"])');
+                </text>
+            }
+
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <text>
+                toastr.error('@Html.Raw(TempData["ErrorMessage"])');
+                </text>
+            }
+
+            @if (TempData["WarningMessage"] != null)
+            {
+                <text>
+                toastr.warning('@Html.Raw(TempData["WarningMessage"])');
+                </text>
+            }
+
+            @if (TempData["InfoMessage"] != null)
+            {
+                <text>
+                toastr.info('@Html.Raw(TempData["InfoMessage"])');
+                </text>
+            }
+        });
+    </script>
+}
