@@ -1,13 +1,18 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using MVCBlogApp.Db;
+using MVCBlogApp.Filters;
 using MVCBlogApp.Interface;
 using MVCBlogApp.Service;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(options =>
+{
+    options.Filters.Add<HandleExceptionAttribute>();
+});
+
 builder.Services.AddDbContext<BlogDbContext>(options =>
 {
     options.UseSqlite("Data Source=blog.db");
@@ -29,7 +34,8 @@ var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
+    app.UseExceptionHandler("/Error/500"); 
+    app.UseStatusCodePagesWithReExecute("/Error/{0}"); 
     app.UseHsts();
 }
 

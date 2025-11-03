@@ -1,20 +1,20 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using MVCBlogApp.Interface;
-using MVCBlogApp.Models;
 using MVCBlogApp.Models.DTO.Post;
-using MVCBlogApp.Models.ViewModel;
 using MVCBlogApp.Models.ViewModel.Post;
 
 namespace MVCBlogApp.Controllers;
 
 public class PostPublishingController : Controller
 {
-    private readonly IPostPublishingService  _postPublishingService;
+    private readonly IPostPublishingService _postPublishingService;
     private readonly ICategoryService _categoryService;
     private readonly IMapper _mapper;
     private readonly ILogger<PostPublishingController> _logger;
-    public PostPublishingController(IPostPublishingService postPublishingService,
+    
+    public PostPublishingController(
+        IPostPublishingService postPublishingService,
         ICategoryService categoryService,
         IMapper mapper,
         ILogger<PostPublishingController> logger)
@@ -33,39 +33,45 @@ public class PostPublishingController : Controller
 
     [HttpGet]
     [Route("PostPublishing/Edit")] 
-    public async Task<IActionResult> Edit(int? postId) {
-        if (postId is > 0) {
+    public async Task<IActionResult> Edit(int? postId) 
+    {
+        var viewModel = new EditPostView 
+        { 
+            PostCategories = await _categoryService.GetCategories() 
+        };
+        
+        if (postId.HasValue && postId > 0) 
+        {
             var post = await _postPublishingService.GetWholePostAsync(postId.Value);
-            if (post != null) {
-                return View(new EditPostView {
-                    PostCategories = await _categoryService.GetCategories(),
-                    EditedPostId = postId,
-                    PostDto = _mapper.Map<AddOrEditPostDto>(post)
-                });
-            }
+            viewModel.EditedPostId = postId;
+            viewModel.PostDto = _mapper.Map<AddOrEditPostDto>(post);
         }
-        return View(new EditPostView { PostCategories = await _categoryService.GetCategories() });
+        
+        return View(viewModel);
     }
     
     [HttpPost]
     [Route("PostPublishing/Save")] 
     public async Task<IActionResult> Save([FromForm] EditPostView model)
     {
-        if (!ModelState.IsValid) {
-            model.PostCategories = await _categoryService.GetCategories();
-            return View("Edit", model);
+        if (!ModelState.IsValid) 
+        {
+            throw new ArgumentException("Invalid form data. Please check all required fields.");
         }
 
-        if (model.EditedPostId.HasValue && model.EditedPostId > 0) {
+        if (model.EditedPostId.HasValue && model.EditedPostId > 0) 
+        {
             await _postPublishingService.EditPostAsync(model.PostDto, model.EditedPostId.Value);
-            _logger.LogInformation("Post {0}: successfully edited", model.EditedPostId);
+            _logger.LogInformation("Post {PostId} successfully edited", model.EditedPostId);
             TempData["SuccessMessage"] = "Post edited successfully";
-        } else {
+        } 
+        else 
+        {
             var post = await _postPublishingService.AddPostAsync(model.PostDto);
-            _logger.LogInformation("Post {0}: successfully added", post.Id);
+            _logger.LogInformation("Post {PostId} successfully added", post.Id);
             TempData["SuccessMessage"] = "Post added successfully";
         }
-    
+
         return RedirectToAction("Index");
     }
 
@@ -73,13 +79,15 @@ public class PostPublishingController : Controller
     [Route("PostPublishing/Delete")] 
     public async Task<IActionResult> DeleteAsync(int postId)
     {
-        if (postId is > 0) {
-            await _postPublishingService.DeletePostAsync(postId);
-            _logger.LogInformation("Post {0}: successfully deleted", postId);
-            TempData["SuccessMessage"] = "Post deleted successfully";
-        } else {
-            TempData["ErrorMessage"] = "Post id is not valid";            
+        if (postId <= 0) 
+        {
+            throw new ArgumentException("Invalid post ID");
         }
+        
+        await _postPublishingService.DeletePostAsync(postId);
+        _logger.LogInformation("Post {PostId} successfully deleted", postId);
+        TempData["SuccessMessage"] = "Post deleted successfully";
+        
         return RedirectToAction("Index");
     }
 }

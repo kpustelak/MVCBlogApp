@@ -9,10 +9,12 @@ namespace MVCBlogApp.Service;
 public class PostPublishingService : IPostPublishingService
 {
     private readonly BlogDbContext _context;
+    
     public PostPublishingService(BlogDbContext context)
     {
         _context = context;
     }
+    
     public async Task<Post> AddPostAsync(AddOrEditPostDto addPostDto)
     {
         var post = new Post
@@ -30,26 +32,40 @@ public class PostPublishingService : IPostPublishingService
         await _context.SaveChangesAsync();
         return post;
     }
+    
     public async Task DeletePostAsync(int postId)
     {
         var post = await _context.Posts.FirstOrDefaultAsync(x => x.Id == postId);
+        
         if (post == null)
-            throw new Exception("Post you are trying to delete does not exist.");
-    
+        {
+            throw new KeyNotFoundException($"Post with ID {postId} does not exist");
+        }
+        
         _context.Posts.Remove(post);
         await _context.SaveChangesAsync();
     }
 
-    public async Task<Post?> GetWholePostAsync(int postId)
+    public async Task<Post> GetWholePostAsync(int postId)
     {
-        return await _context.Posts.FirstOrDefaultAsync(x => x.Id == postId);
+        var post = await _context.Posts.FirstOrDefaultAsync(x => x.Id == postId);
+        
+        if (post == null)
+        {
+            throw new KeyNotFoundException($"Post with ID {postId} not found");
+        }
+        
+        return post;
     }
     
     public async Task<Post> EditPostAsync(AddOrEditPostDto newPostData, int postId)
     {
         var post = await _context.Posts.FirstOrDefaultAsync(x => x.Id == postId);
-        if (post ==  null)
-            throw new Exception("File you are trying to edit is not existing.");
+        
+        if (post == null)
+        {
+            throw new KeyNotFoundException($"Post with ID {postId} does not exist");
+        }
         
         post.Title = newPostData.Title;
         post.Slug = newPostData.Slug;
