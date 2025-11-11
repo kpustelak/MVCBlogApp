@@ -1,0 +1,239 @@
+2025-11-07 17:04:26.761 +01:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "PostCategories" AS "p")
+2025-11-07 17:04:26.910 +01:00 [INF] User profile is available. Using '/home/kornel/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-11-07 17:04:26.959 +01:00 [INF] Now listening on: http://localhost:5008
+2025-11-07 17:04:26.962 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-07 17:04:26.963 +01:00 [INF] Hosting environment: Development
+2025-11-07 17:04:26.964 +01:00 [INF] Content root path: /home/kornel/Documents/GitHub/MVCBlogApp/MVCBlogApp/MVCBlogApp
+2025-11-07 17:04:27.416 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2025-11-07 17:04:27.428 +01:00 [WRN] Failed to determine the https port for redirect.
+2025-11-07 17:04:27.461 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2025-11-07 17:04:27.482 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2025-11-07 17:04:27.601 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2025-11-07 17:04:27.697 +01:00 [INF] Executing ViewResult, running view Index.
+2025-11-07 17:04:27.782 +01:00 [INF] Executed ViewResult - view Index executed in 88.806ms.
+2025-11-07 17:04:27.785 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 302.5704ms
+2025-11-07 17:04:27.786 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2025-11-07 17:04:27.794 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 380.5531ms
+2025-11-07 17:04:27.826 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/MVCBlogApp.styles.css?v=Xg9t9YrsnUfLMYEVWpfKH0MNho3IZGdllMl3DxgaLHc - null null
+2025-11-07 17:04:27.826 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/css/blog-main.css - null null
+2025-11-07 17:04:27.826 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/js/site.js?v=y_Ngd8W21UpuCUhEqGbUKDEqFnNfTjAfb24GhJJGUyM - null null
+2025-11-07 17:04:27.826 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/lib/bootstrap/dist/css/bootstrap.min.css - null null
+2025-11-07 17:04:27.827 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/css/site.css?v=DVPu7Jy75oyNKVcZrz_AThmuR2XFB7WGo37ItB9rkSk - null null
+2025-11-07 17:04:27.828 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/lib/jquery/dist/jquery.min.js - null null
+2025-11-07 17:04:27.866 +01:00 [INF] The file /lib/jquery/dist/jquery.min.js was not modified
+2025-11-07 17:04:27.870 +01:00 [INF] Sending file. Request path: '/css/blog-main.css'. Physical path: '/home/kornel/Documents/GitHub/MVCBlogApp/MVCBlogApp/MVCBlogApp/wwwroot/css/blog-main.css'
+2025-11-07 17:04:27.871 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/css/blog-main.css - 200 8463 text/css 44.6756ms
+2025-11-07 17:04:27.871 +01:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: '/home/kornel/Documents/GitHub/MVCBlogApp/MVCBlogApp/MVCBlogApp/wwwroot/css/site.css'
+2025-11-07 17:04:27.884 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/css/site.css?v=DVPu7Jy75oyNKVcZrz_AThmuR2XFB7WGo37ItB9rkSk - 200 582 text/css 56.7096ms
+2025-11-07 17:04:27.871 +01:00 [INF] Sending file. Request path: '/js/site.js'. Physical path: '/home/kornel/Documents/GitHub/MVCBlogApp/MVCBlogApp/MVCBlogApp/wwwroot/js/site.js'
+2025-11-07 17:04:27.885 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/js/site.js?v=y_Ngd8W21UpuCUhEqGbUKDEqFnNfTjAfb24GhJJGUyM - 200 227 text/javascript 58.5238ms
+2025-11-07 17:04:27.872 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/lib/jquery/dist/jquery.min.js - 304 null text/javascript 43.8546ms
+2025-11-07 17:04:27.869 +01:00 [INF] Sending file. Request path: '/MVCBlogApp.styles.css'. Physical path: '/home/kornel/Documents/GitHub/MVCBlogApp/MVCBlogApp/MVCBlogApp/obj/Debug/net8.0/scopedcss/bundle/MVCBlogApp.styles.css'
+2025-11-07 17:04:27.887 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/MVCBlogApp.styles.css?v=Xg9t9YrsnUfLMYEVWpfKH0MNho3IZGdllMl3DxgaLHc - 200 1079 text/css 61.3226ms
+2025-11-07 17:04:27.888 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/lib/bootstrap/dist/js/bootstrap.bundle.min.js - null null
+2025-11-07 17:04:27.892 +01:00 [INF] The file /lib/bootstrap/dist/js/bootstrap.bundle.min.js was not modified
+2025-11-07 17:04:27.892 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/lib/bootstrap/dist/js/bootstrap.bundle.min.js - 304 null text/javascript 3.919ms
+2025-11-07 17:04:27.916 +01:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css'. Physical path: '/home/kornel/Documents/GitHub/MVCBlogApp/MVCBlogApp/MVCBlogApp/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css'
+2025-11-07 17:04:27.919 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/lib/bootstrap/dist/css/bootstrap.min.css - 200 162720 text/css 92.8515ms
+2025-11-07 17:04:28.084 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/favicon.ico - null null
+2025-11-07 17:04:28.086 +01:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: '/home/kornel/Documents/GitHub/MVCBlogApp/MVCBlogApp/MVCBlogApp/wwwroot/favicon.ico'
+2025-11-07 17:04:28.088 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/favicon.ico - 200 5430 image/x-icon 3.7949ms
+2025-11-07 17:04:40.927 +01:00 [INF] Application is shutting down...
+2025-11-07 19:23:05.365 +01:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2025-11-07 19:23:05.421 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2025-11-07 19:23:05.434 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-11-07 19:23:05.447 +01:00 [INF] Applying migration '20251107181812_ImageModelUpdate'.
+2025-11-07 19:23:05.477 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "PostImages" RENAME COLUMN "PostId" TO "FileSize";
+2025-11-07 19:23:05.477 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "PostImages" ADD "FileExtension" TEXT NOT NULL DEFAULT '';
+2025-11-07 19:23:05.478 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "PostImages" ADD "FileName" TEXT NOT NULL DEFAULT '';
+2025-11-07 19:23:05.478 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "PostImages" ADD "UploadDate" TEXT NOT NULL DEFAULT '0001-01-01 00:00:00';
+2025-11-07 19:23:05.479 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20251107181812_ImageModelUpdate', '8.0.21');
+2025-11-07 21:21:36.693 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "PostCategories" AS "p")
+2025-11-07 21:21:36.788 +01:00 [INF] User profile is available. Using '/home/kornel/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-11-07 21:21:36.859 +01:00 [INF] Now listening on: http://localhost:5008
+2025-11-07 21:21:36.870 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-07 21:21:36.871 +01:00 [INF] Hosting environment: Development
+2025-11-07 21:21:36.872 +01:00 [INF] Content root path: /home/kornel/Documents/GitHub/MVCBlogApp/MVCBlogApp/MVCBlogApp
+2025-11-07 21:21:37.162 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2025-11-07 21:21:37.174 +01:00 [WRN] Failed to determine the https port for redirect.
+2025-11-07 21:21:37.209 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2025-11-07 21:21:37.231 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2025-11-07 21:21:37.351 +01:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2025-11-07 21:21:37.434 +01:00 [INF] Executing ViewResult, running view Index.
+2025-11-07 21:21:37.515 +01:00 [INF] Executed ViewResult - view Index executed in 79.4504ms.
+2025-11-07 21:21:37.517 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 285.3409ms
+2025-11-07 21:21:37.518 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2025-11-07 21:21:37.524 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 363.0159ms
+2025-11-07 21:21:37.547 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/lib/bootstrap/dist/css/bootstrap.min.css - null null
+2025-11-07 21:21:37.571 +01:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css'. Physical path: '/home/kornel/Documents/GitHub/MVCBlogApp/MVCBlogApp/MVCBlogApp/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css'
+2025-11-07 21:21:37.572 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/lib/bootstrap/dist/css/bootstrap.min.css - 499 162720 text/css 24.9593ms
+2025-11-07 21:21:37.645 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/favicon.ico - null null
+2025-11-07 21:21:37.649 +01:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: '/home/kornel/Documents/GitHub/MVCBlogApp/MVCBlogApp/MVCBlogApp/wwwroot/favicon.ico'
+2025-11-07 21:21:37.650 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/favicon.ico - 499 5430 image/x-icon 5.1323ms
+2025-11-07 21:21:55.391 +01:00 [INF] Application is shutting down...
+2025-11-07 21:25:15.981 +01:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "PostCategories" AS "p")
+2025-11-07 21:25:16.075 +01:00 [INF] User profile is available. Using '/home/kornel/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-11-07 21:25:16.125 +01:00 [INF] Now listening on: http://localhost:5008
+2025-11-07 21:25:16.127 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-07 21:25:16.127 +01:00 [INF] Hosting environment: Development
+2025-11-07 21:25:16.128 +01:00 [INF] Content root path: /home/kornel/Documents/GitHub/MVCBlogApp/MVCBlogApp/MVCBlogApp
+2025-11-07 21:25:17.021 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2025-11-07 21:25:17.042 +01:00 [WRN] Failed to determine the https port for redirect.
+2025-11-07 21:25:17.106 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2025-11-07 21:25:17.133 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2025-11-07 21:25:17.346 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2025-11-07 21:25:17.466 +01:00 [INF] Executing ViewResult, running view Index.
+2025-11-07 21:25:17.549 +01:00 [INF] Executed ViewResult - view Index executed in 89.9352ms.
+2025-11-07 21:25:17.556 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 421.2639ms
+2025-11-07 21:25:17.557 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2025-11-07 21:25:17.564 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 544.7771ms
+2025-11-07 21:25:17.595 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/lib/bootstrap/dist/css/bootstrap.min.css - null null
+2025-11-07 21:25:17.608 +01:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css'. Physical path: '/home/kornel/Documents/GitHub/MVCBlogApp/MVCBlogApp/MVCBlogApp/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css'
+2025-11-07 21:25:17.609 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/lib/bootstrap/dist/css/bootstrap.min.css - 499 162720 text/css 23.7485ms
+2025-11-07 21:25:25.236 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/imagecontroler - null null
+2025-11-07 21:25:25.240 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/imagecontroler - 404 0 null 3.532ms
+2025-11-07 21:25:25.241 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5008/imagecontroler, Response status code: 404
+2025-11-07 21:25:29.430 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/imagecontroller - null null
+2025-11-07 21:25:29.439 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/imagecontroller - 404 0 null 9.0795ms
+2025-11-07 21:25:29.440 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5008/imagecontroller, Response status code: 404
+2025-11-07 21:25:33.600 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/image - null null
+2025-11-07 21:25:33.603 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.ImageController.Index (MVCBlogApp)'
+2025-11-07 21:25:33.612 +01:00 [INF] Route matched with {action = "Index", controller = "Image"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(Int32) on controller MVCBlogApp.Controllers.ImageController (MVCBlogApp).
+2025-11-07 21:25:33.616 +01:00 [ERR] Light error occurred: Unable to resolve service for type 'MVCBlogApp.Interface.IImageService' while attempting to activate 'MVCBlogApp.Controllers.ImageController'.
+System.InvalidOperationException: Unable to resolve service for type 'MVCBlogApp.Interface.IImageService' while attempting to activate 'MVCBlogApp.Controllers.ImageController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method60(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+2025-11-07 21:25:33.633 +01:00 [INF] Executing RedirectResult, redirecting to /.
+2025-11-07 21:25:33.633 +01:00 [INF] Executed action MVCBlogApp.Controllers.ImageController.Index (MVCBlogApp) in 20.8513ms
+2025-11-07 21:25:33.633 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.ImageController.Index (MVCBlogApp)'
+2025-11-07 21:25:33.643 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/image - 302 0 null 42.4145ms
+2025-11-07 21:25:33.667 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2025-11-07 21:25:33.667 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2025-11-07 21:25:33.667 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2025-11-07 21:25:33.750 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2025-11-07 21:25:33.752 +01:00 [INF] Executing ViewResult, running view Index.
+2025-11-07 21:25:33.771 +01:00 [INF] Executed ViewResult - view Index executed in 19.232ms.
+2025-11-07 21:25:33.772 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 104.1369ms
+2025-11-07 21:25:33.772 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2025-11-07 21:25:33.772 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 105.8314ms
+2025-11-07 21:25:43.080 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/image - null null
+2025-11-07 21:25:43.080 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.ImageController.Index (MVCBlogApp)'
+2025-11-07 21:25:43.080 +01:00 [INF] Route matched with {action = "Index", controller = "Image"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(Int32) on controller MVCBlogApp.Controllers.ImageController (MVCBlogApp).
+2025-11-07 21:25:43.081 +01:00 [ERR] Light error occurred: Unable to resolve service for type 'MVCBlogApp.Interface.IImageService' while attempting to activate 'MVCBlogApp.Controllers.ImageController'.
+System.InvalidOperationException: Unable to resolve service for type 'MVCBlogApp.Interface.IImageService' while attempting to activate 'MVCBlogApp.Controllers.ImageController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method60(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+2025-11-07 21:25:43.082 +01:00 [INF] Executing RedirectResult, redirecting to /.
+2025-11-07 21:25:43.083 +01:00 [INF] Executed action MVCBlogApp.Controllers.ImageController.Index (MVCBlogApp) in 1.8899ms
+2025-11-07 21:25:43.083 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.ImageController.Index (MVCBlogApp)'
+2025-11-07 21:25:43.085 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/image - 302 0 null 4.9414ms
+2025-11-07 21:25:43.093 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2025-11-07 21:25:43.093 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2025-11-07 21:25:43.093 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2025-11-07 21:25:43.104 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2025-11-07 21:25:43.105 +01:00 [INF] Executing ViewResult, running view Index.
+2025-11-07 21:25:43.106 +01:00 [INF] Executed ViewResult - view Index executed in 1.7612ms.
+2025-11-07 21:25:43.107 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 12.892ms
+2025-11-07 21:25:43.107 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2025-11-07 21:25:43.107 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 14.0686ms
+2025-11-07 21:25:48.239 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/imagecontroller - null null
+2025-11-07 21:25:48.239 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/imagecontroller - 404 0 null 0.56ms
+2025-11-07 21:25:48.240 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5008/imagecontroller, Response status code: 404
+2025-11-07 21:26:15.609 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/image?page=1 - null null
+2025-11-07 21:26:15.610 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.ImageController.Index (MVCBlogApp)'
+2025-11-07 21:26:15.610 +01:00 [INF] Route matched with {action = "Index", controller = "Image"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(Int32) on controller MVCBlogApp.Controllers.ImageController (MVCBlogApp).
+2025-11-07 21:26:15.612 +01:00 [ERR] Light error occurred: Unable to resolve service for type 'MVCBlogApp.Interface.IImageService' while attempting to activate 'MVCBlogApp.Controllers.ImageController'.
+System.InvalidOperationException: Unable to resolve service for type 'MVCBlogApp.Interface.IImageService' while attempting to activate 'MVCBlogApp.Controllers.ImageController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method60(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+2025-11-07 21:26:15.613 +01:00 [INF] Executing RedirectResult, redirecting to /.
+2025-11-07 21:26:15.613 +01:00 [INF] Executed action MVCBlogApp.Controllers.ImageController.Index (MVCBlogApp) in 1.7066ms
+2025-11-07 21:26:15.613 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.ImageController.Index (MVCBlogApp)'
+2025-11-07 21:26:15.614 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/image?page=1 - 302 0 null 4.9351ms
+2025-11-07 21:26:15.633 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2025-11-07 21:26:15.635 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2025-11-07 21:26:15.641 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2025-11-07 21:26:15.648 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2025-11-07 21:26:15.652 +01:00 [INF] Executing ViewResult, running view Index.
+2025-11-07 21:26:15.657 +01:00 [INF] Executed ViewResult - view Index executed in 6.1204ms.
+2025-11-07 21:26:15.659 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 15.9541ms
+2025-11-07 21:26:15.661 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2025-11-07 21:26:15.662 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 28.9044ms
+2025-11-07 21:26:38.430 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Image&page=1 - null null
+2025-11-07 21:26:38.431 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Image&page=1 - 404 0 null 0.4931ms
+2025-11-07 21:26:38.432 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5008/Image&page=1, Response status code: 404
+2025-11-07 21:26:44.892 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/image - null null
+2025-11-07 21:26:44.894 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.ImageController.Index (MVCBlogApp)'
+2025-11-07 21:26:44.894 +01:00 [INF] Route matched with {action = "Index", controller = "Image"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(Int32) on controller MVCBlogApp.Controllers.ImageController (MVCBlogApp).
+2025-11-07 21:26:44.896 +01:00 [ERR] Light error occurred: Unable to resolve service for type 'MVCBlogApp.Interface.IImageService' while attempting to activate 'MVCBlogApp.Controllers.ImageController'.
+System.InvalidOperationException: Unable to resolve service for type 'MVCBlogApp.Interface.IImageService' while attempting to activate 'MVCBlogApp.Controllers.ImageController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method60(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+2025-11-07 21:26:44.897 +01:00 [INF] Executing RedirectResult, redirecting to /.
+2025-11-07 21:26:44.897 +01:00 [INF] Executed action MVCBlogApp.Controllers.ImageController.Index (MVCBlogApp) in 1.0341ms
+2025-11-07 21:26:44.897 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.ImageController.Index (MVCBlogApp)'
+2025-11-07 21:26:44.897 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/image - 302 0 null 5.0623ms
+2025-11-07 21:26:44.908 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2025-11-07 21:26:44.909 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2025-11-07 21:26:44.910 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2025-11-07 21:26:44.912 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2025-11-07 21:26:44.914 +01:00 [INF] Executing ViewResult, running view Index.
+2025-11-07 21:26:44.917 +01:00 [INF] Executed ViewResult - view Index executed in 3.2948ms.
+2025-11-07 21:26:44.918 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 7.6053ms
+2025-11-07 21:26:44.918 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2025-11-07 21:26:44.918 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 9.9698ms
+2025-11-07 21:26:57.322 +01:00 [INF] Application is shutting down...

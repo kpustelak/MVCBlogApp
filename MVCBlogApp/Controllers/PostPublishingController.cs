@@ -61,17 +61,30 @@ public class PostPublishingController : Controller
 
         if (model.EditedPostId.HasValue && model.EditedPostId > 0) 
         {
-            await _postPublishingService.EditPostAsync(model.PostDto, model.EditedPostId.Value);
-            _logger.LogInformation("Post {PostId} successfully edited", model.EditedPostId);
-            TempData["SuccessMessage"] = "Post edited successfully";
-        } 
+            try
+            {
+                await _postPublishingService.EditPostAsync(model.PostDto, model.EditedPostId.Value);
+                _logger.LogInformation("Post {PostId} successfully edited", model.EditedPostId);
+                TempData["SuccessMessage"] = "Post edited successfully";
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         else 
         {
-            var post = await _postPublishingService.AddPostAsync(model.PostDto);
-            _logger.LogInformation("Post {PostId} successfully added", post.Id);
-            TempData["SuccessMessage"] = "Post added successfully";
+            try
+            {
+                var post = await _postPublishingService.AddPostAsync(model.PostDto);
+                _logger.LogInformation("Post {PostId} successfully added", post.Id);
+                TempData["SuccessMessage"] = "Post added successfully";
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
-
         return RedirectToAction("Index");
     }
 
@@ -83,10 +96,17 @@ public class PostPublishingController : Controller
         {
             throw new ArgumentException("Invalid post ID");
         }
-        
-        await _postPublishingService.DeletePostAsync(postId);
-        _logger.LogInformation("Post {PostId} successfully deleted", postId);
-        TempData["SuccessMessage"] = "Post deleted successfully";
+
+        try
+        {
+            await _postPublishingService.DeletePostAsync(postId);
+            _logger.LogInformation("Post {PostId} successfully deleted", postId);
+            TempData["SuccessMessage"] = "Post deleted successfully";
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
         
         return RedirectToAction("Index");
     }

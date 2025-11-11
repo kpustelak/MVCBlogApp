@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using MVCBlogApp.Models;
 using MVCBlogApp.Models.Entities;
 
 namespace MVCBlogApp.Db;
