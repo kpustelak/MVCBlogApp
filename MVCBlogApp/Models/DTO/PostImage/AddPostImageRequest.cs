@@ -11,4 +11,5 @@ public class AddPostImageRequest
     [Required(ErrorMessage = "Plik jest wymagany")]
     [DataType(DataType.Upload)]
     public IFormFile File { get; set; } 
+    
 }

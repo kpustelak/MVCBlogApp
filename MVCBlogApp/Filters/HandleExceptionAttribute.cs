@@ -7,15 +7,12 @@ namespace MVCBlogApp.Filters;
 
 public class HandleExceptionAttribute : ExceptionFilterAttribute
 {
-    private readonly ILogger<HandleExceptionAttribute> _logger;
-    
-    public HandleExceptionAttribute(ILogger<HandleExceptionAttribute> logger)
-    {
-        _logger = logger;
-    }
     
     public override void OnException(ExceptionContext context)
     {
+        var logger = context.HttpContext.RequestServices
+            .GetRequiredService<ILogger<HandleExceptionAttribute>>();
+        
         if (context.ExceptionHandled)
             return;
         
@@ -36,7 +33,7 @@ public class HandleExceptionAttribute : ExceptionFilterAttribute
             }
 
             context.ExceptionHandled = true;
-            _logger.LogError(context.Exception, "Light error occurred: {Message}", context.Exception.Message);
+            logger.LogError(context.Exception, "Light error occurred: {Message}", context.Exception.Message);
         
             var returnUrl = context.HttpContext.Request.Headers["Referer"].ToString();
             context.Result = new RedirectResult(string.IsNullOrEmpty(returnUrl) ? "/" : returnUrl);
@@ -49,7 +46,7 @@ public class HandleExceptionAttribute : ExceptionFilterAttribute
                 tempData["StatusCode"] = 500;
             }
         
-            _logger.LogCritical(context.Exception, "Critical error occurred: {Message}", context.Exception.Message);
+            logger.LogCritical(context.Exception, "Critical error occurred: {Message}", context.Exception.Message);
         
             context.ExceptionHandled = true;
             context.Result = new RedirectToActionResult("Index", "Error", new { statusCode = 500 });

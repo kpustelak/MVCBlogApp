@@ -22,6 +22,7 @@ builder.Services.AddScoped<IPostService, PostService>();
 builder.Services.AddScoped<ICategoryManagmentService, CategoryManagmentService>();
 builder.Services.AddScoped<IPostPublishingService, PostPublishingService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IImageService, ImageService>();
 builder.Services.AddTransient<DbSeeder>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

@@ -4,22 +4,30 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MVCBlogApp.Interface;
 using MVCBlogApp.Models;
 using MVCBlogApp.Models.DTO.PostImage;
+using MVCBlogApp.Models.ViewModel.Image;
 
 namespace MVCBlogApp.Controllers;
 
 public class ImageController : Controller
 {
     private readonly IImageService _imageService;
-    public ImageController(IImageService imageService)
+    private readonly ILogger<ImageController> _logger;
+    public ImageController(IImageService imageService, ILogger<ImageController> logger)
     {
         _imageService = imageService;
+        _logger = logger;
     }
 
     [HttpGet]
-    public IActionResult Index(int page = 1)
+    public async Task<IActionResult> Index(int page = 1)
     {
-        _imageService.GetImageDataListAsync(page, 20);
-        return View();
+        var images = await _imageService.GetImageDataListAsync(page, 20);
+        var vm = new ImageIndex
+        {
+            listOfImages = images,
+            postImageRequest = new  AddPostImageRequest()
+        };
+        return View(vm);
     }
 
     [HttpPost]
@@ -28,6 +36,7 @@ public class ImageController : Controller
     {
         if (!ModelState.IsValid)
         {
+            
             TempData["ErrorMessage"] = "There is validation error in your request.";
             return BadRequest(ModelState);
         }
