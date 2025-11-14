@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MVCBlogApp.Db;
 using MVCBlogApp.Interface;
@@ -54,7 +55,6 @@ public class ImageService : IImageService
         
         return image;
     }
-    
     public async Task DeleteImageAsync(int id)
     {
         var image = await _context.PostImages.FindAsync(id); 

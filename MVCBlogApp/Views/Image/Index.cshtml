@@ -1,32 +1,10 @@
 @model MVCBlogApp.Models.ViewModel.Image.ImageIndex
 
 @{
-    ViewData["Title"] = "Image Management";
+ViewData["Title"] = "Image Management";
 }
 
 <div class="container mt-4">
-    <div class="row">
-        <div class="col-12">
-            <h1 class="mb-4">Image Management</h1>
-
-            @if (TempData["SuccessMessage"] != null)
-            {
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    @TempData["SuccessMessage"]
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                </div>
-            }
-
-            @if (TempData["ErrorMessage"] != null)
-            {
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    @TempData["ErrorMessage"]
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                </div>
-            }
-        </div>
-    </div>
-    
     <div class="row mb-4">
         <div class="col-12">
             <div class="card">
@@ -36,7 +14,7 @@
                 <div class="card-body">
                     <form asp-action="UploadImage" asp-controller="Image" method="post" enctype="multipart/form-data" id="uploadForm">
                         @Html.AntiForgeryToken()
-                        
+
                         <div class="mb-3">
                             <label for="AltText" class="form-label">Alt Text</label>
                             <input name="AltText" id="AltText" class="form-control" placeholder="Enter alternative text for the image" required maxlength="200" />
@@ -57,113 +35,50 @@
             </div>
         </div>
     </div>
-    
+
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="mb-0">Uploaded Images (@Model.listOfImages?.Count ?? 0)</h5>
+                    <h5 class="mb-0">Uploaded Images: @Model.listOfImages?.Count</h5>
                 </div>
                 <div class="card-body">
                     @if (Model.listOfImages != null && Model.listOfImages.Any())
                     {
-                        <div class="row g-3">
-                            @foreach (var image in Model.listOfImages)
-                            {
-                                <div class="col-md-4 col-lg-3" id="image-@image.Id">
-                                    <div class="card h-100">
-                                        <img src="@image.FilePath" class="card-img-top" alt="@image.AltText" style="height: 200px; object-fit: cover;">
-                                        <div class="card-body">
-                                            <p class="card-text small">
-                                                <strong>Alt:</strong> @image.AltText
-                                            </p>
-                                            <p class="card-text small text-muted">
-                                                <strong>ID:</strong> @image.Id
-                                            </p>
-                                        </div>
-                                        <div class="card-footer">
-                                            <button type="button" 
-                                                    class="btn btn-danger btn-sm w-100 delete-image-btn" 
-                                                    data-image-id="@image.Id"
-                                                    data-alt-text="@image.AltText">
-                                                <i class="bi bi-trash"></i> Delete
-                                            </button>
-                                        </div>
-                                    </div>
+                    <div class="row g-3">
+                        @foreach (var image in Model.listOfImages)
+                        {
+                        <div class="col-md-4 col-lg-3" id="image-@image.Id">
+                            <div class="card h-100">
+                                <img src="@image.FilePath" class="card-img-top" alt="@image.AltText" style="height: 200px; object-fit: cover;">
+                                <div class="card-body">
+                                    <p class="card-text small">
+                                        <strong>Alt:</strong> @image.AltText
+                                    </p>
+                                    <p class="card-text small text-muted">
+                                        <strong>ID:</strong> @image.Id
+                                    </p>
                                 </div>
-                            }
+                                <div class="card-footer">
+                                    <form asp-action="DeleteImage" asp-controller="Image" method="post">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="id" value="@image.Id" />
+                                        <button type="submit" onclick="return confirm('Sure?')" class="btn btn-danger btn-sm w-100 bi-delete">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
+                        }
+                    </div>
                     }
                     else
                     {
-                        <div class="alert alert-info mb-0">
-                            <i class="bi bi-info-circle"></i> No images uploaded yet. Upload your first image above!
-                        </div>
+                    <div class="alert alert-info mb-0">
+                        <i class="bi bi-info-circle"></i> No images uploaded yet. Upload your first image above!
+                    </div>
                     }
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-    
-    <script>
-        $(document).ready(function() {
-            $('#uploadForm').on('submit', function(e) {
-                e.preventDefault();
-                
-                var formData = new FormData(this);
-                var submitBtn = $(this).find('button[type="submit"]');
-                
-                submitBtn.prop('disabled', true).html('<span class="spinner-border spinner-border-sm"></span> Uploading...');
-                
-                $.ajax({
-                    url: $(this).attr('action'),
-                    type: 'POST',
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function(response) {
-                        location.reload();
-                    },
-                    error: function(xhr) {
-                        alert('Error uploading image. Please try again.');
-                        submitBtn.prop('disabled', false).html('<i class="bi bi-upload"></i> Upload Image');
-                    }
-                });
-            });
-            
-            $('.delete-image-btn').on('click', function() {
-                var imageId = $(this).data('image-id');
-                var altText = $(this).data('alt-text');
-                var imageCard = $('#image-' + imageId);
-                
-                if (confirm('Are you sure you want to delete "' + altText + '"?')) {
-                    var deleteBtn = $(this);
-                    deleteBtn.prop('disabled', true).html('<span class="spinner-border spinner-border-sm"></span>');
-                    
-                    $.ajax({
-                        url: '@Url.Action("DeleteImageAsync", "Image")',
-                        type: 'POST',
-                        data: { id: imageId },
-                        success: function(response) {
-                            imageCard.fadeOut(300, function() {
-                                $(this).remove();
-                                
-                                if ($('.delete-image-btn').length === 0) {
-                                    location.reload();
-                                }
-                            });
-                        },
-                        error: function(xhr) {
-                            alert('Error deleting image. Please try again.');
-                            deleteBtn.prop('disabled', false).html('<i class="bi bi-trash"></i> Delete');
-                        }
-                    });
-                }
-            });
-        });
-    </script>
-}

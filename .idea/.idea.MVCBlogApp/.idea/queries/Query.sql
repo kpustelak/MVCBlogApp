@@ -1,0 +1,16 @@
+select *
+from PostCategories;
+select *
+from Posts;
+SELECT *
+FROM PostCategories;
+select *
+from PostCategories;
+select *
+from PostCategories;
+SELECT *
+FROM Posts;
+select *
+from Posts;
+SELECT *
+FROM Posts;

@@ -8,6 +8,7 @@ using MVCBlogApp.Models.ViewModel.Image;
 
 namespace MVCBlogApp.Controllers;
 
+[Route("[controller]")]
 public class ImageController : Controller
 {
     private readonly IImageService _imageService;
@@ -38,19 +39,19 @@ public class ImageController : Controller
         {
             
             TempData["ErrorMessage"] = "There is validation error in your request.";
-            return BadRequest(ModelState);
+            return RedirectToAction(nameof(Index));
         }
-    
+        
         try
         {
             await _imageService.UploadImageAsync(postImage);
             TempData["SuccessMessage"] = "File uploaded successfully";
-            return Ok();
+            return RedirectToAction(nameof(Index));
         }
         catch (InvalidOperationException ex) 
         {
             TempData["ErrorMessage"] = "There is some error in your request";
-            return BadRequest(new { error = ex.Message });
+            return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
         {
@@ -58,19 +59,20 @@ public class ImageController : Controller
         }
     }
 
-    [HttpPost]
+    [HttpPost("{id}")]
+    [IgnoreAntiforgeryToken]
     public async Task<IActionResult> DeleteImageAsync(int id)
     {
         if (id <= 0)
         {
             TempData["ErrorMessage"] = "Make sure your image id is valid";
-            return BadRequest();
+            return RedirectToAction(nameof(Index));
         }
         try
         {
             await _imageService.DeleteImageAsync(id);
             TempData["SuccessMessage"] = "Image deleted successfully";
-            return Ok();
+            return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
         {
