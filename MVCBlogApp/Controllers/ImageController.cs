@@ -22,11 +22,18 @@ public class ImageController : Controller
     [HttpGet]
     public async Task<IActionResult> Index(int page = 1)
     {
-        var images = await _imageService.GetImageDataListAsync(page, 20);
+        var pageSize = 20;
+        var totalItems = await _imageService.GetTotalImageCountAsync(); // Dodaj tę metodę w serwisie
+        var images = await _imageService.GetImageDataListAsync(page, pageSize);
+        
         var vm = new ImageIndex
         {
             listOfImages = images,
-            postImageRequest = new  AddPostImageRequest()
+            postImageRequest = new AddPostImageRequest(),
+            CurrentPage = page,
+            PageSize = pageSize,
+            TotalItems = totalItems,
+            TotalPages = (int)Math.Ceiling(totalItems / (double)pageSize)
         };
         return View(vm);
     }

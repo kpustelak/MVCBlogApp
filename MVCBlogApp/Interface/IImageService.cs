@@ -10,4 +10,5 @@ public interface IImageService
     Task DeleteImageAsync(int id);
     Task<PostImage> GetImageDataAsync(int id);
     Task<List<PostImage>> GetImageDataListAsync(int page, int pageSize);
+    Task<int> GetTotalImageCountAsync();
 }

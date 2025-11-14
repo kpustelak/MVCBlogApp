@@ -87,6 +87,11 @@ public class ImageService : IImageService
         return await _context.PostImages.FindAsync(id);
     }
 
+    public async Task<int> GetTotalImageCountAsync()
+    {
+        return await _context.PostImages.CountAsync();
+    }
+
     public async Task<List<PostImage>> GetImageDataListAsync(int page, int pageSize)
     {
         return await _context.PostImages
