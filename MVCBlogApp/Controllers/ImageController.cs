@@ -23,7 +23,7 @@ public class ImageController : Controller
     public async Task<IActionResult> Index(int page = 1)
     {
         var pageSize = 20;
-        var totalItems = await _imageService.GetTotalImageCountAsync(); // Dodaj tę metodę w serwisie
+        var totalItems = await _imageService.GetTotalImageCountAsync();
         var images = await _imageService.GetImageDataListAsync(page, pageSize);
         
         var vm = new ImageIndex
@@ -86,4 +86,8 @@ public class ImageController : Controller
             throw new Exception(ex.Message);
         }
     }
+
+    [HttpPost]
+    [IgnoreAntiforgeryToken]
+    public async Task<IActionResult> EditImageAltTextAsync(int id,)
 }
