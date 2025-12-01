@@ -1,9 +1,6 @@
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MVCBlogApp.Interface;
 using MVCBlogApp.Model.DTO.PostImage;
-using MVCBlogApp.Models;
 using MVCBlogApp.Models.DTO.PostImage;
 using MVCBlogApp.Models.ViewModel.Image;
 
@@ -14,6 +11,7 @@ public class ImageController : Controller
 {
     private readonly IImageService _imageService;
     private readonly ILogger<ImageController> _logger;
+    
     public ImageController(IImageService imageService, ILogger<ImageController> logger)
     {
         _imageService = imageService;
@@ -23,21 +21,37 @@ public class ImageController : Controller
     [HttpGet]
     public async Task<IActionResult> Index(int page = 1)
     {
-        var pageSize = 20;
-        var totalItems = await _imageService.GetTotalImageCountAsync();
-        var images = await _imageService.GetImageDataListAsync(page, pageSize);
-        
-        var vm = new ImageIndex
+        try
         {
-            listOfImages = images,
-            postImageRequest = new AddPostImageRequest(),
-            CurrentPage = page,
-            PageSize = pageSize,
-            TotalItems = totalItems,
-            TotalPages = (int)Math.Ceiling(totalItems / (double)pageSize),
-            editAltTextRequest = new EditPostImageAltTextRequest()
-        };
-        return View(vm);
+            var pageSize = 20;
+            var totalItems = await _imageService.GetTotalImageCountAsync();
+            var images = await _imageService.GetImageDataListAsync(page, pageSize);
+            
+            var vm = new ImageIndex
+            {
+                listOfImages = images,
+                postImageRequest = new AddPostImageRequest(),
+                CurrentPage = page,
+                PageSize = pageSize,
+                TotalItems = totalItems,
+                TotalPages = (int)Math.Ceiling(totalItems / (double)pageSize),
+                editAltTextRequest = new EditPostImageAltTextRequest()
+            };
+            
+            _logger.LogInformation("Loaded image index page {PageNumber} with {ImageCount} images", page, images.Count);
+            return View(vm);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error loading image index page {PageNumber}", page);
+            TempData["ErrorMessage"] = "An error occurred while loading images.";
+            return View(new ImageIndex 
+            { 
+                listOfImages = new List<Models.PostImage>(),
+                postImageRequest = new AddPostImageRequest(),
+                editAltTextRequest = new EditPostImageAltTextRequest()
+            });
+        }
     }
 
     [HttpPost]
@@ -46,25 +60,29 @@ public class ImageController : Controller
     {
         if (!ModelState.IsValid)
         {
-            
-            TempData["ErrorMessage"] = "There is validation error in your request.";
+            _logger.LogWarning("Image upload failed - model validation error");
+            TempData["ErrorMessage"] = "There is a validation error in your request.";
             return RedirectToAction(nameof(Index));
         }
         
         try
         {
             await _imageService.UploadImageAsync(postImage);
-            TempData["SuccessMessage"] = "File uploaded successfully";
+            _logger.LogInformation("Image uploaded successfully: {FileName}", postImage.File?.FileName);
+            TempData["SuccessMessage"] = "File uploaded successfully.";
             return RedirectToAction(nameof(Index));
         }
         catch (InvalidOperationException ex) 
         {
-            TempData["ErrorMessage"] = "There is some error in your request";
+            _logger.LogWarning(ex, "Invalid operation during image upload for file: {FileName}", postImage.File?.FileName);
+            TempData["ErrorMessage"] = "There is some error in your request.";
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
         {
-            throw new Exception(ex.Message);
+            _logger.LogError(ex, "Unexpected error during image upload for file: {FileName}", postImage.File?.FileName);
+            TempData["ErrorMessage"] = "An unexpected error occurred while uploading the file.";
+            return RedirectToAction(nameof(Index));
         }
     }
 
@@ -74,18 +92,23 @@ public class ImageController : Controller
     {
         if (id <= 0)
         {
-            TempData["ErrorMessage"] = "Make sure your image id is valid";
+            _logger.LogWarning("Image deletion attempted with invalid ID: {ImageId}", id);
+            TempData["ErrorMessage"] = "Make sure your image ID is valid.";
             return RedirectToAction(nameof(Index));
         }
+        
         try
         {
             await _imageService.DeleteImageAsync(id);
-            TempData["SuccessMessage"] = "Image deleted successfully";
+            _logger.LogInformation("Image deleted successfully: ID {ImageId}", id);
+            TempData["SuccessMessage"] = "Image deleted successfully.";
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
         {
-            throw new Exception(ex.Message);
+            _logger.LogError(ex, "Error deleting image with ID: {ImageId}", id);
+            TempData["ErrorMessage"] = "An error occurred while deleting the image.";
+            return RedirectToAction(nameof(Index));
         }
     }
 
@@ -93,8 +116,41 @@ public class ImageController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> EditImageAltTextAsync(EditPostImageAltTextRequest postImage)
     {
+        if (!ModelState.IsValid)
+        {
+            _logger.LogWarning("Image alt text edit failed - model validation error");
+            TempData["ErrorMessage"] = "There is a validation error in your request.";
+            return RedirectToAction(nameof(Index));
+        }
+
+        if (!Int32.TryParse(postImage.fileId, out var fileId))
+        {
+            _logger.LogWarning("Image ID is not an int: {ImageId}", postImage.fileId);
+            TempData["ErrorMessage"] = "Invalid image ID.";
+            return RedirectToAction(nameof(Index));
+        }
         
-        await _imageService.EditImageAltTextAsync(Int32.Parse(postImage.fileId), postImage.fileAltText);
-        return RedirectToAction(nameof(Index));
+
+        if (fileId <= 0)
+        {
+            _logger.LogWarning("Image alt text edit attempted with invalid ID: {ImageId}", postImage.fileId);
+            TempData["ErrorMessage"] = "Invalid image ID.";
+            return RedirectToAction(nameof(Index));
+        }
+
+        try
+        {
+            await _imageService.EditImageAltTextAsync(fileId, postImage.fileAltText);
+            _logger.LogInformation("Image alt text updated successfully for ID {ImageId}: '{AltText}'", 
+                postImage.fileId, postImage.fileAltText);
+            TempData["SuccessMessage"] = "Image alt text updated successfully.";
+            return RedirectToAction(nameof(Index));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error editing image alt text for ID: {ImageId}", postImage.fileId);
+            TempData["ErrorMessage"] = "An error occurred while updating the image.";
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
