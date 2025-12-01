@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MVCBlogApp.Interface;
+using MVCBlogApp.Model.DTO.PostImage;
 using MVCBlogApp.Models;
 using MVCBlogApp.Models.DTO.PostImage;
 using MVCBlogApp.Models.ViewModel.Image;
@@ -33,7 +34,8 @@ public class ImageController : Controller
             CurrentPage = page,
             PageSize = pageSize,
             TotalItems = totalItems,
-            TotalPages = (int)Math.Ceiling(totalItems / (double)pageSize)
+            TotalPages = (int)Math.Ceiling(totalItems / (double)pageSize),
+            editAltTextRequest = new EditPostImageAltTextRequest()
         };
         return View(vm);
     }
@@ -66,7 +68,7 @@ public class ImageController : Controller
         }
     }
 
-    [HttpPost("{id}")]
+    [HttpPost("delete")]
     [IgnoreAntiforgeryToken]
     public async Task<IActionResult> DeleteImageAsync(int id)
     {
@@ -87,7 +89,12 @@ public class ImageController : Controller
         }
     }
 
-    [HttpPost]
-    [IgnoreAntiforgeryToken]
-    public async Task<IActionResult> EditImageAltTextAsync(int id,)
+    [HttpPost("edit")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> EditImageAltTextAsync(EditPostImageAltTextRequest postImage)
+    {
+        
+        await _imageService.EditImageAltTextAsync(Int32.Parse(postImage.fileId), postImage.fileAltText);
+        return RedirectToAction(nameof(Index));
+    }
 }

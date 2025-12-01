@@ -100,6 +100,15 @@ public class ImageService : IImageService
             .Take(pageSize)
             .ToListAsync();                         
     }
+
+    public async Task EditImageAltTextAsync(int id, string fileText)
+    {
+        var image = _context.PostImages.FirstOrDefault(x => x.Id == id);
+        if (image == null)
+            throw new InvalidOperationException($"Image with ID {id} not found");
+        image.AltText = fileText;
+        await _context.SaveChangesAsync();
+    }
     
     private bool IsValidImageExtension(string fileName)
     {

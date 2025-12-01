@@ -11,4 +11,5 @@ public interface IImageService
     Task<PostImage> GetImageDataAsync(int id);
     Task<List<PostImage>> GetImageDataListAsync(int page, int pageSize);
     Task<int> GetTotalImageCountAsync();
+    public Task EditImageAltTextAsync(int id, string fileText);
 }

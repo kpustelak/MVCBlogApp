@@ -69,7 +69,7 @@ ViewData["Title"] = "Image Management";
                                             </button>
                                         </div>
                                         <div class="card-footer">
-                                            <form asp-action="DeleteImage" asp-controller="Image" method="post">
+                                            <form asp-action="DeleteImage" asp-controller="Image" method="post" asp-action="delete">
                                                 @Html.AntiForgeryToken()
                                                 <input type="hidden" name="id" value="@image.Id" />
                                                 <button type="submit" onclick="return confirm('Sure?')" class="btn btn-danger btn-sm w-100 bi-delete">Delete</button>
@@ -128,14 +128,19 @@ ViewData["Title"] = "Image Management";
             <img id="previewImage" src="" alt="Podgląd" />
         </div>
         
-        <form id="editForm" method="post" asp-action="UpdateFile">
-            <input type="hidden" name="fileId" id="fileId" />
-            
+        <form id="editForm" method="post" asp-controller="Image" asp-action="edit">
+            <input type="hidden" name="fileId" id="fileId" value="" />
+    
             <div class="form-group">
-                <label for="fileText">Tekst pliku:</label>
-                <input type="text" class="form-control" id="fileText" name="fileText" placeholder="Wprowadź nowy tekst" />
+                <label for="fileAltText">Tekst pliku:</label>
+                <input type="text" 
+                       class="form-control" 
+                       name="fileAltText" 
+                       id="fileAltText" 
+                       value=""
+                       placeholder="Wprowadź nowy tekst" />
             </div>
-            
+    
             <button type="submit" class="btn btn-success btn-accept">
                 <i class="bi bi-check-circle"></i> Zaakceptuj
             </button>
@@ -251,10 +256,10 @@ function copyFunctionality(text) {
 function editFileAlt(fileId, imageSrc, currentText) {
     document.getElementById('editOverlay').style.display = 'block';
     document.getElementById('editWindow').style.display = 'block';
-    
-    document.getElementById('fileId').value = fileId;
-    document.getElementById('fileText').value = currentText || '';
-    
+
+    document.getElementById('fileId').value = fileId;  
+    document.getElementById('fileAltText').value = currentText || '';  
+
     if (imageSrc) {
         document.getElementById('previewImage').src = imageSrc;
     }
