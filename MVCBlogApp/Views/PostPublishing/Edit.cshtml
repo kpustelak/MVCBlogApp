@@ -37,6 +37,12 @@
                     <input asp-for="PostDto.Slug" type="text" placeholder="post-url-slug" />
                     <span asp-validation-for="PostDto.Slug"></span>
                 </div>
+                
+                <div class="field-group">
+                    <label asp-for="PostDto.FeaturedImageUrl">Featured image link</label>
+                    <input asp-for="PostDto.FeaturedImageUrl" type="text" placeholder="featured-image-url" />
+                    <span asp-validation-for="PostDto.FeaturedImageUrl"></span>
+                </div>
 
                 <div class="field-group checkbox-field">
                     <input asp-for="PostDto.IsPublished" type="checkbox" />

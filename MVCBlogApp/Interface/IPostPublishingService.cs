@@ -1,6 +1,8 @@
 using MVCBlogApp.Models.DTO.Post;
 using MVCBlogApp.Models.Entities;
 
+namespace MVCBlogApp.Interface;
+
 public interface IPostPublishingService
 {
     Task<Post> AddPostAsync(AddOrEditPostDto addPostDto);

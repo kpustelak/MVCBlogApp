@@ -25,7 +25,8 @@ public class PostPublishingService : IPostPublishingService
             PostCategoryId = addPostDto.PostCategoryId,
             IsPublished = addPostDto.IsPublished,
             CreatedAt = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss"),
-            UpdatedAt = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss")
+            UpdatedAt = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss"),
+            FeaturedImageUrl = addPostDto.FeaturedImageUrl
         };
         
         _context.Posts.Add(post);
@@ -72,6 +73,7 @@ public class PostPublishingService : IPostPublishingService
         post.Content = newPostData.Content;
         post.IsPublished = newPostData.IsPublished;
         post.UpdatedAt = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss");
+        post.FeaturedImageUrl = newPostData.FeaturedImageUrl;
         
         await _context.SaveChangesAsync();
         return post;

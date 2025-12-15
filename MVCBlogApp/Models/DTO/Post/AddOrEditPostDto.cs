@@ -28,4 +28,8 @@ public class AddOrEditPostDto
     [Range(1, int.MaxValue, ErrorMessage = "Please select a valid category")]
     [Display(Name = "Category")]
     public int PostCategoryId { get; set; }
+    
+    [Display(Name = "Featured Image")]
+    [StringLength(100, ErrorMessage = "Featured image link cannot exceed 100 characters")]
+    public string FeaturedImageUrl { get; set; }
 }
