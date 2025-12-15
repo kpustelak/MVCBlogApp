@@ -9,4 +9,6 @@ public interface IPostPublishingService
     Task DeletePostAsync(int postId);
     Task<Post> GetWholePostAsync(int postId); 
     Task<Post> EditPostAsync(AddOrEditPostDto newPostData, int postId);
+    Task<int> GetTotalPostCountAsync();
+    Task<List<Post>> GetPostDataListAsync(int page, int pageSize);
 }

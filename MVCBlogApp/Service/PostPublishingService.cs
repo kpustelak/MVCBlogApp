@@ -78,4 +78,18 @@ public class PostPublishingService : IPostPublishingService
         await _context.SaveChangesAsync();
         return post;
     }
+
+    public async Task<int> GetTotalPostCountAsync()
+    {
+        return await _context.Posts.CountAsync();
+    }
+
+    public async Task<List<Post>> GetPostDataListAsync(int page, int pageSize)
+    {
+        return await _context.Posts
+            .OrderByDescending(x => x.CreatedAt) 
+            .Skip((page - 1) * pageSize)          
+            .Take(pageSize)
+            .ToListAsync();           
+    }
 }

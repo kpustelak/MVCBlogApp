@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MVCBlogApp.Interface;
 using MVCBlogApp.Models.DTO.Post;
 using MVCBlogApp.Models.ViewModel.Post;
+using ImageIndex = MVCBlogApp.Models.ViewModel.Image.ImageIndex;
 
 namespace MVCBlogApp.Controllers;
 
@@ -26,13 +27,31 @@ public class PostPublishingController : Controller
     }
 
     [HttpGet]
-    public IActionResult Index()
+    public async Task<IActionResult> Index(int page = 1)
     {
-        return View();
+        try
+        {
+            var pageSize = 20;
+            var totalItems = await _postPublishingService.GetTotalPostCountAsync();
+            var posts = await _postPublishingService.GetPostDataListAsync(page, pageSize);
+
+            var vm = new PostIndex
+            {
+                Posts = posts,
+                TotalItems = totalItems,
+                TotalPages = (int)Math.Ceiling(totalItems / (double)pageSize),
+                CurrentPage = page
+            };
+            return View(vm);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
     }
     
     [HttpGet]
-    [Route("PostPublishing/Edit")] 
+    [Route("PostPublishing/Edit/{postId}")] 
     public async Task<IActionResult> Edit(int? postId) 
     {
         var viewModel = new EditPostView 
@@ -88,9 +107,9 @@ public class PostPublishingController : Controller
         return RedirectToAction("Index");
     }
 
-    [HttpDelete]
+    [HttpPost]
     [Route("PostPublishing/Delete")] 
-    public async Task<IActionResult> DeleteAsync(int postId)
+    public async Task<IActionResult> Delete(int postId)
     {
         if (postId <= 0) 
         {
@@ -102,6 +121,7 @@ public class PostPublishingController : Controller
             await _postPublishingService.DeletePostAsync(postId);
             _logger.LogInformation("Post {PostId} successfully deleted", postId);
             TempData["SuccessMessage"] = "Post deleted successfully";
+            
         }
         catch (Exception ex)
         {

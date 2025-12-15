@@ -1,4 +1,4 @@
-@model dynamic
+@model MVCBlogApp.Models.ViewModel.Post.PostIndex;
 
 @{
     ViewBag.Title = "title";
@@ -7,3 +7,61 @@
 
 <h2>Welcome Back</h2>
 <a asp-action="Edit">Add new post!!!</a>
+<h2>Your posts</h2>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Uploaded Posts: @Model.Posts?.Count</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.Posts != null && Model.Posts.Any())
+                {
+                    <div class="row g-3">
+                        @foreach (var post in Model.Posts)
+                        {
+                            <div class="col-md-4 col-lg-3" id="image-@post.Id">
+                                <div class="card h-100">
+                                    <img src="@post.FeaturedImageUrl" class="card-img-top" style="height: 200px; object-fit: cover;">
+                                    <div class="card-body">
+                                        <p class="card-text small text-muted">
+                                            <strong>ID:</strong> @post.Id
+                                        </p>
+                                        <p class="card-text small text-muted">
+                                            <strong>Title:</strong> @post.Title
+                                        </p>
+                                        <p class="card-text small text-muted">
+                                            <strong>Is public:</strong> @post.IsPublished
+                                        </p>
+                                    </div>
+                                    <div class="card-body d-flex gap-2">
+                                        <a class="btn btn-primary flex-fill" href="@Url.Action("Edit","PostPublishing",new{id = post.Id })">
+                                            ✎ Edit Post
+                                        </a>
+                                    </div>
+                                    <form asp-action="Delete" asp-controller="PostPublishing" method="post">
+                                        <input type="hidden" name="postId" value="@post.Id" />
+                                        <button type="submit" onclick="return confirm('Sure?')" class="btn btn-danger btn-sm w-100 bi-delete">Delete</button>
+                                    </form>
+                                    <div class="card-body d-flex gap-2">
+                                        <a class="btn btn-danger flex-fill" href="@Url.Action("Delete","PostPublishing",new{id = post.Id }) ">
+                                            ✎ Delete Post
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-info mb-0">
+                        <i class="bi bi-info-circle"></i> No posts uploaded yet. Upload your first post above!
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
