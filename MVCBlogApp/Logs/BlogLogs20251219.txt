@@ -6075,3 +6075,550 @@ SELECT EXISTS (
 2025-12-19 14:23:48.600 +00:00 [INF] Application started. Press Ctrl+C to shut down.
 2025-12-19 14:23:48.601 +00:00 [INF] Hosting environment: Development
 2025-12-19 14:23:48.601 +00:00 [INF] Content root path: /workspaces/MVCBlogApp/MVCBlogApp
+2025-12-19 15:39:07.760 +00:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "PostCategories" AS "p")
+2025-12-19 15:39:07.817 +00:00 [WRN] Storing keys in a directory '/home/codespace/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed. For more information go to https://aka.ms/aspnet/dataprotectionwarning
+2025-12-19 15:39:07.817 +00:00 [INF] User profile is available. Using '/home/codespace/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-12-19 15:39:08.183 +00:00 [INF] Now listening on: http://localhost:5008
+2025-12-19 15:39:08.187 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-19 15:39:08.188 +00:00 [INF] Hosting environment: Development
+2025-12-19 15:39:08.188 +00:00 [INF] Content root path: /workspaces/MVCBlogApp/MVCBlogApp
+2025-12-19 15:39:09.987 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2025-12-19 15:39:10.024 +00:00 [WRN] Failed to determine the https port for redirect.
+2025-12-19 15:39:10.074 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2025-12-19 15:39:10.121 +00:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2025-12-19 15:39:10.248 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2025-12-19 15:39:10.308 +00:00 [INF] Executing ViewResult, running view Index.
+2025-12-19 15:39:10.417 +00:00 [INF] Executed ViewResult - view Index executed in 110.2839ms.
+2025-12-19 15:39:10.421 +00:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 298.5597ms
+2025-12-19 15:39:10.422 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2025-12-19 15:39:10.439 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 458.7508ms
+2025-12-19 15:39:11.047 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/css/site.css?v=DVPu7Jy75oyNKVcZrz_AThmuR2XFB7WGo37ItB9rkSk - null null
+2025-12-19 15:39:11.067 +00:00 [INF] The file /css/site.css was not modified
+2025-12-19 15:39:11.070 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/css/site.css?v=DVPu7Jy75oyNKVcZrz_AThmuR2XFB7WGo37ItB9rkSk - 304 null text/css 22.666ms
+2025-12-19 15:39:11.176 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/lib/bootstrap/dist/css/bootstrap.min.css - null null
+2025-12-19 15:39:11.181 +00:00 [INF] The file /lib/bootstrap/dist/css/bootstrap.min.css was not modified
+2025-12-19 15:39:11.185 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/lib/bootstrap/dist/css/bootstrap.min.css - 304 null text/css 8.7812ms
+2025-12-19 15:39:11.202 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/MVCBlogApp.styles.css?v=g6riFTOaBlQ6p-y57eYmrWMPA4ZoGrIHy1rrybrxoUc - null null
+2025-12-19 15:39:11.203 +00:00 [INF] The file /MVCBlogApp.styles.css was not modified
+2025-12-19 15:39:11.205 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/MVCBlogApp.styles.css?v=g6riFTOaBlQ6p-y57eYmrWMPA4ZoGrIHy1rrybrxoUc - 304 null text/css 3.194ms
+2025-12-19 15:39:11.214 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/css/blog-main.css - null null
+2025-12-19 15:39:11.215 +00:00 [INF] The file /css/blog-main.css was not modified
+2025-12-19 15:39:11.217 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/css/blog-main.css - 304 null text/css 2.8324ms
+2025-12-19 15:39:11.787 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/lib/jquery/dist/jquery.min.js - null null
+2025-12-19 15:39:11.787 +00:00 [INF] The file /lib/jquery/dist/jquery.min.js was not modified
+2025-12-19 15:39:11.787 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/lib/jquery/dist/jquery.min.js - 304 null text/javascript 0.6434ms
+2025-12-19 15:39:11.845 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/js/site.js?v=y_Ngd8W21UpuCUhEqGbUKDEqFnNfTjAfb24GhJJGUyM - null null
+2025-12-19 15:39:11.845 +00:00 [INF] The file /js/site.js was not modified
+2025-12-19 15:39:11.845 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/js/site.js?v=y_Ngd8W21UpuCUhEqGbUKDEqFnNfTjAfb24GhJJGUyM - 304 null text/javascript 0.6466ms
+2025-12-19 15:39:11.866 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-19 15:39:11.871 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - 200 16459 application/javascript; charset=utf-8 4.9302ms
+2025-12-19 15:39:11.880 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/lib/bootstrap/dist/js/bootstrap.bundle.min.js - null null
+2025-12-19 15:39:11.881 +00:00 [INF] The file /lib/bootstrap/dist/js/bootstrap.bundle.min.js was not modified
+2025-12-19 15:39:11.883 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/lib/bootstrap/dist/js/bootstrap.bundle.min.js - 304 null text/javascript 2.4492ms
+2025-12-19 15:39:12.222 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/favicon.ico - null null
+2025-12-19 15:39:12.225 +00:00 [INF] The file /favicon.ico was not modified
+2025-12-19 15:39:12.228 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/favicon.ico - 304 null image/x-icon 6.5402ms
+2025-12-19 15:39:15.804 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/pistpublishing - null null
+2025-12-19 15:39:15.807 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/pistpublishing - 404 null null 2.6866ms
+2025-12-19 15:39:15.809 +00:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5008/pistpublishing, Response status code: 404
+2025-12-19 15:39:20.317 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/postpublishing - null null
+2025-12-19 15:39:20.321 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp)'
+2025-12-19 15:39:20.331 +00:00 [INF] Route matched with {action = "Index", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:39:20.473 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Posts" AS "p"
+2025-12-19 15:39:20.495 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."FeaturedImageUrl", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."UpdatedAt", "p"."ViewCount"
+FROM "Posts" AS "p"
+ORDER BY "p"."CreatedAt" DESC
+LIMIT @__p_1 OFFSET @__p_0
+2025-12-19 15:39:20.509 +00:00 [INF] Executing ViewResult, running view Index.
+2025-12-19 15:39:20.690 +00:00 [INF] Executed ViewResult - view Index executed in 181.746ms.
+2025-12-19 15:39:20.690 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp) in 359.3444ms
+2025-12-19 15:39:20.693 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp)'
+2025-12-19 15:39:20.694 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/postpublishing - 200 null text/html; charset=utf-8 376.7268ms
+2025-12-19 15:39:20.803 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-19 15:39:20.804 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - 200 16459 application/javascript; charset=utf-8 0.5772ms
+2025-12-19 15:39:23.637 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/PostPublishing/Edit - null null
+2025-12-19 15:39:23.637 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Edit (MVCBlogApp)'
+2025-12-19 15:39:23.642 +00:00 [INF] Route matched with {action = "Edit", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Nullable`1[System.Int32]) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:39:23.647 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2025-12-19 15:39:23.648 +00:00 [INF] Executing ViewResult, running view Edit.
+2025-12-19 15:39:23.692 +00:00 [INF] Executed ViewResult - view Edit executed in 44.2623ms.
+2025-12-19 15:39:23.692 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Edit (MVCBlogApp) in 49.6157ms
+2025-12-19 15:39:23.692 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Edit (MVCBlogApp)'
+2025-12-19 15:39:23.692 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/PostPublishing/Edit - 200 null text/html; charset=utf-8 55.6313ms
+2025-12-19 15:39:23.930 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-19 15:39:23.931 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - 200 16459 application/javascript; charset=utf-8 0.3388ms
+2025-12-19 15:39:29.929 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5008/PostPublishing/Save - application/x-www-form-urlencoded 347
+2025-12-19 15:39:29.930 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Save (MVCBlogApp)'
+2025-12-19 15:39:29.937 +00:00 [INF] Route matched with {action = "Save", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Save(MVCBlogApp.Models.ViewModel.Post.EditPostView) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:39:29.952 +00:00 [ERR] Light error occurred: Invalid form data. Please check all required fields.
+System.ArgumentException: Invalid form data. Please check all required fields.
+   at MVCBlogApp.Controllers.PostPublishingController.Save(EditPostView model) in /workspaces/MVCBlogApp/MVCBlogApp/Controllers/PostPublishingController.cs:line 79
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+2025-12-19 15:39:29.960 +00:00 [INF] Executing RedirectResult, redirecting to https://congenial-succotash-gwvv4pq7xpwc959r-5008.app.github.dev/PostPublishing/Edit.
+2025-12-19 15:39:29.960 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Save (MVCBlogApp) in 22.7138ms
+2025-12-19 15:39:29.960 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Save (MVCBlogApp)'
+2025-12-19 15:39:29.961 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5008/PostPublishing/Save - 302 null null 32.1244ms
+2025-12-19 15:39:30.061 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/PostPublishing/Edit - null null
+2025-12-19 15:39:30.061 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Edit (MVCBlogApp)'
+2025-12-19 15:39:30.062 +00:00 [INF] Route matched with {action = "Edit", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Nullable`1[System.Int32]) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:39:30.063 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2025-12-19 15:39:30.065 +00:00 [INF] Executing ViewResult, running view Edit.
+2025-12-19 15:39:30.069 +00:00 [INF] Executed ViewResult - view Edit executed in 4.8658ms.
+2025-12-19 15:39:30.070 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Edit (MVCBlogApp) in 7.8883ms
+2025-12-19 15:39:30.070 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Edit (MVCBlogApp)'
+2025-12-19 15:39:30.071 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/PostPublishing/Edit - 200 null text/html; charset=utf-8 9.912ms
+2025-12-19 15:39:30.202 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-19 15:39:30.204 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - 200 16459 application/javascript; charset=utf-8 1.5597ms
+2025-12-19 15:39:38.913 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5008/PostPublishing/Save - application/x-www-form-urlencoded 370
+2025-12-19 15:39:38.914 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Save (MVCBlogApp)'
+2025-12-19 15:39:38.914 +00:00 [INF] Route matched with {action = "Save", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Save(MVCBlogApp.Models.ViewModel.Post.EditPostView) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:39:38.918 +00:00 [ERR] Light error occurred: Invalid form data. Please check all required fields.
+System.ArgumentException: Invalid form data. Please check all required fields.
+   at MVCBlogApp.Controllers.PostPublishingController.Save(EditPostView model) in /workspaces/MVCBlogApp/MVCBlogApp/Controllers/PostPublishingController.cs:line 79
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+2025-12-19 15:39:38.921 +00:00 [INF] Executing RedirectResult, redirecting to https://congenial-succotash-gwvv4pq7xpwc959r-5008.app.github.dev/PostPublishing/Edit.
+2025-12-19 15:39:38.922 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Save (MVCBlogApp) in 7.6227ms
+2025-12-19 15:39:38.922 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Save (MVCBlogApp)'
+2025-12-19 15:39:38.922 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5008/PostPublishing/Save - 302 null null 9.0144ms
+2025-12-19 15:39:39.039 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/PostPublishing/Edit - null null
+2025-12-19 15:39:39.039 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Edit (MVCBlogApp)'
+2025-12-19 15:39:39.039 +00:00 [INF] Route matched with {action = "Edit", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Nullable`1[System.Int32]) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:39:39.041 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2025-12-19 15:39:39.041 +00:00 [INF] Executing ViewResult, running view Edit.
+2025-12-19 15:39:39.045 +00:00 [INF] Executed ViewResult - view Edit executed in 3.8829ms.
+2025-12-19 15:39:39.045 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Edit (MVCBlogApp) in 5.752ms
+2025-12-19 15:39:39.045 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Edit (MVCBlogApp)'
+2025-12-19 15:39:39.046 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/PostPublishing/Edit - 200 null text/html; charset=utf-8 7.2575ms
+2025-12-19 15:39:39.170 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-19 15:39:39.171 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - 200 16459 application/javascript; charset=utf-8 0.3494ms
+2025-12-19 15:40:29.872 +00:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "PostCategories" AS "p")
+2025-12-19 15:40:29.916 +00:00 [WRN] Storing keys in a directory '/home/codespace/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed. For more information go to https://aka.ms/aspnet/dataprotectionwarning
+2025-12-19 15:40:29.916 +00:00 [INF] User profile is available. Using '/home/codespace/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-12-19 15:40:29.955 +00:00 [INF] Now listening on: http://localhost:5008
+2025-12-19 15:40:29.958 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-19 15:40:29.958 +00:00 [INF] Hosting environment: Development
+2025-12-19 15:40:29.958 +00:00 [INF] Content root path: /workspaces/MVCBlogApp/MVCBlogApp
+2025-12-19 15:40:56.187 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/PostPublishing - null null
+2025-12-19 15:40:56.195 +00:00 [WRN] Failed to determine the https port for redirect.
+2025-12-19 15:40:56.210 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp)'
+2025-12-19 15:40:56.235 +00:00 [INF] Route matched with {action = "Index", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:40:56.400 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Posts" AS "p"
+2025-12-19 15:40:56.459 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."FeaturedImageUrl", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."UpdatedAt", "p"."ViewCount"
+FROM "Posts" AS "p"
+ORDER BY "p"."CreatedAt" DESC
+LIMIT @__p_1 OFFSET @__p_0
+2025-12-19 15:40:56.503 +00:00 [INF] Executing ViewResult, running view Index.
+2025-12-19 15:40:56.587 +00:00 [INF] Executed ViewResult - view Index executed in 83.7129ms.
+2025-12-19 15:40:56.589 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp) in 353.3969ms
+2025-12-19 15:40:56.590 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp)'
+2025-12-19 15:40:56.597 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/PostPublishing - 200 null text/html; charset=utf-8 410.5174ms
+2025-12-19 15:40:56.721 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-19 15:40:56.722 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - 200 16459 application/javascript; charset=utf-8 1.7596ms
+2025-12-19 15:40:59.862 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/PostPublishing/Edit - null null
+2025-12-19 15:40:59.865 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Edit (MVCBlogApp)'
+2025-12-19 15:40:59.872 +00:00 [INF] Route matched with {action = "Edit", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Nullable`1[System.Int32]) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:40:59.952 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2025-12-19 15:40:59.961 +00:00 [INF] Executing ViewResult, running view Edit.
+2025-12-19 15:41:00.010 +00:00 [INF] Executed ViewResult - view Edit executed in 50.2017ms.
+2025-12-19 15:41:00.011 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Edit (MVCBlogApp) in 138.3122ms
+2025-12-19 15:41:00.011 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Edit (MVCBlogApp)'
+2025-12-19 15:41:00.011 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/PostPublishing/Edit - 200 null text/html; charset=utf-8 149.5191ms
+2025-12-19 15:41:00.431 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-19 15:41:00.431 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - 200 16459 application/javascript; charset=utf-8 0.507ms
+2025-12-19 15:41:05.069 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5008/PostPublishing/Save - application/x-www-form-urlencoded 320
+2025-12-19 15:41:05.071 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Save (MVCBlogApp)'
+2025-12-19 15:41:05.079 +00:00 [INF] Route matched with {action = "Save", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Save(MVCBlogApp.Models.ViewModel.Post.EditPostView) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:41:05.160 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 3), @p1='?' (Size = 19), @p2='?' (Size = 3), @p3='?' (DbType = Boolean), @p4='?' (DbType = Int32), @p5='?' (Size = 3), @p6='?' (Size = 6), @p7='?' (Size = 19), @p8='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Posts" ("Content", "CreatedAt", "FeaturedImageUrl", "IsPublished", "PostCategoryId", "Slug", "Title", "UpdatedAt", "ViewCount")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8)
+RETURNING "Id";
+2025-12-19 15:41:05.182 +00:00 [INF] Post 16 successfully added
+2025-12-19 15:41:05.183 +00:00 [INF] Executing RedirectResult, redirecting to /PostPublishing.
+2025-12-19 15:41:05.183 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Save (MVCBlogApp) in 104.0444ms
+2025-12-19 15:41:05.184 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Save (MVCBlogApp)'
+2025-12-19 15:41:05.184 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5008/PostPublishing/Save - 302 null null 115.0634ms
+2025-12-19 15:41:05.299 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/PostPublishing - null null
+2025-12-19 15:41:05.299 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp)'
+2025-12-19 15:41:05.300 +00:00 [INF] Route matched with {action = "Index", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:41:05.302 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Posts" AS "p"
+2025-12-19 15:41:05.305 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."FeaturedImageUrl", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."UpdatedAt", "p"."ViewCount"
+FROM "Posts" AS "p"
+ORDER BY "p"."CreatedAt" DESC
+LIMIT @__p_1 OFFSET @__p_0
+2025-12-19 15:41:05.306 +00:00 [INF] Executing ViewResult, running view Index.
+2025-12-19 15:41:05.311 +00:00 [INF] Executed ViewResult - view Index executed in 4.7568ms.
+2025-12-19 15:41:05.311 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp) in 11.2866ms
+2025-12-19 15:41:05.312 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp)'
+2025-12-19 15:41:05.312 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/PostPublishing - 200 null text/html; charset=utf-8 13.3161ms
+2025-12-19 15:41:05.449 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/321 - null null
+2025-12-19 15:41:05.451 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/321 - 404 0 null 2.559ms
+2025-12-19 15:41:05.453 +00:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5008/321, Response status code: 404
+2025-12-19 15:41:05.538 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-19 15:41:05.538 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - 200 16459 application/javascript; charset=utf-8 0.3313ms
+2025-12-19 15:41:07.650 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/PostPublishing/Edit?postid=16 - null null
+2025-12-19 15:41:07.650 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Edit (MVCBlogApp)'
+2025-12-19 15:41:07.650 +00:00 [INF] Route matched with {action = "Edit", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Nullable`1[System.Int32]) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:41:07.656 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2025-12-19 15:41:07.675 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@__postId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."FeaturedImageUrl", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."UpdatedAt", "p"."ViewCount"
+FROM "Posts" AS "p"
+WHERE "p"."Id" = @__postId_0
+LIMIT 1
+2025-12-19 15:41:07.686 +00:00 [INF] Executing ViewResult, running view Edit.
+2025-12-19 15:41:07.692 +00:00 [INF] Executed ViewResult - view Edit executed in 5.9725ms.
+2025-12-19 15:41:07.692 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Edit (MVCBlogApp) in 41.8256ms
+2025-12-19 15:41:07.693 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Edit (MVCBlogApp)'
+2025-12-19 15:41:07.693 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/PostPublishing/Edit?postid=16 - 200 null text/html; charset=utf-8 42.9163ms
+2025-12-19 15:41:07.824 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-19 15:41:07.825 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - 200 16459 application/javascript; charset=utf-8 0.3835ms
+2025-12-19 15:41:11.044 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5008/PostPublishing/Save - application/x-www-form-urlencoded 342
+2025-12-19 15:41:11.044 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Save (MVCBlogApp)'
+2025-12-19 15:41:11.044 +00:00 [INF] Route matched with {action = "Save", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Save(MVCBlogApp.Models.ViewModel.Post.EditPostView) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:41:11.049 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@__postId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."FeaturedImageUrl", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."UpdatedAt", "p"."ViewCount"
+FROM "Posts" AS "p"
+WHERE "p"."Id" = @__postId_0
+LIMIT 1
+2025-12-19 15:41:11.053 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 7), @p1='?' (Size = 19)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Posts" SET "FeaturedImageUrl" = @p0, "UpdatedAt" = @p1
+WHERE "Id" = @p2
+RETURNING 1;
+2025-12-19 15:41:11.056 +00:00 [INF] Post 16 successfully edited
+2025-12-19 15:41:11.057 +00:00 [INF] Executing RedirectResult, redirecting to /PostPublishing.
+2025-12-19 15:41:11.057 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Save (MVCBlogApp) in 12.9836ms
+2025-12-19 15:41:11.058 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Save (MVCBlogApp)'
+2025-12-19 15:41:11.058 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5008/PostPublishing/Save - 302 null null 13.9283ms
+2025-12-19 15:41:11.138 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/PostPublishing - null null
+2025-12-19 15:41:11.138 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp)'
+2025-12-19 15:41:11.138 +00:00 [INF] Route matched with {action = "Index", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:41:11.140 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Posts" AS "p"
+2025-12-19 15:41:11.141 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."FeaturedImageUrl", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."UpdatedAt", "p"."ViewCount"
+FROM "Posts" AS "p"
+ORDER BY "p"."CreatedAt" DESC
+LIMIT @__p_1 OFFSET @__p_0
+2025-12-19 15:41:11.142 +00:00 [INF] Executing ViewResult, running view Index.
+2025-12-19 15:41:11.145 +00:00 [INF] Executed ViewResult - view Index executed in 2.9749ms.
+2025-12-19 15:41:11.145 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp) in 6.6066ms
+2025-12-19 15:41:11.146 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp)'
+2025-12-19 15:41:11.146 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/PostPublishing - 200 null text/html; charset=utf-8 8.4302ms
+2025-12-19 15:41:11.276 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/dsadsa - null null
+2025-12-19 15:41:11.277 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/dsadsa - 404 0 null 1.8546ms
+2025-12-19 15:41:11.278 +00:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5008/dsadsa, Response status code: 404
+2025-12-19 15:41:11.284 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-19 15:41:11.285 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - 200 16459 application/javascript; charset=utf-8 0.8993ms
+2025-12-19 15:41:14.408 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/PostPublishing/Edit?postid=16 - null null
+2025-12-19 15:41:14.408 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Edit (MVCBlogApp)'
+2025-12-19 15:41:14.409 +00:00 [INF] Route matched with {action = "Edit", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Nullable`1[System.Int32]) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:41:14.411 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2025-12-19 15:41:14.412 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@__postId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."FeaturedImageUrl", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."UpdatedAt", "p"."ViewCount"
+FROM "Posts" AS "p"
+WHERE "p"."Id" = @__postId_0
+LIMIT 1
+2025-12-19 15:41:14.413 +00:00 [INF] Executing ViewResult, running view Edit.
+2025-12-19 15:41:14.416 +00:00 [INF] Executed ViewResult - view Edit executed in 3.3491ms.
+2025-12-19 15:41:14.417 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Edit (MVCBlogApp) in 7.6346ms
+2025-12-19 15:41:14.417 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Edit (MVCBlogApp)'
+2025-12-19 15:41:14.417 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/PostPublishing/Edit?postid=16 - 200 null text/html; charset=utf-8 9.6242ms
+2025-12-19 15:41:14.530 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-19 15:41:14.531 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - 200 16459 application/javascript; charset=utf-8 0.312ms
+2025-12-19 15:41:17.772 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5008/PostPublishing/Save - application/x-www-form-urlencoded 333
+2025-12-19 15:41:17.773 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Save (MVCBlogApp)'
+2025-12-19 15:41:17.774 +00:00 [INF] Route matched with {action = "Save", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Save(MVCBlogApp.Models.ViewModel.Post.EditPostView) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:41:17.776 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@__postId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."FeaturedImageUrl", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."UpdatedAt", "p"."ViewCount"
+FROM "Posts" AS "p"
+WHERE "p"."Id" = @__postId_0
+LIMIT 1
+2025-12-19 15:41:17.777 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?', @p1='?' (Size = 19)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Posts" SET "FeaturedImageUrl" = @p0, "UpdatedAt" = @p1
+WHERE "Id" = @p2
+RETURNING 1;
+2025-12-19 15:41:17.781 +00:00 [INF] Post 16 successfully edited
+2025-12-19 15:41:17.782 +00:00 [INF] Executing RedirectResult, redirecting to /PostPublishing.
+2025-12-19 15:41:17.782 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Save (MVCBlogApp) in 8.711ms
+2025-12-19 15:41:17.783 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Save (MVCBlogApp)'
+2025-12-19 15:41:17.783 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5008/PostPublishing/Save - 302 null null 11.1064ms
+2025-12-19 15:41:17.883 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/PostPublishing - null null
+2025-12-19 15:41:17.883 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp)'
+2025-12-19 15:41:17.884 +00:00 [INF] Route matched with {action = "Index", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:41:17.885 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Posts" AS "p"
+2025-12-19 15:41:17.886 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."FeaturedImageUrl", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."UpdatedAt", "p"."ViewCount"
+FROM "Posts" AS "p"
+ORDER BY "p"."CreatedAt" DESC
+LIMIT @__p_1 OFFSET @__p_0
+2025-12-19 15:41:17.886 +00:00 [INF] Executing ViewResult, running view Index.
+2025-12-19 15:41:17.888 +00:00 [INF] Executed ViewResult - view Index executed in 1.9027ms.
+2025-12-19 15:41:17.888 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp) in 4.1154ms
+2025-12-19 15:41:17.888 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp)'
+2025-12-19 15:41:17.888 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/PostPublishing - 200 null text/html; charset=utf-8 4.9948ms
+2025-12-19 15:41:18.020 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-19 15:41:18.020 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - 200 16459 application/javascript; charset=utf-8 0.3402ms
+2025-12-19 15:41:20.675 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/PostPublishing/Edit?postid=16 - null null
+2025-12-19 15:41:20.675 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Edit (MVCBlogApp)'
+2025-12-19 15:41:20.675 +00:00 [INF] Route matched with {action = "Edit", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Nullable`1[System.Int32]) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:41:20.677 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2025-12-19 15:41:20.680 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@__postId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."FeaturedImageUrl", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."UpdatedAt", "p"."ViewCount"
+FROM "Posts" AS "p"
+WHERE "p"."Id" = @__postId_0
+LIMIT 1
+2025-12-19 15:41:20.681 +00:00 [INF] Executing ViewResult, running view Edit.
+2025-12-19 15:41:20.685 +00:00 [INF] Executed ViewResult - view Edit executed in 3.9983ms.
+2025-12-19 15:41:20.685 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Edit (MVCBlogApp) in 10.0856ms
+2025-12-19 15:41:20.686 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Edit (MVCBlogApp)'
+2025-12-19 15:41:20.686 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/PostPublishing/Edit?postid=16 - 200 null text/html; charset=utf-8 11.0496ms
+2025-12-19 15:41:20.786 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-19 15:41:20.786 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - 200 16459 application/javascript; charset=utf-8 0.3986ms
+2025-12-19 15:41:24.891 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5008/PostPublishing/Save - application/x-www-form-urlencoded 330
+2025-12-19 15:41:24.892 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Save (MVCBlogApp)'
+2025-12-19 15:41:24.892 +00:00 [INF] Route matched with {action = "Save", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Save(MVCBlogApp.Models.ViewModel.Post.EditPostView) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:41:24.895 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@__postId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."FeaturedImageUrl", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."UpdatedAt", "p"."ViewCount"
+FROM "Posts" AS "p"
+WHERE "p"."Id" = @__postId_0
+LIMIT 1
+2025-12-19 15:41:24.896 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?', @p1='?' (Size = 19)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Posts" SET "Slug" = @p0, "UpdatedAt" = @p1
+WHERE "Id" = @p2
+RETURNING 1;
+2025-12-19 15:41:24.907 +00:00 [INF] Post 16 successfully edited
+2025-12-19 15:41:24.908 +00:00 [INF] Executing RedirectResult, redirecting to /PostPublishing.
+2025-12-19 15:41:24.910 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Save (MVCBlogApp) in 18.3731ms
+2025-12-19 15:41:24.912 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Save (MVCBlogApp)'
+2025-12-19 15:41:24.913 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5008/PostPublishing/Save - 302 null null 21.3107ms
+2025-12-19 15:41:25.023 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/PostPublishing - null null
+2025-12-19 15:41:25.023 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp)'
+2025-12-19 15:41:25.024 +00:00 [INF] Route matched with {action = "Index", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:41:25.025 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Posts" AS "p"
+2025-12-19 15:41:25.027 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."FeaturedImageUrl", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."UpdatedAt", "p"."ViewCount"
+FROM "Posts" AS "p"
+ORDER BY "p"."CreatedAt" DESC
+LIMIT @__p_1 OFFSET @__p_0
+2025-12-19 15:41:25.028 +00:00 [INF] Executing ViewResult, running view Index.
+2025-12-19 15:41:25.032 +00:00 [INF] Executed ViewResult - view Index executed in 3.7342ms.
+2025-12-19 15:41:25.034 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp) in 9.8658ms
+2025-12-19 15:41:25.034 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp)'
+2025-12-19 15:41:25.034 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/PostPublishing - 200 null text/html; charset=utf-8 10.7893ms
+2025-12-19 15:41:25.233 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-19 15:41:25.234 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - 200 16459 application/javascript; charset=utf-8 0.8479ms
+2025-12-19 15:41:26.655 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/PostPublishing/Edit?postid=16 - null null
+2025-12-19 15:41:26.655 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Edit (MVCBlogApp)'
+2025-12-19 15:41:26.656 +00:00 [INF] Route matched with {action = "Edit", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Nullable`1[System.Int32]) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:41:26.657 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2025-12-19 15:41:26.658 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@__postId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."FeaturedImageUrl", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."UpdatedAt", "p"."ViewCount"
+FROM "Posts" AS "p"
+WHERE "p"."Id" = @__postId_0
+LIMIT 1
+2025-12-19 15:41:26.659 +00:00 [INF] Executing ViewResult, running view Edit.
+2025-12-19 15:41:26.662 +00:00 [INF] Executed ViewResult - view Edit executed in 2.451ms.
+2025-12-19 15:41:26.662 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Edit (MVCBlogApp) in 5.734ms
+2025-12-19 15:41:26.662 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Edit (MVCBlogApp)'
+2025-12-19 15:41:26.663 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/PostPublishing/Edit?postid=16 - 200 null text/html; charset=utf-8 7.7717ms
+2025-12-19 15:41:26.763 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-19 15:41:26.764 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - 200 16459 application/javascript; charset=utf-8 0.8642ms
+2025-12-19 15:41:29.864 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5008/PostPublishing/Save - application/x-www-form-urlencoded 327
+2025-12-19 15:41:29.865 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Save (MVCBlogApp)'
+2025-12-19 15:41:29.865 +00:00 [INF] Route matched with {action = "Save", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Save(MVCBlogApp.Models.ViewModel.Post.EditPostView) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:41:29.869 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@__postId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."FeaturedImageUrl", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."UpdatedAt", "p"."ViewCount"
+FROM "Posts" AS "p"
+WHERE "p"."Id" = @__postId_0
+LIMIT 1
+2025-12-19 15:41:29.870 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?', @p1='?' (Size = 19)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Posts" SET "Content" = @p0, "UpdatedAt" = @p1
+WHERE "Id" = @p2
+RETURNING 1;
+2025-12-19 15:41:29.875 +00:00 [INF] Post 16 successfully edited
+2025-12-19 15:41:29.875 +00:00 [INF] Executing RedirectResult, redirecting to /PostPublishing.
+2025-12-19 15:41:29.876 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Save (MVCBlogApp) in 10.632ms
+2025-12-19 15:41:29.876 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Save (MVCBlogApp)'
+2025-12-19 15:41:29.877 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5008/PostPublishing/Save - 302 null null 12.1849ms
+2025-12-19 15:41:29.976 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/PostPublishing - null null
+2025-12-19 15:41:29.977 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp)'
+2025-12-19 15:41:29.977 +00:00 [INF] Route matched with {action = "Index", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:41:29.978 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Posts" AS "p"
+2025-12-19 15:41:29.979 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."FeaturedImageUrl", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."UpdatedAt", "p"."ViewCount"
+FROM "Posts" AS "p"
+ORDER BY "p"."CreatedAt" DESC
+LIMIT @__p_1 OFFSET @__p_0
+2025-12-19 15:41:29.980 +00:00 [INF] Executing ViewResult, running view Index.
+2025-12-19 15:41:29.983 +00:00 [INF] Executed ViewResult - view Index executed in 3.043ms.
+2025-12-19 15:41:29.983 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp) in 6.0638ms
+2025-12-19 15:41:29.983 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp)'
+2025-12-19 15:41:29.984 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/PostPublishing - 200 null text/html; charset=utf-8 7.3807ms
+2025-12-19 15:41:30.283 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-19 15:41:30.283 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - 200 16459 application/javascript; charset=utf-8 0.4522ms
+2025-12-19 15:41:32.254 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/PostPublishing/Edit - null null
+2025-12-19 15:41:32.254 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Edit (MVCBlogApp)'
+2025-12-19 15:41:32.255 +00:00 [INF] Route matched with {action = "Edit", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Nullable`1[System.Int32]) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:41:32.257 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2025-12-19 15:41:32.258 +00:00 [INF] Executing ViewResult, running view Edit.
+2025-12-19 15:41:32.260 +00:00 [INF] Executed ViewResult - view Edit executed in 2.0871ms.
+2025-12-19 15:41:32.260 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Edit (MVCBlogApp) in 5.0123ms
+2025-12-19 15:41:32.260 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Edit (MVCBlogApp)'
+2025-12-19 15:41:32.260 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/PostPublishing/Edit - 200 null text/html; charset=utf-8 6.4774ms
+2025-12-19 15:41:32.363 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-19 15:41:32.363 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - 200 16459 application/javascript; charset=utf-8 0.8749ms
+2025-12-19 15:41:35.239 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5008/PostPublishing/Save - application/x-www-form-urlencoded 311
+2025-12-19 15:41:35.239 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Save (MVCBlogApp)'
+2025-12-19 15:41:35.240 +00:00 [INF] Route matched with {action = "Save", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Save(MVCBlogApp.Models.ViewModel.Post.EditPostView) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:41:35.243 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?', @p1='?' (Size = 19), @p2='?', @p3='?' (DbType = Boolean), @p4='?' (DbType = Int32), @p5='?', @p6='?' (Size = 6), @p7='?' (Size = 19), @p8='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Posts" ("Content", "CreatedAt", "FeaturedImageUrl", "IsPublished", "PostCategoryId", "Slug", "Title", "UpdatedAt", "ViewCount")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8)
+RETURNING "Id";
+2025-12-19 15:41:35.245 +00:00 [INF] Post 17 successfully added
+2025-12-19 15:41:35.246 +00:00 [INF] Executing RedirectResult, redirecting to /PostPublishing.
+2025-12-19 15:41:35.247 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Save (MVCBlogApp) in 7.567ms
+2025-12-19 15:41:35.247 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Save (MVCBlogApp)'
+2025-12-19 15:41:35.248 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5008/PostPublishing/Save - 302 null null 9.1242ms
+2025-12-19 15:41:35.332 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/PostPublishing - null null
+2025-12-19 15:41:35.332 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp)'
+2025-12-19 15:41:35.333 +00:00 [INF] Route matched with {action = "Index", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:41:35.334 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Posts" AS "p"
+2025-12-19 15:41:35.336 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."FeaturedImageUrl", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."UpdatedAt", "p"."ViewCount"
+FROM "Posts" AS "p"
+ORDER BY "p"."CreatedAt" DESC
+LIMIT @__p_1 OFFSET @__p_0
+2025-12-19 15:41:35.336 +00:00 [INF] Executing ViewResult, running view Index.
+2025-12-19 15:41:35.341 +00:00 [INF] Executed ViewResult - view Index executed in 4.5557ms.
+2025-12-19 15:41:35.341 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp) in 7.8089ms
+2025-12-19 15:41:35.341 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp)'
+2025-12-19 15:41:35.341 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/PostPublishing - 200 null text/html; charset=utf-8 9.484ms
+2025-12-19 15:41:35.475 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-19 15:41:35.476 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - 200 16459 application/javascript; charset=utf-8 0.3611ms
+2025-12-19 15:41:38.835 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5008/PostPublishing/Delete - application/x-www-form-urlencoded 192
+2025-12-19 15:41:38.835 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Delete (MVCBlogApp)'
+2025-12-19 15:41:38.841 +00:00 [INF] Route matched with {action = "Delete", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Delete(Int32) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:41:38.844 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@__postId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."FeaturedImageUrl", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."UpdatedAt", "p"."ViewCount"
+FROM "Posts" AS "p"
+WHERE "p"."Id" = @__postId_0
+LIMIT 1
+2025-12-19 15:41:38.850 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Posts"
+WHERE "Id" = @p0
+RETURNING 1;
+2025-12-19 15:41:38.854 +00:00 [INF] Post 17 successfully deleted
+2025-12-19 15:41:38.855 +00:00 [INF] Executing RedirectResult, redirecting to /PostPublishing.
+2025-12-19 15:41:38.856 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Delete (MVCBlogApp) in 14.7777ms
+2025-12-19 15:41:38.856 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Delete (MVCBlogApp)'
+2025-12-19 15:41:38.857 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5008/PostPublishing/Delete - 302 null null 22.0281ms
+2025-12-19 15:41:38.960 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/PostPublishing - null null
+2025-12-19 15:41:38.961 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp)'
+2025-12-19 15:41:38.961 +00:00 [INF] Route matched with {action = "Index", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:41:38.965 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Posts" AS "p"
+2025-12-19 15:41:38.966 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."FeaturedImageUrl", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."UpdatedAt", "p"."ViewCount"
+FROM "Posts" AS "p"
+ORDER BY "p"."CreatedAt" DESC
+LIMIT @__p_1 OFFSET @__p_0
+2025-12-19 15:41:38.970 +00:00 [INF] Executing ViewResult, running view Index.
+2025-12-19 15:41:38.973 +00:00 [INF] Executed ViewResult - view Index executed in 3.2423ms.
+2025-12-19 15:41:38.975 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp) in 11.3667ms
+2025-12-19 15:41:38.975 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp)'
+2025-12-19 15:41:38.976 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/PostPublishing - 200 null text/html; charset=utf-8 16.098ms
+2025-12-19 15:41:39.096 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-19 15:41:39.096 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - 200 16459 application/javascript; charset=utf-8 0.2137ms
+2025-12-19 15:41:40.899 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5008/PostPublishing/Delete - application/x-www-form-urlencoded 192
+2025-12-19 15:41:40.899 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Delete (MVCBlogApp)'
+2025-12-19 15:41:40.899 +00:00 [INF] Route matched with {action = "Delete", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Delete(Int32) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:41:40.901 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@__postId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."FeaturedImageUrl", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."UpdatedAt", "p"."ViewCount"
+FROM "Posts" AS "p"
+WHERE "p"."Id" = @__postId_0
+LIMIT 1
+2025-12-19 15:41:40.902 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Posts"
+WHERE "Id" = @p0
+RETURNING 1;
+2025-12-19 15:41:40.904 +00:00 [INF] Post 16 successfully deleted
+2025-12-19 15:41:40.904 +00:00 [INF] Executing RedirectResult, redirecting to /PostPublishing.
+2025-12-19 15:41:40.905 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Delete (MVCBlogApp) in 5.32ms
+2025-12-19 15:41:40.905 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Delete (MVCBlogApp)'
+2025-12-19 15:41:40.905 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5008/PostPublishing/Delete - 302 null null 6.4441ms
+2025-12-19 15:41:41.011 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/PostPublishing - null null
+2025-12-19 15:41:41.011 +00:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp)'
+2025-12-19 15:41:41.011 +00:00 [INF] Route matched with {action = "Index", controller = "PostPublishing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MVCBlogApp.Controllers.PostPublishingController (MVCBlogApp).
+2025-12-19 15:41:41.012 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Posts" AS "p"
+2025-12-19 15:41:41.013 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."FeaturedImageUrl", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."UpdatedAt", "p"."ViewCount"
+FROM "Posts" AS "p"
+ORDER BY "p"."CreatedAt" DESC
+LIMIT @__p_1 OFFSET @__p_0
+2025-12-19 15:41:41.014 +00:00 [INF] Executing ViewResult, running view Index.
+2025-12-19 15:41:41.021 +00:00 [INF] Executed ViewResult - view Index executed in 7.2908ms.
+2025-12-19 15:41:41.021 +00:00 [INF] Executed action MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp) in 10.0091ms
+2025-12-19 15:41:41.021 +00:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostPublishingController.Index (MVCBlogApp)'
+2025-12-19 15:41:41.021 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/PostPublishing - 200 null text/html; charset=utf-8 10.706ms
+2025-12-19 15:41:41.138 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-19 15:41:41.138 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - 200 16459 application/javascript; charset=utf-8 0.3089ms
