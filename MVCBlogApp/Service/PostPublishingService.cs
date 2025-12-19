@@ -20,13 +20,13 @@ public class PostPublishingService : IPostPublishingService
         var post = new Post
         {
             Title = addPostDto.Title,
-            Slug = addPostDto.Slug,
-            Content = addPostDto.Content,
+            Slug = addPostDto.Slug == null ? string.Empty : addPostDto.Slug,
+            Content = addPostDto.Content == null ? string.Empty : addPostDto.Content,
             PostCategoryId = addPostDto.PostCategoryId,
             IsPublished = addPostDto.IsPublished,
             CreatedAt = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss"),
             UpdatedAt = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss"),
-            FeaturedImageUrl = addPostDto.FeaturedImageUrl
+            FeaturedImageUrl = addPostDto.FeaturedImageUrl == null ? string.Empty : addPostDto.FeaturedImageUrl
         };
         
         _context.Posts.Add(post);
@@ -69,13 +69,29 @@ public class PostPublishingService : IPostPublishingService
         }
         
         post.Title = newPostData.Title;
-        post.Slug = newPostData.Slug;
-        post.Content = newPostData.Content;
+        post.Slug = newPostData.Slug == null ? string.Empty : newPostData.Slug;
+        post.Content = newPostData.Content == null ? string.Empty : newPostData.Content;
         post.IsPublished = newPostData.IsPublished;
         post.UpdatedAt = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss");
-        post.FeaturedImageUrl = newPostData.FeaturedImageUrl;
+        post.FeaturedImageUrl = newPostData.FeaturedImageUrl == null ? string.Empty : newPostData.FeaturedImageUrl;
         
+        
+
         await _context.SaveChangesAsync();
         return post;
+    }
+
+    public async Task<int> GetTotalPostCountAsync()
+    {
+        return await _context.Posts.CountAsync();
+    }
+
+    public async Task<List<Post>> GetPostDataListAsync(int page, int pageSize)
+    {
+        return await _context.Posts
+            .OrderByDescending(x => x.CreatedAt) 
+            .Skip((page - 1) * pageSize)          
+            .Take(pageSize)
+            .ToListAsync();           
     }
 }

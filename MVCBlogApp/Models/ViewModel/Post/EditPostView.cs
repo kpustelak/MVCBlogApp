@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using MVCBlogApp.Models.DTO.Post;
 using MVCBlogApp.Models.Entities;
 

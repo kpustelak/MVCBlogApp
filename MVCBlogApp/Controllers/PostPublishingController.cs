@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MVCBlogApp.Interface;
 using MVCBlogApp.Models.DTO.Post;
 using MVCBlogApp.Models.ViewModel.Post;
+using ImageIndex = MVCBlogApp.Models.ViewModel.Image.ImageIndex;
 
 namespace MVCBlogApp.Controllers;
 
@@ -26,9 +27,28 @@ public class PostPublishingController : Controller
     }
 
     [HttpGet]
-    public IActionResult Index()
+    [Route("PostPublishing")]
+    public async Task<IActionResult> Index(int page = 1)
     {
-        return View();
+        try
+        {
+            var pageSize = 20;
+            var totalItems = await _postPublishingService.GetTotalPostCountAsync();
+            var posts = await _postPublishingService.GetPostDataListAsync(page, pageSize);
+
+            var vm = new PostIndex
+            {
+                Posts = posts,
+                TotalItems = totalItems,
+                TotalPages = (int)Math.Ceiling(totalItems / (double)pageSize),
+                CurrentPage = page
+            };
+            return View(vm);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
     }
     
     [HttpGet]
@@ -59,7 +79,7 @@ public class PostPublishingController : Controller
             throw new ArgumentException("Invalid form data. Please check all required fields.");
         }
 
-        if (model.EditedPostId.HasValue && model.EditedPostId > 0) 
+        if (model.EditedPostId.HasValue && model.EditedPostId > 0 ) 
         {
             try
             {
@@ -85,12 +105,12 @@ public class PostPublishingController : Controller
                 throw new Exception(ex.Message);
             }
         }
-        return RedirectToAction("Index");
+        return RedirectToAction("Index", "PostPublishing");
     }
 
-    [HttpDelete]
+    [HttpPost]
     [Route("PostPublishing/Delete")] 
-    public async Task<IActionResult> DeleteAsync(int postId)
+    public async Task<IActionResult> Delete(int postId)
     {
         if (postId <= 0) 
         {
@@ -102,6 +122,7 @@ public class PostPublishingController : Controller
             await _postPublishingService.DeletePostAsync(postId);
             _logger.LogInformation("Post {PostId} successfully deleted", postId);
             TempData["SuccessMessage"] = "Post deleted successfully";
+            
         }
         catch (Exception ex)
         {
