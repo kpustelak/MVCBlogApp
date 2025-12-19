@@ -51,7 +51,7 @@ public class PostPublishingController : Controller
     }
     
     [HttpGet]
-    [Route("PostPublishing/Edit/{postId}")] 
+    [Route("PostPublishing/Edit")] 
     public async Task<IActionResult> Edit(int? postId) 
     {
         var viewModel = new EditPostView 
