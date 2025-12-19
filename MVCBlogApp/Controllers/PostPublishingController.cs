@@ -27,6 +27,7 @@ public class PostPublishingController : Controller
     }
 
     [HttpGet]
+    [Route("PostPublishing")]
     public async Task<IActionResult> Index(int page = 1)
     {
         try
@@ -78,7 +79,7 @@ public class PostPublishingController : Controller
             throw new ArgumentException("Invalid form data. Please check all required fields.");
         }
 
-        if (model.EditedPostId.HasValue && model.EditedPostId > 0) 
+        if (model.EditedPostId.HasValue && model.EditedPostId > 0 ) 
         {
             try
             {
@@ -104,7 +105,7 @@ public class PostPublishingController : Controller
                 throw new Exception(ex.Message);
             }
         }
-        return RedirectToAction("Index");
+        return RedirectToAction("Index", "PostPublishing");
     }
 
     [HttpPost]

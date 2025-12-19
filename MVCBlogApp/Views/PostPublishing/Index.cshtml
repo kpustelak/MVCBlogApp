@@ -4,76 +4,83 @@
     ViewBag.Title = "Your Posts";
     Layout = "_Layout";
 }
+<style>
+.row {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    --bs-gutter-x: 0 !important;
+}
 
+.row > * {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+</style>
 
-<link rel="stylesheet" href="~/css/post-index.css"/>
-
-<div class="post-index-container">
-    <div class="post-index-wrapper">
-        
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <div>
-                <h2>Your posts</h2>
-                <span class="text-muted">Total: @(Model.Posts?.Count ?? 0)</span>
-            </div>
-            <a asp-action="Edit" class="btn btn-primary">
-                + Add new post
-            </a>
+<div class="container-fluid py-4">
+    
+    <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+        <div>
+            <h2 class="fw-bold mb-0">Your Posts</h2>
+            <small class="text-muted">Total uploads: @(Model.Posts?.Count ?? 0)</small>
         </div>
+        <a asp-action="Edit" class="btn btn-primary px-4 fw-bold">
+            <i class="bi bi-plus-lg"></i> Add New Post
+        </a>
+    </div>
 
-        @if (Model.Posts != null && Model.Posts.Any())
-        {
-            <div class="row g-3">
-                @foreach (var post in Model.Posts)
-                {
-                    <div class="col-md-4 col-lg-3" id="image-@post.Id">
-                        <div class="card h-100 shadow-sm border-0">
-                            
-                            @{
-                                var imgSrc = string.IsNullOrEmpty(post.FeaturedImageUrl) 
-                                    ? "https://placehold.co/600x400?text=No+Cover" 
-                                    : post.FeaturedImageUrl;
-                            }
-                            
-                            <img src="@imgSrc" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Post cover">
+    @if (Model.Posts != null && Model.Posts.Any())
+    {
+        <div class="row g-3 style="max-width: 98vw !important;">
+            @foreach (var post in Model.Posts)
+            {
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="card h-100 shadow-sm border-0 bg-white">
+                        
+                        @{
+                            var imgSrc = string.IsNullOrEmpty(post.FeaturedImageUrl) 
+                                ? "https://placehold.co/600x400/f8f9fa/adb5bd?text=No+Cover" 
+                                : post.FeaturedImageUrl;
+                        }
+                        
+                        <div class="ratio ratio-16x9">
+                            <img src="@imgSrc" class="card-img-top object-fit-cover" alt="Post cover">
+                        </div>
 
-                            <div class="card-body">
-                                <h5 class="card-title text-truncate">@post.Title</h5>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title text-truncate fw-bold mb-1" title="@post.Title">@post.Title</h5>
+                            
+                            <div class="mb-3">
+                                <span class="badge rounded-pill @(post.IsPublished ? "bg-success" : "bg-secondary")" style="font-size: 0.75rem;">
+                                    @(post.IsPublished ? "Published" : "Draft")
+                                </span>
+                                <small class="text-muted ms-2" style="font-size: 0.8rem;">ID: @post.Id</small>
+                            </div>
+
+                            <div class="mt-auto d-flex gap-2">
+                                <a href="@Url.Action("Edit","PostPublishing", new{postid = post.Id })" class="btn btn-outline-primary btn-sm flex-fill fw-bold">
+                                    Edit
+                                </a>
                                 
-                                <div class="small text-muted mb-2">
-                                    <div><strong>ID:</strong> @post.Id</div>
-                                    <div>
-                                        <strong>Status:</strong> 
-                                        <span class="badge @(post.IsPublished ? "bg-success" : "bg-secondary")">
-                                            @(post.IsPublished ? "Published" : "Draft")
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="d-flex gap-2 mt-3">
-                                    <a class="btn btn-outline-primary flex-fill btn-sm" href="@Url.Action("Edit","PostPublishing", new{id = post.Id })">
-                                        Edit
-                                    </a>
-                                    
-                                    <form asp-action="Delete" asp-controller="PostPublishing" method="post" class="flex-fill">
-                                        <input type="hidden" name="postId" value="@post.Id" />
-                                        <button type="submit" onclick="return confirm('Delete this post?')" class="btn btn-outline-danger w-100 btn-sm">
-                                            Delete
-                                        </button>
-                                    </form>
-                                </div>
+                                <form asp-action="Delete" asp-controller="PostPublishing" method="post" class="flex-fill">
+                                    <input type="hidden" name="postId" value="@post.Id" />
+                                    <button type="submit" onclick="return confirm('Delete this post?')" class="btn btn-outline-danger btn-sm w-100 fw-bold">
+                                        Delete
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
-                }
-            </div>
-        }
-        else
-        {
-            <div class="alert alert-light text-center border">
-                <h3>No posts found</h3>
-                <p>Click "Add new post" to start writing.</p>
-            </div>
-        }
-    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="text-center py-5 bg-light rounded-3">
+            <h3 class="fw-bold text-secondary">No posts found</h3>
+            <p class="text-muted">Get started by creating your first blog post.</p>
+            <a asp-action="Edit" class="btn btn-primary mt-2">Create Post</a>
+        </div>
+    }
 </div>
