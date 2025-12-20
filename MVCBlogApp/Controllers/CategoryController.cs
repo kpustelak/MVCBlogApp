@@ -1,41 +1,63 @@
 using Microsoft.AspNetCore.Mvc;
 using MVCBlogApp.Interface;
 using MVCBlogApp.Models.DTO.Category;
+using MVCBlogApp.Models.ViewModel.Category;
 
 namespace MVCBlogApp.Controllers;
 
 public class CategoryController : Controller
 {
     private readonly ICategoryManagmentService _service;
-    public CategoryController(ICategoryManagmentService service)
+    private readonly ICategoryService _publicService;
+    private readonly ILogger<CategoryController> _logger;
+    public CategoryController(ICategoryManagmentService service,
+                                ICategoryService publicService,
+                                ILogger<CategoryController> logger)
     {
         _service = service;
+        _publicService = publicService;
+        _logger = logger;
     }
 
     [HttpGet]
-    public IActionResult Index()
+    [Route("Category")]
+    public async Task<IActionResult> Index()
     {
-        return View(new AddOrEditCategoryDto());
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> Index(AddOrEditCategoryDto categoryToAddDto) 
-    {
-        await _service.AddCategory(categoryToAddDto);
-        return RedirectToAction("Index");
+        return View(new CategoryIndex(await _publicService.GetCategories(),null,null));
     }
 
     [HttpPut]
-    public async Task<IActionResult> EditCategoryAsync(AddOrEditCategoryDto categoryToEditDto, int categoryId)
+    [Route("Category")]
+    public async Task<IActionResult> AddOrEdit([FromForm]CategoryIndex categoryIndex)
     {
-        await _service.EditCategory(categoryToEditDto, categoryId);
-        return Ok();
+        if (!ModelState.IsValid)
+        {
+            throw new ArgumentException("Invalid form data. Please check all required fields.");
+        }
+        try
+        {
+            if (categoryIndex.CategoryId > 0 )
+            {
+                await _service.EditCategory(categoryIndex.CategoryToEdit, categoryIndex.CategoryId.Value);
+                _logger.LogInformation($"Category with id: {categoryIndex.CategoryId} was edited");
+            }
+            else
+            {
+                await _service.AddCategory(categoryIndex.CategoryToEdit);
+            }
+        }catch(Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+
+        return RedirectToAction("Index");
     }
 
     [HttpDelete]
-    public async Task<IActionResult> DeleteCategoryAsync(int categoryId)
+    [Route("Category/{id}")]
+    public async Task<IActionResult> DeleteCategoryAsync(int id)
     {
-        await _service.Delete(categoryId);
+        await _service.Delete(id);
         return Ok();
     }
 }
