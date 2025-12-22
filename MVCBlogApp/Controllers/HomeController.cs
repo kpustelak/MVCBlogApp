@@ -16,7 +16,7 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
-        var categories = await _categoryService.GetCategories();
+        var categories = await _categoryService.GetCategoriesAsync();
         var homeViewModel = new HomeViewModel
         {
             PostCategories = categories

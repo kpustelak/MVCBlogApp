@@ -57,7 +57,7 @@ public class PostPublishingController : Controller
     {
         var viewModel = new EditPostView 
         { 
-            PostCategories = await _categoryService.GetCategories() 
+            PostCategories = await _categoryService.GetCategoriesAsync() 
         };
         
         if (postId.HasValue && postId > 0) 

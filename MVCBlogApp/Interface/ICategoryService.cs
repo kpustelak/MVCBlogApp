@@ -4,5 +4,6 @@ namespace MVCBlogApp.Interface;
 
 public interface ICategoryService
 {
-    Task<List<PostCategory>> GetCategories();
+    Task<List<PostCategory>> GetCategoriesAsync();
+    Task<PostCategory?> GetCategoryByIdAsync(int id);
 }

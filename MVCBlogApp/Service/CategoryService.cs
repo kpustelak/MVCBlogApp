@@ -12,8 +12,13 @@ public class CategoryService : ICategoryService
     {
         _context = context;
     }
-    public async Task<List<PostCategory>> GetCategories()
+    public async Task<List<PostCategory>> GetCategoriesAsync()
     {
         return await _context.PostCategories.ToListAsync();
+    }
+
+    public async Task<PostCategory?> GetCategoryByIdAsync(int id)
+    {
+        return await _context.PostCategories.FirstOrDefaultAsync(x => x.Id == id);
     }
 }
