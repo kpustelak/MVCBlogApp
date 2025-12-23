@@ -22,10 +22,10 @@
                             <h5 class="card-title text-truncate fw-bold mb-1" title="@category.Name"><span class="nav-icon"><i class="w-50 bi @($"{category.IconBootstrapLink}")"></i></span> @category.Name</h5>
                             <p class="card-title text-truncate fw-bold mb-1" title="@category.IconBootstrapLink">@category.IconBootstrapLink</p>
                             <div class="mt-auto d-flex gap-2">
-                                <a href="@Url.Action("AddOrEdit", "Category", new { id = category.Id})" class="btn btn-outline-primary btn-sm flex-fill fw-bold">
+                                <a href="@Url.Action("AddOrEditView", "Category", new { id = category.Id})" class="btn btn-outline-primary btn-sm flex-fill fw-bold">
                                     Edit
                                 </a>
-                                <form asp-action="Delete" asp-controller="Category" method="post" class="flex-fill">
+                                <form asp-action="DeleteCategory" asp-controller="Category" method="post" class="flex-fill">
                                     <input type="hidden" name="id" value="@category.Id"/>
                                     <button type="submit" onclick="return confirm('Delete this category?')" class="btn btn-outline-danger btn-sm w-100 fw-bold">
                                         Delete

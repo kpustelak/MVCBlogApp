@@ -20,7 +20,9 @@ public class BlogDbContext : DbContext
             .HasOne(p => p.PostCategory)
             .WithMany(pc => pc.Posts) 
             .HasForeignKey(p => p.PostCategoryId)
-            .OnDelete(DeleteBehavior.Restrict);
+            .OnDelete(DeleteBehavior.NoAction);
+
+        modelBuilder.Entity<PostCategory>();
     
         base.OnModelCreating(modelBuilder);
     }

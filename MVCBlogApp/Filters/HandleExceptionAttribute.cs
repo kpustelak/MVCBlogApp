@@ -49,7 +49,7 @@ public class HandleExceptionAttribute : ExceptionFilterAttribute
             logger.LogCritical(context.Exception, "Critical error occurred: {Message}", context.Exception.Message);
         
             context.ExceptionHandled = true;
-            context.Result = new RedirectToActionResult("Index", "Error", new { statusCode = 500 });
+            context.Result = new RedirectToActionResult("Index", "Home", new { statusCode = 500 });
         }
     }
 }

@@ -12,11 +12,12 @@
                     
                     <div asp-validation-summary="ModelOnly" class="text-danger mb-3 small"></div>
 
-                    <form method="post">
+                    <form method="post" asp-action="AddOrEdit">
+                        <input asp-for="CategoryId" type="hidden" name="CategoryId"/>
                         @Html.AntiForgeryToken()
                         <div class="mb-3">
                             <label asp-for="CategoryDto.Name" class="form-label fw-bold text-secondary">Category Name</label>
-                            <input asp-for="CategoryDto.Name" class="form-control form-control-lg" placeholder="e.g. Technology" />
+                            <input asp-for="CategoryDto.Name" class="form-control form-control-lg" placeholder="e.g. Technology"/>
                             <span asp-validation-for="CategoryDto.Name" class="text-danger small"></span>
                         </div>
 
@@ -24,7 +25,7 @@
                             <label asp-for="CategoryDto.IconBootstrapLink" class="form-label fw-bold text-secondary">Bootstrap Icon Class</label>
                             <div class="input-group">
                                 <span class="input-group-text bg-light text-secondary"><i class="bi bi-tag"></i></span>
-                                <input asp-for="CategoryDto.IconBootstrapLink" class="form-control" placeholder="e.g. bi-alarm" />
+                                <input asp-for="CategoryDto.IconBootstrapLink" class="form-control" placeholder="e.g. bi-alarm"/>
                             </div>
                             <span asp-validation-for="CategoryDto.IconBootstrapLink" class="text-danger small d-block mt-1"></span>
                             <div class="form-text mt-2 small text-muted">

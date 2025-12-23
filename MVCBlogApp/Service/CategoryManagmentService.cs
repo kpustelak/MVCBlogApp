@@ -27,7 +27,7 @@ public class CategoryManagmentService : ICategoryManagmentService
 
     public async Task Delete(int categoryId)
     {
-        var category = await _context.PostCategories.FirstOrDefaultAsync();
+        var category = await _context.PostCategories.FirstOrDefaultAsync(x => x.Id == categoryId);
         if(category == null)
             throw new Exception("Category not found");
         _context.PostCategories.Remove(category);

@@ -28,7 +28,7 @@ public class CategoryController : Controller
 
     [HttpGet]
     [Route("Category/AddOrEdit/{id?}")]
-    public async Task<IActionResult> AddOrEdit(int? id)
+    public async Task<IActionResult> AddOrEditView(int? id)
     {
         if (id != null )
         {
@@ -73,7 +73,14 @@ public class CategoryController : Controller
     [Route("Category/delete")]
     public async Task<IActionResult> DeleteCategoryAsync(int id)
     {
-        await _service.Delete(id);
-        return Ok();
+        try
+        {
+            await _service.Delete(id);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+        return RedirectToAction("Index");
     }
 }
