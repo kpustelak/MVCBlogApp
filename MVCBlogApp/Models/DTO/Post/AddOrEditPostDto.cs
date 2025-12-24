@@ -11,6 +11,8 @@ public class AddOrEditPostDto
     
     [Display(Name = "Post Content")]
     public string? Content { get; set; } = String.Empty;
+    [Display(Name = "Excerpt")]
+    public string? Excerpt { get; set; } = String.Empty;
     
     [Display(Name = "URL Slug")]
     public string? Slug { get; set; } = String.Empty;

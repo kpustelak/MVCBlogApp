@@ -26,7 +26,8 @@ public class PostPublishingService : IPostPublishingService
             IsPublished = addPostDto.IsPublished,
             CreatedAt = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss"),
             UpdatedAt = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss"),
-            FeaturedImageUrl = addPostDto.FeaturedImageUrl == null ? string.Empty : addPostDto.FeaturedImageUrl
+            FeaturedImageUrl = addPostDto.FeaturedImageUrl == null ? string.Empty : addPostDto.FeaturedImageUrl,
+            Excerpt = addPostDto.Excerpt == null ? string.Empty : addPostDto.Excerpt,
         };
         
         _context.Posts.Add(post);
@@ -74,9 +75,8 @@ public class PostPublishingService : IPostPublishingService
         post.IsPublished = newPostData.IsPublished;
         post.UpdatedAt = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss");
         post.FeaturedImageUrl = newPostData.FeaturedImageUrl == null ? string.Empty : newPostData.FeaturedImageUrl;
+        post.Excerpt = newPostData.Excerpt == null ? string.Empty : newPostData.Excerpt;
         
-        
-
         await _context.SaveChangesAsync();
         return post;
     }

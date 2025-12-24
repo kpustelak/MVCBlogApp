@@ -67,6 +67,8 @@ public class PostService : IPostService
                 Id = x.Id,
                 Title = x.Title,
                 Slug = x.Slug,
+                //TODO Create the whole excerpt in logic later 
+                //Excerpt = x.,
                 CreatedAt = x.CreatedAt,
                 IsPublished = x.IsPublished
             })

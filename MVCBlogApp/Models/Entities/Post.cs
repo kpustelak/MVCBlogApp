@@ -11,6 +11,7 @@ public class Post
     [Required]
     public required string Title { get; set; }
     public string Content { get; set; } = string.Empty;
+    public string Excerpt { get; set; } = string.Empty;
     public string Slug  { get; set; } = string.Empty;
     public string CreatedAt { get; set; } = string.Empty;
     public string UpdatedAt { get; set; } = string.Empty;

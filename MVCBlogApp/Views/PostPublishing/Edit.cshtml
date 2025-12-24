@@ -59,6 +59,12 @@
                         </div>
                         
                         <div class="mb-4">
+                            <label asp-for="PostDto.Excerpt" class="form-label fw-bold text-secondary">Excerpt</label>
+                            <textarea asp-for="PostDto.Excerpt" class="form-control" rows="4" placeholder="Write your excerpt here..."></textarea>
+                            <span asp-validation-for="PostDto.Excerpt" class="text-danger small"></span>
+                        </div>
+                        
+                        <div class="mb-4">
                             <label asp-for="PostDto.Content" class="form-label fw-bold text-secondary">Content</label>
                             <textarea asp-for="PostDto.Content" class="form-control" rows="12" placeholder="Write your post content here..."></textarea>
                             <span asp-validation-for="PostDto.Content" class="text-danger small"></span>
