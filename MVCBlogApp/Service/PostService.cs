@@ -39,10 +39,10 @@ public class PostService : IPostService
         return posts;
     }
     
-    public async Task<List<ShortPostModelDto>> GetListOfPostsAsync(int top)
+    public async Task<List<ShortPostModelDto>> GetListOfPostsAsync(int top, bool pickFavourite)
     {
         var posts = await _context.Posts
-            .Where(x => x.IsPublished == true)
+            .Where(x => x.IsPublished == true && x.IsFavourite == pickFavourite)
             .OrderByDescending(x => x.CreatedAt)
             .Take(top)
             .Select(x => new ShortPostModelDto
@@ -51,27 +51,11 @@ public class PostService : IPostService
                 Title = x.Title,
                 Slug = x.Slug,
                 CreatedAt = x.CreatedAt,
-                IsPublished = x.IsPublished
+                IsPublished = x.IsPublished,
+                Excerpt = x.Excerpt,
+                FeaturedImage = x.FeaturedImage
             })
             .ToListAsync();
         return posts;
-    }
-
-    public async Task<List<ShortPostModelDto>> GetListOfFavouritePublicPosts(int top)
-    {
-        return await _context.Posts
-            .Where(x => x.IsPublished == true && x.IsFavourite == true)
-            .Take(top)
-            .Select(x => new ShortPostModelDto
-            {
-                Id = x.Id,
-                Title = x.Title,
-                Slug = x.Slug,
-                //TODO Create the whole excerpt in logic later 
-                //Excerpt = x.,
-                CreatedAt = x.CreatedAt,
-                IsPublished = x.IsPublished
-            })
-            .ToListAsync();
     }
 }

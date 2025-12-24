@@ -22,8 +22,8 @@ public class AddOrEditPostDto
     
     [Required(ErrorMessage = "Please select a category")]
     [Display(Name = "Category")]
-    public int PostCategoryId { get; set; }
+    public int? PostCategoryId { get; set; }
     
     [Display(Name = "Featured Image")]
-    public string? FeaturedImageUrl { get; set; }
+    public int? FeaturedImageId { get; set; }
 }

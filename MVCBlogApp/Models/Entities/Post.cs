@@ -18,7 +18,8 @@ public class Post
     public bool IsPublished { get; set; } = false;
     public bool? IsFavourite { get; set; } = false;
     public int ViewCount { get; set; } = 0;
-    public string FeaturedImageUrl { get; set; } = string.Empty;
-    public int PostCategoryId { get; set; }
-    public virtual PostCategory PostCategory { get; set; }
+    public int? FeaturedImageId { get; set; }
+    public int? PostCategoryId { get; set; }
+    public virtual PostCategory? PostCategory { get; set; }
+    public virtual PostImage? FeaturedImage { get; set; }
 }

@@ -38,9 +38,9 @@
                     <div class="card h-100 shadow-sm border-0 bg-white">
                         
                         @{
-                            var imgSrc = string.IsNullOrEmpty(post.FeaturedImageUrl) 
-                                ? "https://placehold.co/600x400/f8f9fa/adb5bd?text=No+Cover" 
-                                : post.FeaturedImageUrl;
+                            var imgSrc = string.IsNullOrEmpty(post.FeaturedImage?.FilePath)
+                                ? "https://placehold.co/600x400/f8f9fa/adb5bd?text=No+Cover"
+                                : post.FeaturedImage.FilePath;
                         }
                         
                         <div class="ratio ratio-16x9">

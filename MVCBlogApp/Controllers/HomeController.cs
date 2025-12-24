@@ -22,7 +22,7 @@ public class HomeController : Controller
         var homeViewModel = new HomeViewModel
         {
             PostCategories = categories,
-            PostsToDisplay = await _postService.GetListOfFavouritePublicPosts(4)
+            PostsToDisplay = await _postService.GetListOfPostsAsync(4, true)
         };
         return View(homeViewModel);
     }

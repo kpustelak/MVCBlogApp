@@ -83,32 +83,20 @@ ViewData["Title"] = "Blog home page";
         </div>
         
         <div class="posts-grid">
-            <div class="post-card">
-                <img src="https://images.unsplash.com/photo-1582139329536-e7284fece509?w=600&h=400&fit=crop" alt="Food" class="post-img">
-                <div class="post-content">
-                    <div class="post-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit?</div>
-                    <div class="post-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed ornare turpis. Duis libero lorem, faucibus lobortis ante id...</div>
-                    <a href="#" class="read-more">See more →</a>
-                </div>
-            </div>
-
-            <div class="post-card">
-                <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=600&h=400&fit=crop" alt="Nature" class="post-img">
-                <div class="post-content">
-                    <div class="post-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                    <div class="post-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed ornare turpis. Duis libero lorem, faucibus lobortis ante id...</div>
-                    <a href="#" class="read-more">See more →</a>
-                </div>
-            </div>
-
-            <div class="post-card">
-                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&h=400&fit=crop" alt="Business" class="post-img">
-                <div class="post-content">
-                    <div class="post-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                    <div class="post-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed ornare turpis. Duis libero lorem, faucibus lobortis ante id...</div>
-                    <a href="#" class="read-more">See more →</a>
-                </div>
-            </div>
+            @if (Model.PostsToDisplay != null)
+            {
+                @foreach(var postCard in Model.PostsToDisplay)
+                {
+                    <div class="post-card">
+                        <img src="@postCard.FeaturedImage?.FilePath" alt="@postCard.FeaturedImage?.AltText" class="post-img">
+                        <div class="post-content">
+                            <div class="post-title">@postCard.Title</div>
+                            <div class="post-excerpt">@postCard.Excerpt</div>
+                            <a href="#" class="read-more">See more →</a>
+                        </div>
+                    </div>
+                }
+            }
         </div>
     </div>
 </div>
