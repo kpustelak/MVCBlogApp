@@ -94,4 +94,16 @@ public class PostPublishingService : IPostPublishingService
             .Take(pageSize)
             .ToListAsync();           
     }
+
+    public async Task ChangeFavoritePostAsync(int postId)
+    {
+        var post = await _context.Posts.FirstOrDefaultAsync(x => x.Id == postId);
+        if (post == null)
+        {
+            throw new KeyNotFoundException($"Post with ID {postId} does not exist");
+        }
+        post.IsFavourite = !post.IsFavourite;
+        post.UpdatedAt = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss");
+        await _context.SaveChangesAsync();
+    }
 }

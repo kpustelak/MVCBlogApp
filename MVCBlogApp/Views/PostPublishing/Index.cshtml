@@ -62,6 +62,13 @@
                                     Edit
                                 </a>
                                 
+                                <form asp-action="Favourite" asp-controller="PostPublishing" method="post" class="flex-fill">
+                                    <input type="hidden" name="postId" value="@post.Id" />
+                                    <button type="submit" class="btn @(post.IsFavourite == true ? "btn-outline-dark" : "btn-outline-warning") btn-sm w-100 fw-bold">
+                                        <i class="bi bi-star me-2 "></i>
+                                    </button>
+                                </form>
+                                
                                 <form asp-action="Delete" asp-controller="PostPublishing" method="post" class="flex-fill">
                                     <input type="hidden" name="postId" value="@post.Id" />
                                     <button type="submit" onclick="return confirm('Delete this post?')" class="btn btn-outline-danger btn-sm w-100 fw-bold">

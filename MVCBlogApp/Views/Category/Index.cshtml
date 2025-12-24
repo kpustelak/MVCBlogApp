@@ -8,7 +8,7 @@
         <small class="text-muted">Total uploads: @(Model.PostCategories?.Count ?? 0)</small>
     </div>
     <a asp-action="AddOrEdit" class="btn btn-primary px-4 fw-bold">
-        <i class="bi bi-plus-lg"></i> Add New Post
+        <i class="bi bi-plus-lg"></i> Add New Category
     </a>
 </div>
 @if (Model.PostCategories != null && Model.PostCategories.Any())

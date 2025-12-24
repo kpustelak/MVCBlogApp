@@ -15,6 +15,7 @@ public class Post
     public string CreatedAt { get; set; } = string.Empty;
     public string UpdatedAt { get; set; } = string.Empty;
     public bool IsPublished { get; set; } = false;
+    public bool? IsFavourite { get; set; } = false;
     public int ViewCount { get; set; } = 0;
     public string FeaturedImageUrl { get; set; } = string.Empty;
     public int PostCategoryId { get; set; }

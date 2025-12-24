@@ -131,4 +131,28 @@ public class PostPublishingController : Controller
         
         return RedirectToAction("Index");
     }
+
+    [HttpPost]
+    [Route("PostPublishing/Favourite")]
+    public async Task<IActionResult> Favourite(int postId)
+    {
+        if (postId <= 0) 
+        {
+            throw new ArgumentException("Invalid post ID");
+        }
+
+        try
+        {
+            await _postPublishingService.ChangeFavoritePostAsync(postId);
+            _logger.LogInformation("Post {PostId} has new status.", postId);
+            TempData["SuccessMessage"] = "Post added to /removed from favourite successfully";
+            
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+        
+        return RedirectToAction("Index");
+    }
 }

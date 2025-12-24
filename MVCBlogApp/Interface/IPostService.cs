@@ -8,4 +8,5 @@ public interface IPostService
 {
     Task<List<ShortPostModelDto>> GetListOfPostsWithPaginationAsync(int pageNumber, int pageSize);
     Task<List<ShortPostModelDto>> GetListOfPostsAsync(int top);
+    Task<List<ShortPostModelDto>> GetListOfFavouritePublicPosts(int top);
 }

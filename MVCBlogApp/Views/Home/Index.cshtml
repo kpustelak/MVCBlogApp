@@ -12,24 +12,18 @@ ViewData["Title"] = "Blog home page";
             <div class="profile-name">Kornel Pustelak</div>
             <div class="profile-role">Author</div>
         </div>
-
         <div class="nav-menu">
             <div class="nav-item active">
                 <span class="nav-icon"><i class="bi bi-house"></i></span>
                 <span>Home</span>
             </div>
-            <div class="nav-item">
-                <span class="nav-icon"><i class="bi bi-code"></i></span>
-                <span>Coding</span>
-            </div>
-            <div class="nav-item">
-                <span class="nav-icon"><i class="bi bi-backpack"></i></span>
-                <span>Homelab</span>
-            </div>
-            <div class="nav-item">
-                <span class="nav-icon"><i class="bi bi-wordpress"></i></span>
-                <span>Wordpress</span>
-            </div>
+            @foreach (var category in Model.PostCategories)
+            {
+                <div class="nav-item">
+                    <span class="nav-icon"><i class="bi @category.IconBootstrapLink"></i></span>
+                    <span>@category.Name</span>
+                </div>    
+            }
         </div>
 
         <div class="download-section">

@@ -56,4 +56,20 @@ public class PostService : IPostService
             .ToListAsync();
         return posts;
     }
+
+    public async Task<List<ShortPostModelDto>> GetListOfFavouritePublicPosts(int top)
+    {
+        return await _context.Posts
+            .Where(x => x.IsPublished == true && x.IsFavourite == true)
+            .Take(top)
+            .Select(x => new ShortPostModelDto
+            {
+                Id = x.Id,
+                Title = x.Title,
+                Slug = x.Slug,
+                CreatedAt = x.CreatedAt,
+                IsPublished = x.IsPublished
+            })
+            .ToListAsync();
+    }
 }
