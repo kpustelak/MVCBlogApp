@@ -1,8 +1,12 @@
-﻿@model MVCBlogApp.Models.HomeViewModel;
+﻿@using MVCBlogApp.Models.Entities
+@model MVCBlogApp.Models.HomeViewModel;
 
 <link rel="stylesheet" href="~/css/blog-main.css"/>
 @{
-ViewData["Title"] = "Blog home page";
+    ViewData["Title"] = "Blog home page";
+    var featuredPost = Model.PostsToDisplay?.FirstOrDefault();
+    var remainingPosts = Model.PostsToDisplay?.Skip(1).Take(3);
+    var featuredDateTime = DateTime.Parse(featuredPost.CreatedAt);
 }
 
 <div class="blog-container">
@@ -51,15 +55,15 @@ ViewData["Title"] = "Blog home page";
         
         <div class="cards-row">
             <div class="feature-card">
-                <img src="https://images.unsplash.com/photo-1545239705-1564e58b9e4a?w=400&h=400&fit=crop" alt="Architecture" class="feature-img">
+                <img src="@featuredPost.FeaturedImage.FilePath" alt="@featuredPost.FeaturedImage.AltText" class="feature-img">
                 <div class="feature-content">
-                    <div class="feature-category">Coding</div>
-                    <div class="feature-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                    <div class="feature-category"><span class="nav-icon"><i class="bi @featuredPost.Category?.IconBootstrapLink"></i> </span> @featuredPost.Category?.Name</div>
+                    <div class="feature-title">@featuredPost.Title</div>
                     <div class="feature-meta">
                         <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="Author" class="author-img">
                         <span>Kornel Pustelak</span>
                         <span>•</span>
-                        <span>2 days ago</span>
+                        <span>@featuredDateTime.Year/@featuredDateTime.Month/@featuredDateTime.Day</span>
                     </div>
                 </div>
             </div>
@@ -68,14 +72,14 @@ ViewData["Title"] = "Blog home page";
                 <div class="info-card">
                     <span class="info-icon">📄</span>
                     <div class="info-text">
-                        <div class="info-label">Latest posts of this month</div>
+                        <div class="info-label">Find out the latest posts </div>
                         <a href="#" class="info-link">See more →</a>
                     </div>
                 </div>
                 <div class="info-card">
                     <span class="info-icon">📋</span>
                     <div class="info-text">
-                        <div class="info-label">Top posts of this month</div>
+                        <div class="info-label">Top posts that viewers found interesting</div>
                         <a href="#" class="info-link">See more →</a>
                     </div>
                 </div>
@@ -85,7 +89,7 @@ ViewData["Title"] = "Blog home page";
         <div class="posts-grid">
             @if (Model.PostsToDisplay != null)
             {
-                @foreach(var postCard in Model.PostsToDisplay)
+                @foreach(var postCard in remainingPosts)
                 {
                     <div class="post-card">
                         <img src="@postCard.FeaturedImage?.FilePath" alt="@postCard.FeaturedImage?.AltText" class="post-img">

@@ -53,7 +53,8 @@ public class PostService : IPostService
                 CreatedAt = x.CreatedAt,
                 IsPublished = x.IsPublished,
                 Excerpt = x.Excerpt,
-                FeaturedImage = x.FeaturedImage
+                FeaturedImage = x.FeaturedImage,
+                Category = x.PostCategory
             })
             .ToListAsync();
         return posts;

@@ -10,4 +10,5 @@ public class ShortPostModelDto
     public string CreatedAt { get; set; }
     public Models.PostImage? FeaturedImage  { get; set; }
     public bool IsPublished { get; set; }
+    public PostCategory? Category { get; set; }
 }
