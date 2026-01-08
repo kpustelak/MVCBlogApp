@@ -21,9 +21,8 @@ public class BlogDbContext : DbContext
             .WithMany(pc => pc.Posts) 
             .HasForeignKey(p => p.PostCategoryId)
             .OnDelete(DeleteBehavior.NoAction);
-
         modelBuilder.Entity<PostCategory>();
-    
+        modelBuilder.Entity<PostImage>();
         base.OnModelCreating(modelBuilder);
     }
 }

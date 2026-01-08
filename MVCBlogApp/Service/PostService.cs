@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using MVCBlogApp.Db;
 using MVCBlogApp.Interface;
@@ -9,9 +10,12 @@ namespace MVCBlogApp.Service;
 public class PostService : IPostService
 {
     private readonly BlogDbContext _context;
-    public PostService(BlogDbContext context)
+    private readonly IMapper _mapper;
+    public PostService(BlogDbContext context,
+        IMapper mapper)
     {
         _context = context;
+        _mapper = mapper;
     }
     public async Task<Post> GetWholePostAsync(int postId)
     {
@@ -58,5 +62,10 @@ public class PostService : IPostService
             })
             .ToListAsync();
         return posts;
+    }
+
+    public async Task<GetPostModelDto> GetPostByIdAsync(int postId)
+    {
+        return _mapper.Map<GetPostModelDto>(await _context.Posts.FirstOrDefaultAsync(x => x.Id == postId));
     }
 }
