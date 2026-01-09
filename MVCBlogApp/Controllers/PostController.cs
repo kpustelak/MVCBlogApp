@@ -30,4 +30,23 @@ public class PostController : Controller
             throw new Exception(ex.Message);
         }
     }
+
+    public async Task<IActionResult> Category(int categoryId, int pageNumber=0, int pageSize=10)
+    {
+        try
+        {
+            var vm = new CategoryViewModel
+            {
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                Posts = await _context.GetListOfPostsWithPaginationAndCategoryAsync(pageNumber, pageSize, categoryId),
+                PostsCategory = await _categoryService.GetCategoryByIdAsync(categoryId)
+            };
+            return View(vm);
+        }
+        catch(Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
 }

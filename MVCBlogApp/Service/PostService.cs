@@ -68,4 +68,24 @@ public class PostService : IPostService
     {
         return _mapper.Map<GetPostModelDto>(await _context.Posts.FirstOrDefaultAsync(x => x.Id == postId));
     }
+
+    public async Task<List<ShortPostModelDto>> GetListOfPostsWithPaginationAndCategoryAsync(int pageNumber, int pageSize, int categoryId)
+    {
+        var posts = await _context.Posts
+            .Where(x => x.IsPublished && x.PostCategoryId == categoryId)
+            .OrderByDescending(x => x.CreatedAt)
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
+            .Select(x => new ShortPostModelDto
+            {
+                Id = x.Id,
+                Title = x.Title,
+                Slug = x.Slug,
+                CreatedAt = x.CreatedAt,
+                IsPublished = x.IsPublished
+            })
+            .ToListAsync();
+
+        return posts;
+    }
 }
