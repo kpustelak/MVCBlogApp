@@ -52,21 +52,23 @@ public class PostController : Controller
         }
     }
 
-    public async Task<IActionResult> ByLatestsOrByViews(int pageNumber=0, bool byLatests = false, bool byViews = false)
+    public async Task<IActionResult> ByLatestsOrByViews(int pageNumber=0, bool byLatest = false, bool byViews = false)
     {
         int pageSize = 10;
         try
         {
-            if (byLatests == byViews)
+            if (byLatest == byViews)
             {
                 throw new Exception("There is only one option for post sorting.");
             }
-            var vm = new CategoryViewModel
+            var vm = new ByLatestsOrByViewsViewModel
             {
                 PageNumber = pageNumber,
                 PageSize = pageSize,
-                Posts = await _context.GetListOfPostsWithPaginationAsync(pageNumber, pageSize, byLatests, byViews),
-                PostCategories = await _categoryService.GetCategoriesAsync()
+                Posts = await _context.GetListOfPostsWithPaginationAsync(pageNumber, pageSize, byLatest, byViews),
+                PostCategories = await _categoryService.GetCategoriesAsync(),
+                ByViewsOnly = byViews,
+                ByLatest = byLatest
             };
             return View(vm);
         }

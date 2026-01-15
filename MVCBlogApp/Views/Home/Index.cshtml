@@ -81,14 +81,20 @@
                     <span class="info-icon">📄</span>
                     <div class="info-text">
                         <div class="info-label">Find out the latest posts </div>
-                        <a href="/"  class="info-link">See more →</a>
+                        <a asp-controller="Post" 
+                           asp-action="ByLatestsOrByViews" 
+                           asp-route-byLatest="true"  
+                           class="info-link">See more →</a>
                     </div>
                 </div>
                 <div class="info-card">
                     <span class="info-icon">📋</span>
                     <div class="info-text">
                         <div class="info-label">Top posts that viewers found interesting</div>
-                        <a href="#" class="info-link">See more →</a>
+                        <a asp-controller="Post" 
+                           asp-action="ByLatestsOrByViews" 
+                           asp-route-byViews="true" 
+                           class="info-link">See more →</a>
                     </div>
                 </div>
             </div>

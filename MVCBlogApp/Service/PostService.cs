@@ -23,11 +23,36 @@ public class PostService : IPostService
         return post;
     }
 
-    public async Task<List<ShortPostModelDto>> GetListOfPostsWithPaginationAsync(int pageNumber, int pageSize, bool byLatests = false, bool byViews = false)
+    public async Task<List<ShortPostModelDto>> GetListOfPostsWithPaginationAsync(
+        int pageNumber, 
+        int pageSize, 
+        bool byLatests = false, 
+        bool byViews = false)
     {
-        var posts = await _context.Posts
+        if (byLatests) {
+            return await _context.Posts
+                .Include(x => x.FeaturedImage)
+                .Where(x => x.IsPublished)
+                .OrderByDescending(x => x.CreatedAt)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .Select(x => new ShortPostModelDto
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    Slug = x.Slug,
+                    CreatedAt = x.CreatedAt,
+                    IsPublished = x.IsPublished,
+                    Excerpt = x.Excerpt,
+                    FeaturedImage = x.FeaturedImage,
+                    Category = x.PostCategory
+                })
+                .ToListAsync();
+        }
+        return await _context.Posts
+            .Include(x => x.FeaturedImage)
             .Where(x => x.IsPublished)
-            .OrderByDescending(x => x.CreatedAt)
+            .OrderBy(x => x.ViewCount)
             .Skip((pageNumber - 1) * pageSize)
             .Take(pageSize)
             .Select(x => new ShortPostModelDto
@@ -36,11 +61,12 @@ public class PostService : IPostService
                 Title = x.Title,
                 Slug = x.Slug,
                 CreatedAt = x.CreatedAt,
-                IsPublished = x.IsPublished
+                IsPublished = x.IsPublished,
+                Excerpt = x.Excerpt,
+                FeaturedImage = x.FeaturedImage,
+                Category = x.PostCategory
             })
             .ToListAsync();
-
-        return posts;
     }
     
     public async Task<List<ShortPostModelDto>> GetListOfPostsAsync(int top, bool pickFavourite)
@@ -82,7 +108,10 @@ public class PostService : IPostService
                 Title = x.Title,
                 Slug = x.Slug,
                 CreatedAt = x.CreatedAt,
-                IsPublished = x.IsPublished
+                IsPublished = x.IsPublished,
+                Excerpt = x.Excerpt,
+                FeaturedImage = x.FeaturedImage,
+                Category = x.PostCategory
             })
             .ToListAsync();
 
