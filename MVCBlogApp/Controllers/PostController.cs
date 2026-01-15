@@ -30,9 +30,10 @@ public class PostController : Controller
             throw new Exception(ex.Message);
         }
     }
-
-    public async Task<IActionResult> Category(int categoryId, int pageNumber=0, int pageSize=10)
+    
+    public async Task<IActionResult> Category(int categoryId, int pageNumber=0)
     {
+        int pageSize = 10;
         try
         {
             var vm = new CategoryViewModel
@@ -40,7 +41,32 @@ public class PostController : Controller
                 PageNumber = pageNumber,
                 PageSize = pageSize,
                 Posts = await _context.GetListOfPostsWithPaginationAndCategoryAsync(pageNumber, pageSize, categoryId),
-                PostsCategory = await _categoryService.GetCategoryByIdAsync(categoryId)
+                PostsCategory = await _categoryService.GetCategoryByIdAsync(categoryId),
+                PostCategories = await _categoryService.GetCategoriesAsync()
+            };
+            return View(vm);
+        }
+        catch(Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
+    public async Task<IActionResult> ByLatestsOrByViews(int pageNumber=0, bool byLatests = false, bool byViews = false)
+    {
+        int pageSize = 10;
+        try
+        {
+            if (byLatests == byViews)
+            {
+                throw new Exception("There is only one option for post sorting.");
+            }
+            var vm = new CategoryViewModel
+            {
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                Posts = await _context.GetListOfPostsWithPaginationAsync(pageNumber, pageSize, byLatests, byViews),
+                PostCategories = await _categoryService.GetCategoriesAsync()
             };
             return View(vm);
         }

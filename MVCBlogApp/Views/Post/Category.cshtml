@@ -15,16 +15,27 @@
             <div class="profile-role">Author</div>
         </div>
         <div class="nav-menu">
-            <a asp-action="Index" asp-controller="Home" class="nav-item">
-                <span class="nav-icon"><i class="bi bi-house"></i></span>
-                <span>Home</span>
+            <a href="/" class="nav-menu text-decoration-none">
+                <div class="nav-item active">
+                    <span class="nav-icon"><i class="bi bi-house"></i></span>
+                    <span>Home</span>
+                </div>
             </a>
+            @foreach (var category in Model.PostCategories)
+            {
+                <a asp-action="Category" asp-controller="Post" asp-route-categoryId="@category.Id" class="text-decoration-none"> 
+                    <div class="nav-item" class="text-decoration-none">
+                        <span class="nav-icon"><i class="bi @category.IconBootstrapLink"></i></span>
+                        <span >@category.Name</span>
+                    </div>   
+                </a> 
+            }
         </div>
 
         <div class="download-section">
             <p class="download-text">Find me:</p>
-            <button class="download-btn github"><i class="bi bi-github"></i> Github</button>
-            <button class="download-btn linkedin"><i class="bi bi-linkedin"></i> Linkedin</button>
+            <a href="https://github.com/kpustelak" class="text-decoration-none"><button class="download-btn github" ><i class="bi bi-github"></i> Github</button></a>
+            <a href="https://www.linkedin.com/in/kornel-pustelak-274205284/" class="text-decoration-none"><button class="download-btn linkedin"><i class="bi bi-linkedin"></i>Linkedin</button></a>
         </div>
     </div>
     

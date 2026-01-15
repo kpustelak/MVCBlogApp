@@ -23,7 +23,7 @@ public class PostService : IPostService
         return post;
     }
 
-    public async Task<List<ShortPostModelDto>> GetListOfPostsWithPaginationAsync(int pageNumber, int pageSize)
+    public async Task<List<ShortPostModelDto>> GetListOfPostsWithPaginationAsync(int pageNumber, int pageSize, bool byLatests = false, bool byViews = false)
     {
         var posts = await _context.Posts
             .Where(x => x.IsPublished)

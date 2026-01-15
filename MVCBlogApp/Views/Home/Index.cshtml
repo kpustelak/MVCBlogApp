@@ -17,16 +17,18 @@
             <div class="profile-role">Author</div>
         </div>
         <div class="nav-menu">
-            <div class="nav-item active">
-                <span class="nav-icon"><i class="bi bi-house"></i></span>
-                <span>Home</span>
-            </div>
+            <a href="/" class="nav-menu text-decoration-none">
+                <div class="nav-item active">
+                    <span class="nav-icon"><i class="bi bi-house"></i></span>
+                    <span>Home</span>
+                </div>
+            </a>
             @foreach (var category in Model.PostCategories)
             {
-                <a asp-action="Category" asp-controller="Post" asp-route-id="1">
-                    <div class="nav-item">
+                <a asp-action="Category" asp-controller="Post" asp-route-categoryId="@category.Id" class="text-decoration-none"> 
+                    <div class="nav-item" class="text-decoration-none">
                         <span class="nav-icon"><i class="bi @category.IconBootstrapLink"></i></span>
-                        <span>@category.Name</span>
+                        <span >@category.Name</span>
                     </div>   
                 </a> 
             }
@@ -79,7 +81,7 @@
                     <span class="info-icon">📄</span>
                     <div class="info-text">
                         <div class="info-label">Find out the latest posts </div>
-                        <a href="#" class="info-link">See more →</a>
+                        <a href="/"  class="info-link">See more →</a>
                     </div>
                 </div>
                 <div class="info-card">
@@ -100,6 +102,7 @@
                     <div class="post-card">
                         <img src="@postCard.FeaturedImage?.FilePath" alt="@postCard.FeaturedImage?.AltText" class="post-img">
                         <div class="post-content">
+                            <div class="feature-category"><span class="nav-icon"><i class="bi @postCard.Category?.IconBootstrapLink"></i> </span> @postCard.Category?.Name</div>
                             <div class="post-title">@postCard.Title</div>
                             <div class="post-excerpt">@postCard.Excerpt</div>
                             <div class="feature-meta">
