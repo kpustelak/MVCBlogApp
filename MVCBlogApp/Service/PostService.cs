@@ -11,6 +11,8 @@ public class PostService : IPostService
 {
     private readonly BlogDbContext _context;
     private readonly IMapper _mapper;
+    private IPostService _postServiceImplementation;
+
     public PostService(BlogDbContext context,
         IMapper mapper)
     {
@@ -93,6 +95,28 @@ public class PostService : IPostService
     public async Task<GetPostModelDto> GetPostByIdAsync(int postId)
     {
         return _mapper.Map<GetPostModelDto>(await _context.Posts.FirstOrDefaultAsync(x => x.Id == postId));
+    }
+
+    public async Task<List<ShortPostModelDto>> GetListOfPostsByQueryAsync(int pageNumber, int pageSize, string query)
+    {
+        var posts = await _context.Posts
+            .Where(x => x.Title.ToLower().Contains(query.ToLower()))
+            .OrderByDescending(x => x.CreatedAt)
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
+            .Select(x => new ShortPostModelDto
+            {
+                Id = x.Id,
+                Title = x.Title,
+                Slug = x.Slug,
+                CreatedAt = x.CreatedAt,
+                IsPublished = x.IsPublished,
+                Excerpt = x.Excerpt,
+                FeaturedImage = x.FeaturedImage,
+                Category = x.PostCategory
+            })
+            .ToListAsync();
+        return posts;
     }
 
     public async Task<List<ShortPostModelDto>> GetListOfPostsWithPaginationAndCategoryAsync(int pageNumber, int pageSize, int categoryId)

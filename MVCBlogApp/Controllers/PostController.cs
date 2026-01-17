@@ -77,4 +77,25 @@ public class PostController : Controller
             throw new Exception(ex.Message);
         }
     }
+
+    public async Task<IActionResult> SearchResult(string query, int pageNumber = 1)
+    {
+        int pageSize = 10;
+        try
+        {
+            var vm = new SearchViewModel()
+            {
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                Posts = await _context.GetListOfPostsByQueryAsync(pageNumber, pageSize, query),
+                PostCategories = await _categoryService.GetCategoriesAsync(),
+                Query = query,
+            };
+            return View(vm);
+        }
+        catch(Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
 }

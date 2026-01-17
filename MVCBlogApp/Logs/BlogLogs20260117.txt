@@ -6967,3 +6967,1771 @@ FROM "PostCategories" AS "p"
 2026-01-17 19:41:55.396 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
 2026-01-17 19:41:55.396 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=3 - 200 null text/html; charset=utf-8 3.7771ms
 2026-01-17 19:49:04.894 +01:00 [INF] Application is shutting down...
+2026-01-17 20:46:17.606 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "PostCategories" AS "p")
+2026-01-17 20:46:17.675 +01:00 [INF] User profile is available. Using '/home/kornel/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2026-01-17 20:46:17.707 +01:00 [INF] Now listening on: http://localhost:5008
+2026-01-17 20:46:17.709 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-01-17 20:46:17.709 +01:00 [INF] Hosting environment: Development
+2026-01-17 20:46:17.709 +01:00 [INF] Content root path: /home/kornel/Documents/GitHub/MVCBlogApp/MVCBlogApp/MVCBlogApp
+2026-01-17 20:46:18.215 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2026-01-17 20:46:18.222 +01:00 [WRN] Failed to determine the https port for redirect.
+2026-01-17 20:46:18.241 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:46:18.251 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2026-01-17 20:46:18.373 +01:00 [INF] Executing action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:18.450 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:18.628 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[@__pickFavourite_0='?' (DbType = Boolean), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."IsFavourite" = @__pickFavourite_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:18.660 +01:00 [INF] Executed action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 283.9122ms.
+2026-01-17 20:46:18.667 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:46:18.791 +01:00 [INF] Executed ViewResult - view Index executed in 116.1935ms.
+2026-01-17 20:46:18.793 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 541.4234ms
+2026-01-17 20:46:18.795 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:46:18.805 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 590.5594ms
+2026-01-17 20:46:18.931 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/uploads/62159e58-d39e-42b8-ae86-680961d92c7f.png - null null
+2026-01-17 20:46:18.947 +01:00 [INF] Sending file. Request path: '/uploads/62159e58-d39e-42b8-ae86-680961d92c7f.png'. Physical path: '/home/kornel/Documents/GitHub/MVCBlogApp/MVCBlogApp/MVCBlogApp/wwwroot/uploads/62159e58-d39e-42b8-ae86-680961d92c7f.png'
+2026-01-17 20:46:18.949 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/uploads/62159e58-d39e-42b8-ae86-680961d92c7f.png - 200 48938 image/png 17.7889ms
+2026-01-17 20:46:21.318 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5008/Post/SearchResult - application/x-www-form-urlencoded 192
+2026-01-17 20:46:21.320 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp)'
+2026-01-17 20:46:21.331 +01:00 [INF] Route matched with {action = "SearchResult", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchResult(System.String, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:46:21.344 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:21.399 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__ToLower_0='?' (Size = 3), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE instr(lower("p"."Title"), @__ToLower_0) > 0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:21.400 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:21.401 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 56.8029ms.
+2026-01-17 20:46:21.402 +01:00 [INF] Executing ViewResult, running view SearchResult.
+2026-01-17 20:46:21.413 +01:00 [INF] Executed ViewResult - view SearchResult executed in 11.3739ms.
+2026-01-17 20:46:21.413 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp) in 81.8832ms
+2026-01-17 20:46:21.413 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp)'
+2026-01-17 20:46:21.413 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5008/Post/SearchResult - 200 null text/html; charset=utf-8 95.3116ms
+2026-01-17 20:46:21.435 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/css/category.css - null null
+2026-01-17 20:46:21.436 +01:00 [INF] Sending file. Request path: '/css/category.css'. Physical path: '/home/kornel/Documents/GitHub/MVCBlogApp/MVCBlogApp/MVCBlogApp/wwwroot/css/category.css'
+2026-01-17 20:46:21.436 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/css/category.css - 200 5975 text/css 1.4936ms
+2026-01-17 20:46:23.317 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2026-01-17 20:46:23.317 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:46:23.317 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2026-01-17 20:46:23.320 +01:00 [INF] Executing action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:23.322 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:23.326 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__pickFavourite_0='?' (DbType = Boolean), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."IsFavourite" = @__pickFavourite_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:23.327 +01:00 [INF] Executed action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 6.8386ms.
+2026-01-17 20:46:23.327 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:46:23.329 +01:00 [INF] Executed ViewResult - view Index executed in 2.3727ms.
+2026-01-17 20:46:23.330 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 11.9951ms
+2026-01-17 20:46:23.330 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:46:23.330 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 13.421ms
+2026-01-17 20:46:23.863 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=1 - null null
+2026-01-17 20:46:23.865 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:46:23.869 +01:00 [INF] Route matched with {action = "Category", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Category(Int32, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:46:23.875 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:23.883 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__categoryId_0='?' (DbType = Int32), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."PostCategoryId" = @__categoryId_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:23.890 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+WHERE "p"."Id" = @__id_0
+LIMIT 1
+2026-01-17 20:46:23.891 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:23.891 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 16.147ms.
+2026-01-17 20:46:23.892 +01:00 [INF] Executing ViewResult, running view Category.
+2026-01-17 20:46:23.903 +01:00 [INF] Executed ViewResult - view Category executed in 12.0288ms.
+2026-01-17 20:46:23.903 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) in 33.7838ms
+2026-01-17 20:46:23.904 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:46:23.904 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=1 - 200 null text/html; charset=utf-8 40.3345ms
+2026-01-17 20:46:24.604 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2026-01-17 20:46:24.605 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:46:24.605 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2026-01-17 20:46:24.605 +01:00 [INF] Executing action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:24.606 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:24.607 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__pickFavourite_0='?' (DbType = Boolean), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."IsFavourite" = @__pickFavourite_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:24.608 +01:00 [INF] Executed action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 2.1304ms.
+2026-01-17 20:46:24.608 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:46:24.609 +01:00 [INF] Executed ViewResult - view Index executed in 1.4513ms.
+2026-01-17 20:46:24.609 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 4.3771ms
+2026-01-17 20:46:24.610 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:46:24.610 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 5.6612ms
+2026-01-17 20:46:26.512 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5008/Post/SearchResult - application/x-www-form-urlencoded 194
+2026-01-17 20:46:26.513 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp)'
+2026-01-17 20:46:26.513 +01:00 [INF] Route matched with {action = "SearchResult", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchResult(System.String, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:46:26.515 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:26.516 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ToLower_0='?' (Size = 5), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE instr(lower("p"."Title"), @__ToLower_0) > 0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:26.517 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:26.518 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 2.7705ms.
+2026-01-17 20:46:26.518 +01:00 [INF] Executing ViewResult, running view SearchResult.
+2026-01-17 20:46:26.521 +01:00 [INF] Executed ViewResult - view SearchResult executed in 2.6935ms.
+2026-01-17 20:46:26.521 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp) in 7.9405ms
+2026-01-17 20:46:26.521 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp)'
+2026-01-17 20:46:26.521 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5008/Post/SearchResult - 200 null text/html; charset=utf-8 8.9071ms
+2026-01-17 20:46:27.742 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2026-01-17 20:46:27.742 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:46:27.743 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2026-01-17 20:46:27.743 +01:00 [INF] Executing action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:27.744 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:27.745 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__pickFavourite_0='?' (DbType = Boolean), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."IsFavourite" = @__pickFavourite_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:27.745 +01:00 [INF] Executed action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.7746ms.
+2026-01-17 20:46:27.745 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:46:27.746 +01:00 [INF] Executed ViewResult - view Index executed in 1.0073ms.
+2026-01-17 20:46:27.746 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 3.5225ms
+2026-01-17 20:46:27.746 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:46:27.746 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 4.4721ms
+2026-01-17 20:46:29.573 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5008/Post/SearchResult - application/x-www-form-urlencoded 192
+2026-01-17 20:46:29.573 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp)'
+2026-01-17 20:46:29.573 +01:00 [INF] Route matched with {action = "SearchResult", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchResult(System.String, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:46:29.574 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:29.575 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ToLower_0='?' (Size = 3), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE instr(lower("p"."Title"), @__ToLower_0) > 0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:29.575 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:29.576 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 2.0718ms.
+2026-01-17 20:46:29.578 +01:00 [INF] Executing ViewResult, running view SearchResult.
+2026-01-17 20:46:29.580 +01:00 [INF] Executed ViewResult - view SearchResult executed in 2.1197ms.
+2026-01-17 20:46:29.580 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp) in 6.6392ms
+2026-01-17 20:46:29.580 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp)'
+2026-01-17 20:46:29.580 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5008/Post/SearchResult - 200 null text/html; charset=utf-8 7.5345ms
+2026-01-17 20:46:30.700 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2026-01-17 20:46:30.700 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:46:30.700 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2026-01-17 20:46:30.701 +01:00 [INF] Executing action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:30.702 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:30.703 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__pickFavourite_0='?' (DbType = Boolean), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."IsFavourite" = @__pickFavourite_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:30.703 +01:00 [INF] Executed action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.9567ms.
+2026-01-17 20:46:30.703 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:46:30.704 +01:00 [INF] Executed ViewResult - view Index executed in 0.9171ms.
+2026-01-17 20:46:30.704 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 3.6369ms
+2026-01-17 20:46:30.704 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:46:30.704 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 4.5504ms
+2026-01-17 20:46:31.943 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5008/Post/SearchResult - application/x-www-form-urlencoded 192
+2026-01-17 20:46:31.943 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp)'
+2026-01-17 20:46:31.944 +01:00 [INF] Route matched with {action = "SearchResult", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchResult(System.String, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:46:31.945 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:31.946 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ToLower_0='?' (Size = 3), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE instr(lower("p"."Title"), @__ToLower_0) > 0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:31.947 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:31.947 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 2.776ms.
+2026-01-17 20:46:31.948 +01:00 [INF] Executing ViewResult, running view SearchResult.
+2026-01-17 20:46:31.948 +01:00 [INF] Executed ViewResult - view SearchResult executed in 0.7838ms.
+2026-01-17 20:46:31.949 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp) in 4.6898ms
+2026-01-17 20:46:31.949 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp)'
+2026-01-17 20:46:31.949 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5008/Post/SearchResult - 200 null text/html; charset=utf-8 5.8014ms
+2026-01-17 20:46:32.946 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=1 - null null
+2026-01-17 20:46:32.946 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:46:32.947 +01:00 [INF] Route matched with {action = "Category", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Category(Int32, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:46:32.947 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:32.948 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__categoryId_0='?' (DbType = Int32), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."PostCategoryId" = @__categoryId_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:32.949 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+WHERE "p"."Id" = @__id_0
+LIMIT 1
+2026-01-17 20:46:32.949 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:32.949 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 2.1639ms.
+2026-01-17 20:46:32.950 +01:00 [INF] Executing ViewResult, running view Category.
+2026-01-17 20:46:32.951 +01:00 [INF] Executed ViewResult - view Category executed in 1.4954ms.
+2026-01-17 20:46:32.951 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) in 4.5663ms
+2026-01-17 20:46:32.951 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:46:32.951 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=1 - 200 null text/html; charset=utf-8 5.4434ms
+2026-01-17 20:46:33.414 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=2 - null null
+2026-01-17 20:46:33.414 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:46:33.414 +01:00 [INF] Route matched with {action = "Category", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Category(Int32, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:46:33.415 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:33.416 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__categoryId_0='?' (DbType = Int32), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."PostCategoryId" = @__categoryId_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:33.417 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+WHERE "p"."Id" = @__id_0
+LIMIT 1
+2026-01-17 20:46:33.417 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:33.417 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 2.4303ms.
+2026-01-17 20:46:33.418 +01:00 [INF] Executing ViewResult, running view Category.
+2026-01-17 20:46:33.419 +01:00 [INF] Executed ViewResult - view Category executed in 1.719ms.
+2026-01-17 20:46:33.419 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) in 5.1219ms
+2026-01-17 20:46:33.419 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:46:33.420 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=2 - 200 null text/html; charset=utf-8 5.942ms
+2026-01-17 20:46:34.831 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=3 - null null
+2026-01-17 20:46:34.832 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:46:34.832 +01:00 [INF] Route matched with {action = "Category", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Category(Int32, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:46:34.832 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:34.834 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__categoryId_0='?' (DbType = Int32), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."PostCategoryId" = @__categoryId_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:34.834 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+WHERE "p"."Id" = @__id_0
+LIMIT 1
+2026-01-17 20:46:34.835 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:34.835 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 2.5995ms.
+2026-01-17 20:46:34.835 +01:00 [INF] Executing ViewResult, running view Category.
+2026-01-17 20:46:34.836 +01:00 [INF] Executed ViewResult - view Category executed in 0.529ms.
+2026-01-17 20:46:34.836 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) in 3.9061ms
+2026-01-17 20:46:34.836 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:46:34.836 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=3 - 200 null text/html; charset=utf-8 4.8081ms
+2026-01-17 20:46:37.257 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2026-01-17 20:46:37.257 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:46:37.257 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2026-01-17 20:46:37.258 +01:00 [INF] Executing action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:37.259 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:37.260 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__pickFavourite_0='?' (DbType = Boolean), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."IsFavourite" = @__pickFavourite_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:37.261 +01:00 [INF] Executed action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 2.8815ms.
+2026-01-17 20:46:37.261 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:46:37.262 +01:00 [INF] Executed ViewResult - view Index executed in 0.9534ms.
+2026-01-17 20:46:37.262 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 4.5753ms
+2026-01-17 20:46:37.262 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:46:37.262 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 5.4875ms
+2026-01-17 20:46:38.506 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5008/Post/SearchResult - application/x-www-form-urlencoded 190
+2026-01-17 20:46:38.506 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp)'
+2026-01-17 20:46:38.507 +01:00 [INF] Route matched with {action = "SearchResult", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchResult(System.String, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:46:38.507 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:38.509 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ToLower_0='?' (Size = 1), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE instr(lower("p"."Title"), @__ToLower_0) > 0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:38.509 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:38.510 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 2.5426ms.
+2026-01-17 20:46:38.510 +01:00 [INF] Executing ViewResult, running view SearchResult.
+2026-01-17 20:46:38.511 +01:00 [INF] Executed ViewResult - view SearchResult executed in 0.7144ms.
+2026-01-17 20:46:38.511 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp) in 4.1184ms
+2026-01-17 20:46:38.511 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp)'
+2026-01-17 20:46:38.511 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5008/Post/SearchResult - 200 null text/html; charset=utf-8 4.9977ms
+2026-01-17 20:46:40.232 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2026-01-17 20:46:40.232 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:46:40.233 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2026-01-17 20:46:40.233 +01:00 [INF] Executing action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:40.234 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:40.236 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__pickFavourite_0='?' (DbType = Boolean), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."IsFavourite" = @__pickFavourite_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:40.237 +01:00 [INF] Executed action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 4.1587ms.
+2026-01-17 20:46:40.238 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:46:40.239 +01:00 [INF] Executed ViewResult - view Index executed in 1.238ms.
+2026-01-17 20:46:40.239 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 6.1833ms
+2026-01-17 20:46:40.239 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:46:40.239 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 7.1062ms
+2026-01-17 20:46:43.315 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5008/Post/SearchResult - application/x-www-form-urlencoded 190
+2026-01-17 20:46:43.316 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp)'
+2026-01-17 20:46:43.316 +01:00 [INF] Route matched with {action = "SearchResult", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchResult(System.String, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:46:43.316 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:43.317 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ToLower_0='?' (Size = 1), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE instr(lower("p"."Title"), @__ToLower_0) > 0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:43.318 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:43.319 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.9906ms.
+2026-01-17 20:46:43.319 +01:00 [INF] Executing ViewResult, running view SearchResult.
+2026-01-17 20:46:43.320 +01:00 [INF] Executed ViewResult - view SearchResult executed in 0.8664ms.
+2026-01-17 20:46:43.320 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp) in 3.8439ms
+2026-01-17 20:46:43.320 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp)'
+2026-01-17 20:46:43.320 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5008/Post/SearchResult - 200 null text/html; charset=utf-8 4.9426ms
+2026-01-17 20:46:44.039 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/Index/7 - null null
+2026-01-17 20:46:44.039 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.Index (MVCBlogApp)'
+2026-01-17 20:46:44.042 +01:00 [INF] Route matched with {action = "Index", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:46:44.042 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:44.047 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__postId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsFavourite", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."UpdatedAt", "p"."ViewCount"
+FROM "Posts" AS "p"
+WHERE "p"."Id" = @__postId_0
+LIMIT 1
+2026-01-17 20:46:44.074 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:44.090 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 47.2037ms.
+2026-01-17 20:46:44.090 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:46:44.098 +01:00 [INF] Executed ViewResult - view Index executed in 7.8595ms.
+2026-01-17 20:46:44.098 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.Index (MVCBlogApp) in 55.8556ms
+2026-01-17 20:46:44.098 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.Index (MVCBlogApp)'
+2026-01-17 20:46:44.098 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/Index/7 - 200 null text/html; charset=utf-8 59.2969ms
+2026-01-17 20:46:45.549 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/Index/7 - null null
+2026-01-17 20:46:45.549 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.Index (MVCBlogApp)'
+2026-01-17 20:46:45.549 +01:00 [INF] Route matched with {action = "Index", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:46:45.550 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:45.551 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__postId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsFavourite", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."UpdatedAt", "p"."ViewCount"
+FROM "Posts" AS "p"
+WHERE "p"."Id" = @__postId_0
+LIMIT 1
+2026-01-17 20:46:45.553 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:45.553 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 3.0711ms.
+2026-01-17 20:46:45.553 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:46:45.554 +01:00 [INF] Executed ViewResult - view Index executed in 0.8123ms.
+2026-01-17 20:46:45.554 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.Index (MVCBlogApp) in 4.9596ms
+2026-01-17 20:46:45.554 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.Index (MVCBlogApp)'
+2026-01-17 20:46:45.554 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/Index/7 - 200 null text/html; charset=utf-8 5.784ms
+2026-01-17 20:46:47.748 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2026-01-17 20:46:47.748 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:46:47.749 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2026-01-17 20:46:47.749 +01:00 [INF] Executing action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:47.750 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:47.751 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__pickFavourite_0='?' (DbType = Boolean), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."IsFavourite" = @__pickFavourite_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:47.751 +01:00 [INF] Executed action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.8609ms.
+2026-01-17 20:46:47.751 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:46:47.752 +01:00 [INF] Executed ViewResult - view Index executed in 0.8957ms.
+2026-01-17 20:46:47.752 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 3.5513ms
+2026-01-17 20:46:47.752 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:46:47.752 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 4.4567ms
+2026-01-17 20:46:48.941 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2026-01-17 20:46:48.941 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:46:48.941 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2026-01-17 20:46:48.942 +01:00 [INF] Executing action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:48.942 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:48.943 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__pickFavourite_0='?' (DbType = Boolean), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."IsFavourite" = @__pickFavourite_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:48.944 +01:00 [INF] Executed action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.8768ms.
+2026-01-17 20:46:48.944 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:46:48.945 +01:00 [INF] Executed ViewResult - view Index executed in 0.9166ms.
+2026-01-17 20:46:48.945 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 3.5124ms
+2026-01-17 20:46:48.945 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:46:48.945 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 4.3766ms
+2026-01-17 20:46:50.524 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5008/Post/SearchResult - application/x-www-form-urlencoded 192
+2026-01-17 20:46:50.524 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp)'
+2026-01-17 20:46:50.524 +01:00 [INF] Route matched with {action = "SearchResult", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchResult(System.String, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:46:50.525 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:50.527 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__ToLower_0='?' (Size = 3), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE instr(lower("p"."Title"), @__ToLower_0) > 0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:50.528 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:50.528 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 2.6812ms.
+2026-01-17 20:46:50.528 +01:00 [INF] Executing ViewResult, running view SearchResult.
+2026-01-17 20:46:50.529 +01:00 [INF] Executed ViewResult - view SearchResult executed in 0.8553ms.
+2026-01-17 20:46:50.529 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp) in 4.6486ms
+2026-01-17 20:46:50.529 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp)'
+2026-01-17 20:46:50.530 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5008/Post/SearchResult - 200 null text/html; charset=utf-8 5.8784ms
+2026-01-17 20:46:51.729 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=1 - null null
+2026-01-17 20:46:51.729 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:46:51.729 +01:00 [INF] Route matched with {action = "Category", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Category(Int32, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:46:51.730 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:51.731 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__categoryId_0='?' (DbType = Int32), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."PostCategoryId" = @__categoryId_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:51.731 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+WHERE "p"."Id" = @__id_0
+LIMIT 1
+2026-01-17 20:46:51.732 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:51.732 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 2.2488ms.
+2026-01-17 20:46:51.732 +01:00 [INF] Executing ViewResult, running view Category.
+2026-01-17 20:46:51.733 +01:00 [INF] Executed ViewResult - view Category executed in 0.6185ms.
+2026-01-17 20:46:51.733 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) in 3.6535ms
+2026-01-17 20:46:51.733 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:46:51.733 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=1 - 200 null text/html; charset=utf-8 4.5462ms
+2026-01-17 20:46:52.372 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=3 - null null
+2026-01-17 20:46:52.372 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:46:52.372 +01:00 [INF] Route matched with {action = "Category", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Category(Int32, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:46:52.373 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:52.375 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__categoryId_0='?' (DbType = Int32), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."PostCategoryId" = @__categoryId_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:52.376 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+WHERE "p"."Id" = @__id_0
+LIMIT 1
+2026-01-17 20:46:52.377 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:52.377 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 3.9447ms.
+2026-01-17 20:46:52.377 +01:00 [INF] Executing ViewResult, running view Category.
+2026-01-17 20:46:52.378 +01:00 [INF] Executed ViewResult - view Category executed in 0.6813ms.
+2026-01-17 20:46:52.378 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) in 5.8117ms
+2026-01-17 20:46:52.378 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:46:52.379 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=3 - 200 null text/html; charset=utf-8 6.8233ms
+2026-01-17 20:46:52.851 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2026-01-17 20:46:52.851 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:46:52.851 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2026-01-17 20:46:52.852 +01:00 [INF] Executing action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:52.852 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:52.853 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__pickFavourite_0='?' (DbType = Boolean), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."IsFavourite" = @__pickFavourite_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:52.854 +01:00 [INF] Executed action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.8591ms.
+2026-01-17 20:46:52.854 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:46:52.855 +01:00 [INF] Executed ViewResult - view Index executed in 0.8724ms.
+2026-01-17 20:46:52.855 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 3.4367ms
+2026-01-17 20:46:52.855 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:46:52.855 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 4.3313ms
+2026-01-17 20:46:54.308 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5008/Post/SearchResult - application/x-www-form-urlencoded 193
+2026-01-17 20:46:54.309 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp)'
+2026-01-17 20:46:54.309 +01:00 [INF] Route matched with {action = "SearchResult", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchResult(System.String, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:46:54.309 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:54.310 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ToLower_0='?' (Size = 4), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE instr(lower("p"."Title"), @__ToLower_0) > 0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:54.311 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:54.311 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.543ms.
+2026-01-17 20:46:54.311 +01:00 [INF] Executing ViewResult, running view SearchResult.
+2026-01-17 20:46:54.312 +01:00 [INF] Executed ViewResult - view SearchResult executed in 0.4611ms.
+2026-01-17 20:46:54.312 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp) in 2.7289ms
+2026-01-17 20:46:54.312 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp)'
+2026-01-17 20:46:54.312 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5008/Post/SearchResult - 200 null text/html; charset=utf-8 3.544ms
+2026-01-17 20:46:55.763 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=1 - null null
+2026-01-17 20:46:55.764 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:46:55.764 +01:00 [INF] Route matched with {action = "Category", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Category(Int32, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:46:55.764 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:55.765 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__categoryId_0='?' (DbType = Int32), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."PostCategoryId" = @__categoryId_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:55.766 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+WHERE "p"."Id" = @__id_0
+LIMIT 1
+2026-01-17 20:46:55.766 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:55.767 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 2.3591ms.
+2026-01-17 20:46:55.767 +01:00 [INF] Executing ViewResult, running view Category.
+2026-01-17 20:46:55.767 +01:00 [INF] Executed ViewResult - view Category executed in 0.75ms.
+2026-01-17 20:46:55.768 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) in 3.8085ms
+2026-01-17 20:46:55.768 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:46:55.768 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=1 - 200 null text/html; charset=utf-8 4.6281ms
+2026-01-17 20:46:56.134 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=2 - null null
+2026-01-17 20:46:56.134 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:46:56.134 +01:00 [INF] Route matched with {action = "Category", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Category(Int32, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:46:56.135 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:56.136 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__categoryId_0='?' (DbType = Int32), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."PostCategoryId" = @__categoryId_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:56.137 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+WHERE "p"."Id" = @__id_0
+LIMIT 1
+2026-01-17 20:46:56.137 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:56.137 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 2.2477ms.
+2026-01-17 20:46:56.138 +01:00 [INF] Executing ViewResult, running view Category.
+2026-01-17 20:46:56.139 +01:00 [INF] Executed ViewResult - view Category executed in 1.053ms.
+2026-01-17 20:46:56.139 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) in 4.2084ms
+2026-01-17 20:46:56.139 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:46:56.139 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=2 - 200 null text/html; charset=utf-8 5.2803ms
+2026-01-17 20:46:56.613 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=3 - null null
+2026-01-17 20:46:56.613 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:46:56.613 +01:00 [INF] Route matched with {action = "Category", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Category(Int32, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:46:56.614 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:56.615 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__categoryId_0='?' (DbType = Int32), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."PostCategoryId" = @__categoryId_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:56.615 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+WHERE "p"."Id" = @__id_0
+LIMIT 1
+2026-01-17 20:46:56.616 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:56.616 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 2.0005ms.
+2026-01-17 20:46:56.616 +01:00 [INF] Executing ViewResult, running view Category.
+2026-01-17 20:46:56.617 +01:00 [INF] Executed ViewResult - view Category executed in 0.8131ms.
+2026-01-17 20:46:56.617 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) in 3.576ms
+2026-01-17 20:46:56.617 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:46:56.617 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=3 - 200 null text/html; charset=utf-8 4.4079ms
+2026-01-17 20:46:57.117 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=2 - null null
+2026-01-17 20:46:57.118 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:46:57.118 +01:00 [INF] Route matched with {action = "Category", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Category(Int32, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:46:57.118 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:57.119 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__categoryId_0='?' (DbType = Int32), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."PostCategoryId" = @__categoryId_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:57.120 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+WHERE "p"."Id" = @__id_0
+LIMIT 1
+2026-01-17 20:46:57.120 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:57.121 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 2.0232ms.
+2026-01-17 20:46:57.121 +01:00 [INF] Executing ViewResult, running view Category.
+2026-01-17 20:46:57.121 +01:00 [INF] Executed ViewResult - view Category executed in 0.4576ms.
+2026-01-17 20:46:57.121 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) in 3.2994ms
+2026-01-17 20:46:57.121 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:46:57.121 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=2 - 200 null text/html; charset=utf-8 4.2644ms
+2026-01-17 20:46:58.710 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2026-01-17 20:46:58.710 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:46:58.710 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2026-01-17 20:46:58.711 +01:00 [INF] Executing action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:46:58.711 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:46:58.712 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__pickFavourite_0='?' (DbType = Boolean), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."IsFavourite" = @__pickFavourite_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:46:58.712 +01:00 [INF] Executed action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.5181ms.
+2026-01-17 20:46:58.713 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:46:58.714 +01:00 [INF] Executed ViewResult - view Index executed in 1.3183ms.
+2026-01-17 20:46:58.714 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 3.5949ms
+2026-01-17 20:46:58.714 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:46:58.715 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 4.6492ms
+2026-01-17 20:47:00.456 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/ByLatestsOrByViews?byViews=true - null null
+2026-01-17 20:47:00.456 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.ByLatestsOrByViews (MVCBlogApp)'
+2026-01-17 20:47:00.459 +01:00 [INF] Route matched with {action = "ByLatestsOrByViews", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ByLatestsOrByViews(Int32, Boolean, Boolean) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:47:00.460 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.ByLatestsOrByViews (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:47:00.475 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."ViewCount"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished"
+    ORDER BY "p"."ViewCount"
+    LIMIT @__p_1 OFFSET @__p_0
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."ViewCount"
+2026-01-17 20:47:00.476 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:47:00.476 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.ByLatestsOrByViews (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 16.1043ms.
+2026-01-17 20:47:00.477 +01:00 [INF] Executing ViewResult, running view ByLatestsOrByViews.
+2026-01-17 20:47:00.484 +01:00 [INF] Executed ViewResult - view ByLatestsOrByViews executed in 7.6219ms.
+2026-01-17 20:47:00.484 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.ByLatestsOrByViews (MVCBlogApp) in 24.6996ms
+2026-01-17 20:47:00.484 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.ByLatestsOrByViews (MVCBlogApp)'
+2026-01-17 20:47:00.485 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/ByLatestsOrByViews?byViews=true - 200 null text/html; charset=utf-8 28.5764ms
+2026-01-17 20:47:01.643 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2026-01-17 20:47:01.643 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:47:01.643 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2026-01-17 20:47:01.644 +01:00 [INF] Executing action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:47:01.644 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:47:01.645 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__pickFavourite_0='?' (DbType = Boolean), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."IsFavourite" = @__pickFavourite_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:47:01.645 +01:00 [INF] Executed action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.6077ms.
+2026-01-17 20:47:01.646 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:47:01.646 +01:00 [INF] Executed ViewResult - view Index executed in 0.7337ms.
+2026-01-17 20:47:01.646 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 2.8991ms
+2026-01-17 20:47:01.647 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:47:01.647 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 3.7471ms
+2026-01-17 20:47:02.615 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/ByLatestsOrByViews?byLatest=true - null null
+2026-01-17 20:47:02.615 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.ByLatestsOrByViews (MVCBlogApp)'
+2026-01-17 20:47:02.615 +01:00 [INF] Route matched with {action = "ByLatestsOrByViews", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ByLatestsOrByViews(Int32, Boolean, Boolean) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:47:02.616 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.ByLatestsOrByViews (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:47:02.622 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished"
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_1 OFFSET @__p_0
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:47:02.623 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:47:02.623 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.ByLatestsOrByViews (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 6.8781ms.
+2026-01-17 20:47:02.623 +01:00 [INF] Executing ViewResult, running view ByLatestsOrByViews.
+2026-01-17 20:47:02.624 +01:00 [INF] Executed ViewResult - view ByLatestsOrByViews executed in 0.7025ms.
+2026-01-17 20:47:02.624 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.ByLatestsOrByViews (MVCBlogApp) in 8.3236ms
+2026-01-17 20:47:02.624 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.ByLatestsOrByViews (MVCBlogApp)'
+2026-01-17 20:47:02.624 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/ByLatestsOrByViews?byLatest=true - 200 null text/html; charset=utf-8 9.0855ms
+2026-01-17 20:47:11.569 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=1 - null null
+2026-01-17 20:47:11.569 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:47:11.569 +01:00 [INF] Route matched with {action = "Category", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Category(Int32, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:47:11.570 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:47:11.571 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__categoryId_0='?' (DbType = Int32), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."PostCategoryId" = @__categoryId_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:47:11.572 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+WHERE "p"."Id" = @__id_0
+LIMIT 1
+2026-01-17 20:47:11.572 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:47:11.573 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 2.4655ms.
+2026-01-17 20:47:11.573 +01:00 [INF] Executing ViewResult, running view Category.
+2026-01-17 20:47:11.573 +01:00 [INF] Executed ViewResult - view Category executed in 0.6644ms.
+2026-01-17 20:47:11.573 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) in 3.8708ms
+2026-01-17 20:47:11.574 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:47:11.574 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=1 - 200 null text/html; charset=utf-8 4.6791ms
+2026-01-17 20:47:11.874 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=2 - null null
+2026-01-17 20:47:11.874 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:47:11.874 +01:00 [INF] Route matched with {action = "Category", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Category(Int32, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:47:11.875 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:47:11.875 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__categoryId_0='?' (DbType = Int32), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."PostCategoryId" = @__categoryId_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:47:11.876 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+WHERE "p"."Id" = @__id_0
+LIMIT 1
+2026-01-17 20:47:11.876 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:47:11.876 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.772ms.
+2026-01-17 20:47:11.877 +01:00 [INF] Executing ViewResult, running view Category.
+2026-01-17 20:47:11.877 +01:00 [INF] Executed ViewResult - view Category executed in 0.6973ms.
+2026-01-17 20:47:11.877 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) in 3.1034ms
+2026-01-17 20:47:11.878 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:47:11.878 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=2 - 200 null text/html; charset=utf-8 3.9324ms
+2026-01-17 20:47:12.182 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=3 - null null
+2026-01-17 20:47:12.182 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:47:12.182 +01:00 [INF] Route matched with {action = "Category", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Category(Int32, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:47:12.183 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:47:12.183 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__categoryId_0='?' (DbType = Int32), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."PostCategoryId" = @__categoryId_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:47:12.184 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+WHERE "p"."Id" = @__id_0
+LIMIT 1
+2026-01-17 20:47:12.184 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:47:12.184 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.6832ms.
+2026-01-17 20:47:12.185 +01:00 [INF] Executing ViewResult, running view Category.
+2026-01-17 20:47:12.185 +01:00 [INF] Executed ViewResult - view Category executed in 0.4217ms.
+2026-01-17 20:47:12.185 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) in 2.8123ms
+2026-01-17 20:47:12.185 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:47:12.185 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=3 - 200 null text/html; charset=utf-8 3.5769ms
+2026-01-17 20:47:13.263 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2026-01-17 20:47:13.263 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:47:13.263 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2026-01-17 20:47:13.263 +01:00 [INF] Executing action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:47:13.264 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:47:13.264 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__pickFavourite_0='?' (DbType = Boolean), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."IsFavourite" = @__pickFavourite_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:47:13.265 +01:00 [INF] Executed action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.4559ms.
+2026-01-17 20:47:13.265 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:47:13.266 +01:00 [INF] Executed ViewResult - view Index executed in 0.9313ms.
+2026-01-17 20:47:13.266 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 2.9495ms
+2026-01-17 20:47:13.266 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:47:13.266 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 3.7484ms
+2026-01-17 20:47:16.952 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5008/Post/SearchResult - application/x-www-form-urlencoded 193
+2026-01-17 20:47:16.952 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp)'
+2026-01-17 20:47:16.952 +01:00 [INF] Route matched with {action = "SearchResult", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchResult(System.String, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:47:16.953 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:47:16.954 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ToLower_0='?' (Size = 4), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE instr(lower("p"."Title"), @__ToLower_0) > 0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:47:16.955 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:47:16.955 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.8827ms.
+2026-01-17 20:47:16.955 +01:00 [INF] Executing ViewResult, running view SearchResult.
+2026-01-17 20:47:16.956 +01:00 [INF] Executed ViewResult - view SearchResult executed in 0.4908ms.
+2026-01-17 20:47:16.956 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp) in 3.2015ms
+2026-01-17 20:47:16.956 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp)'
+2026-01-17 20:47:16.956 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5008/Post/SearchResult - 200 null text/html; charset=utf-8 4.1723ms
+2026-01-17 20:47:18.675 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/lib/bootstrap/dist/css/bootstrap.min.css.map - null null
+2026-01-17 20:47:18.676 +01:00 [INF] The file /lib/bootstrap/dist/css/bootstrap.min.css.map was not modified
+2026-01-17 20:47:18.677 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/lib/bootstrap/dist/css/bootstrap.min.css.map - 304 null text/plain 1.5629ms
+2026-01-17 20:47:25.091 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=1 - null null
+2026-01-17 20:47:25.092 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:47:25.092 +01:00 [INF] Route matched with {action = "Category", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Category(Int32, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:47:25.093 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:47:25.094 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__categoryId_0='?' (DbType = Int32), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."PostCategoryId" = @__categoryId_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:47:25.094 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+WHERE "p"."Id" = @__id_0
+LIMIT 1
+2026-01-17 20:47:25.095 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:47:25.095 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 2.0084ms.
+2026-01-17 20:47:25.095 +01:00 [INF] Executing ViewResult, running view Category.
+2026-01-17 20:47:25.095 +01:00 [INF] Executed ViewResult - view Category executed in 0.4553ms.
+2026-01-17 20:47:25.096 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) in 3.3088ms
+2026-01-17 20:47:25.096 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:47:25.096 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=1 - 200 null text/html; charset=utf-8 4.4546ms
+2026-01-17 20:47:25.326 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/lib/bootstrap/dist/css/bootstrap.min.css.map - null null
+2026-01-17 20:47:25.327 +01:00 [INF] The file /lib/bootstrap/dist/css/bootstrap.min.css.map was not modified
+2026-01-17 20:47:25.327 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/lib/bootstrap/dist/css/bootstrap.min.css.map - 304 null text/plain 0.7325ms
+2026-01-17 20:47:26.654 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2026-01-17 20:47:26.654 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:47:26.654 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2026-01-17 20:47:26.655 +01:00 [INF] Executing action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:47:26.655 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:47:26.656 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__pickFavourite_0='?' (DbType = Boolean), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."IsFavourite" = @__pickFavourite_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:47:26.656 +01:00 [INF] Executed action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.2602ms.
+2026-01-17 20:47:26.656 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:47:26.657 +01:00 [INF] Executed ViewResult - view Index executed in 0.6632ms.
+2026-01-17 20:47:26.657 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 2.3859ms
+2026-01-17 20:47:26.657 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:47:26.657 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 3.121ms
+2026-01-17 20:47:26.899 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/lib/bootstrap/dist/css/bootstrap.min.css.map - null null
+2026-01-17 20:47:26.900 +01:00 [INF] The file /lib/bootstrap/dist/css/bootstrap.min.css.map was not modified
+2026-01-17 20:47:26.900 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/lib/bootstrap/dist/css/bootstrap.min.css.map - 304 null text/plain 0.9142ms
+2026-01-17 20:47:34.911 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/ByLatestsOrByViews?byViews=true - null null
+2026-01-17 20:47:34.911 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.ByLatestsOrByViews (MVCBlogApp)'
+2026-01-17 20:47:34.911 +01:00 [INF] Route matched with {action = "ByLatestsOrByViews", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ByLatestsOrByViews(Int32, Boolean, Boolean) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:47:34.912 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.ByLatestsOrByViews (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:47:34.913 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."ViewCount"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished"
+    ORDER BY "p"."ViewCount"
+    LIMIT @__p_1 OFFSET @__p_0
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."ViewCount"
+2026-01-17 20:47:34.913 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:47:34.913 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.ByLatestsOrByViews (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.4848ms.
+2026-01-17 20:47:34.914 +01:00 [INF] Executing ViewResult, running view ByLatestsOrByViews.
+2026-01-17 20:47:34.914 +01:00 [INF] Executed ViewResult - view ByLatestsOrByViews executed in 0.7319ms.
+2026-01-17 20:47:34.914 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.ByLatestsOrByViews (MVCBlogApp) in 2.9084ms
+2026-01-17 20:47:34.914 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.ByLatestsOrByViews (MVCBlogApp)'
+2026-01-17 20:47:34.915 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/ByLatestsOrByViews?byViews=true - 200 null text/html; charset=utf-8 3.6766ms
+2026-01-17 20:47:35.540 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2026-01-17 20:47:35.540 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:47:35.540 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2026-01-17 20:47:35.541 +01:00 [INF] Executing action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:47:35.541 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:47:35.544 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__pickFavourite_0='?' (DbType = Boolean), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."IsFavourite" = @__pickFavourite_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:47:35.545 +01:00 [INF] Executed action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 3.7651ms.
+2026-01-17 20:47:35.545 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:47:35.547 +01:00 [INF] Executed ViewResult - view Index executed in 1.8556ms.
+2026-01-17 20:47:35.547 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 6.3443ms
+2026-01-17 20:47:35.547 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:47:35.547 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 7.2057ms
+2026-01-17 20:47:36.454 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=1 - null null
+2026-01-17 20:47:36.454 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:47:36.455 +01:00 [INF] Route matched with {action = "Category", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Category(Int32, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:47:36.455 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:47:36.456 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__categoryId_0='?' (DbType = Int32), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."PostCategoryId" = @__categoryId_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:47:36.456 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+WHERE "p"."Id" = @__id_0
+LIMIT 1
+2026-01-17 20:47:36.457 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:47:36.457 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.8467ms.
+2026-01-17 20:47:36.457 +01:00 [INF] Executing ViewResult, running view Category.
+2026-01-17 20:47:36.458 +01:00 [INF] Executed ViewResult - view Category executed in 0.4897ms.
+2026-01-17 20:47:36.458 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) in 2.9962ms
+2026-01-17 20:47:36.458 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:47:36.458 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=1 - 200 null text/html; charset=utf-8 3.7133ms
+2026-01-17 20:47:39.056 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=2 - null null
+2026-01-17 20:47:39.057 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:47:39.057 +01:00 [INF] Route matched with {action = "Category", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Category(Int32, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:47:39.057 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:47:39.058 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__categoryId_0='?' (DbType = Int32), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."PostCategoryId" = @__categoryId_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:47:39.059 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+WHERE "p"."Id" = @__id_0
+LIMIT 1
+2026-01-17 20:47:39.059 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:47:39.059 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.8605ms.
+2026-01-17 20:47:39.059 +01:00 [INF] Executing ViewResult, running view Category.
+2026-01-17 20:47:39.060 +01:00 [INF] Executed ViewResult - view Category executed in 0.3538ms.
+2026-01-17 20:47:39.060 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) in 2.8333ms
+2026-01-17 20:47:39.060 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:47:39.060 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=2 - 200 null text/html; charset=utf-8 3.6562ms
+2026-01-17 20:47:40.298 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=1 - null null
+2026-01-17 20:47:40.299 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:47:40.299 +01:00 [INF] Route matched with {action = "Category", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Category(Int32, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:47:40.299 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:47:40.300 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__categoryId_0='?' (DbType = Int32), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."PostCategoryId" = @__categoryId_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:47:40.301 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+WHERE "p"."Id" = @__id_0
+LIMIT 1
+2026-01-17 20:47:40.301 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:47:40.301 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.8713ms.
+2026-01-17 20:47:40.301 +01:00 [INF] Executing ViewResult, running view Category.
+2026-01-17 20:47:40.302 +01:00 [INF] Executed ViewResult - view Category executed in 0.869ms.
+2026-01-17 20:47:40.302 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) in 3.5736ms
+2026-01-17 20:47:40.303 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:47:40.303 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=1 - 200 null text/html; charset=utf-8 4.4855ms
+2026-01-17 20:47:41.156 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/Index/8 - null null
+2026-01-17 20:47:41.156 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.Index (MVCBlogApp)'
+2026-01-17 20:47:41.156 +01:00 [INF] Route matched with {action = "Index", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:47:41.157 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:47:41.157 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__postId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsFavourite", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."UpdatedAt", "p"."ViewCount"
+FROM "Posts" AS "p"
+WHERE "p"."Id" = @__postId_0
+LIMIT 1
+2026-01-17 20:47:41.158 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:47:41.158 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.3755ms.
+2026-01-17 20:47:41.158 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:47:41.159 +01:00 [INF] Executed ViewResult - view Index executed in 0.7765ms.
+2026-01-17 20:47:41.159 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.Index (MVCBlogApp) in 2.8672ms
+2026-01-17 20:47:41.159 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.Index (MVCBlogApp)'
+2026-01-17 20:47:41.159 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/Index/8 - 200 null text/html; charset=utf-8 3.6708ms
+2026-01-17 20:47:41.180 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/uploads/22203c81-66a9-4073-8c71-2ca8d3cdd09d.webp - null null
+2026-01-17 20:47:41.180 +01:00 [INF] The file /uploads/22203c81-66a9-4073-8c71-2ca8d3cdd09d.webp was not modified
+2026-01-17 20:47:41.180 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/uploads/22203c81-66a9-4073-8c71-2ca8d3cdd09d.webp - 304 null image/webp 0.5013ms
+2026-01-17 20:47:42.432 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2026-01-17 20:47:42.432 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:47:42.432 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2026-01-17 20:47:42.433 +01:00 [INF] Executing action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:47:42.433 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:47:42.434 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__pickFavourite_0='?' (DbType = Boolean), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."IsFavourite" = @__pickFavourite_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:47:42.435 +01:00 [INF] Executed action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.7114ms.
+2026-01-17 20:47:42.435 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:47:42.436 +01:00 [INF] Executed ViewResult - view Index executed in 0.7599ms.
+2026-01-17 20:47:42.436 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 3.0185ms
+2026-01-17 20:47:42.436 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:47:42.436 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 3.73ms
+2026-01-17 20:47:44.187 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5008/Post/SearchResult - application/x-www-form-urlencoded 193
+2026-01-17 20:47:44.188 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp)'
+2026-01-17 20:47:44.188 +01:00 [INF] Route matched with {action = "SearchResult", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchResult(System.String, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:47:44.191 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:47:44.193 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ToLower_0='?' (Size = 4), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE instr(lower("p"."Title"), @__ToLower_0) > 0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:47:44.193 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:47:44.194 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 2.7059ms.
+2026-01-17 20:47:44.194 +01:00 [INF] Executing ViewResult, running view SearchResult.
+2026-01-17 20:47:44.194 +01:00 [INF] Executed ViewResult - view SearchResult executed in 0.3731ms.
+2026-01-17 20:47:44.194 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp) in 6.3888ms
+2026-01-17 20:47:44.194 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp)'
+2026-01-17 20:47:44.194 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5008/Post/SearchResult - 200 null text/html; charset=utf-8 7.0775ms
+2026-01-17 20:47:46.876 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2026-01-17 20:47:46.876 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:47:46.876 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2026-01-17 20:47:46.877 +01:00 [INF] Executing action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:47:46.877 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:47:46.878 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__pickFavourite_0='?' (DbType = Boolean), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."IsFavourite" = @__pickFavourite_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:47:46.878 +01:00 [INF] Executed action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.4579ms.
+2026-01-17 20:47:46.878 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:47:46.879 +01:00 [INF] Executed ViewResult - view Index executed in 0.7695ms.
+2026-01-17 20:47:46.879 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 2.8449ms
+2026-01-17 20:47:46.879 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:47:46.880 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 3.7313ms
+2026-01-17 20:47:48.716 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/Index/6 - null null
+2026-01-17 20:47:48.716 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.Index (MVCBlogApp)'
+2026-01-17 20:47:48.717 +01:00 [INF] Route matched with {action = "Index", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:47:48.717 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:47:48.718 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__postId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsFavourite", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."UpdatedAt", "p"."ViewCount"
+FROM "Posts" AS "p"
+WHERE "p"."Id" = @__postId_0
+LIMIT 1
+2026-01-17 20:47:48.718 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:47:48.718 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.2621ms.
+2026-01-17 20:47:48.719 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:47:48.719 +01:00 [INF] Executed ViewResult - view Index executed in 0.6869ms.
+2026-01-17 20:47:48.719 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.Index (MVCBlogApp) in 2.5944ms
+2026-01-17 20:47:48.719 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.Index (MVCBlogApp)'
+2026-01-17 20:47:48.720 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/Index/6 - 200 null text/html; charset=utf-8 3.2971ms
+2026-01-17 20:47:49.836 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2026-01-17 20:47:49.837 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:47:49.837 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2026-01-17 20:47:49.837 +01:00 [INF] Executing action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:47:49.838 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:47:49.838 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__pickFavourite_0='?' (DbType = Boolean), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."IsFavourite" = @__pickFavourite_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:47:49.839 +01:00 [INF] Executed action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.4424ms.
+2026-01-17 20:47:49.839 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:47:49.839 +01:00 [INF] Executed ViewResult - view Index executed in 0.6965ms.
+2026-01-17 20:47:49.840 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 2.7742ms
+2026-01-17 20:47:49.840 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:47:49.840 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 3.5785ms
+2026-01-17 20:47:51.786 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/Index/7 - null null
+2026-01-17 20:47:51.786 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.Index (MVCBlogApp)'
+2026-01-17 20:47:51.786 +01:00 [INF] Route matched with {action = "Index", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:47:51.787 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:47:51.788 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__postId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsFavourite", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."UpdatedAt", "p"."ViewCount"
+FROM "Posts" AS "p"
+WHERE "p"."Id" = @__postId_0
+LIMIT 1
+2026-01-17 20:47:51.788 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:47:51.788 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.5059ms.
+2026-01-17 20:47:51.789 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:47:51.789 +01:00 [INF] Executed ViewResult - view Index executed in 0.4305ms.
+2026-01-17 20:47:51.789 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.Index (MVCBlogApp) in 2.5708ms
+2026-01-17 20:47:51.789 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.Index (MVCBlogApp)'
+2026-01-17 20:47:51.789 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/Index/7 - 200 null text/html; charset=utf-8 3.3192ms
+2026-01-17 20:47:52.134 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2026-01-17 20:47:52.134 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:47:52.134 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2026-01-17 20:47:52.135 +01:00 [INF] Executing action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:47:52.135 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:47:52.136 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__pickFavourite_0='?' (DbType = Boolean), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."IsFavourite" = @__pickFavourite_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:47:52.136 +01:00 [INF] Executed action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.4589ms.
+2026-01-17 20:47:52.136 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:47:52.137 +01:00 [INF] Executed ViewResult - view Index executed in 0.797ms.
+2026-01-17 20:47:52.137 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 2.9582ms
+2026-01-17 20:47:52.137 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:47:52.138 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 3.8998ms
+2026-01-17 20:47:54.250 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/Index/8 - null null
+2026-01-17 20:47:54.250 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.Index (MVCBlogApp)'
+2026-01-17 20:47:54.250 +01:00 [INF] Route matched with {action = "Index", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:47:54.251 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:47:54.251 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__postId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsFavourite", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."UpdatedAt", "p"."ViewCount"
+FROM "Posts" AS "p"
+WHERE "p"."Id" = @__postId_0
+LIMIT 1
+2026-01-17 20:47:54.252 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:47:54.252 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.372ms.
+2026-01-17 20:47:54.252 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:47:54.253 +01:00 [INF] Executed ViewResult - view Index executed in 0.4845ms.
+2026-01-17 20:47:54.253 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.Index (MVCBlogApp) in 2.479ms
+2026-01-17 20:47:54.253 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.Index (MVCBlogApp)'
+2026-01-17 20:47:54.253 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/Index/8 - 200 null text/html; charset=utf-8 3.2333ms
+2026-01-17 20:47:54.761 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2026-01-17 20:47:54.761 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:47:54.761 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2026-01-17 20:47:54.761 +01:00 [INF] Executing action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:47:54.762 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:47:54.762 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__pickFavourite_0='?' (DbType = Boolean), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."IsFavourite" = @__pickFavourite_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:47:54.763 +01:00 [INF] Executed action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.2103ms.
+2026-01-17 20:47:54.763 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:47:54.763 +01:00 [INF] Executed ViewResult - view Index executed in 0.6638ms.
+2026-01-17 20:47:54.764 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 2.4268ms
+2026-01-17 20:47:54.764 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:47:54.764 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 3.2488ms
+2026-01-17 20:47:55.716 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/Index/8 - null null
+2026-01-17 20:47:55.716 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.Index (MVCBlogApp)'
+2026-01-17 20:47:55.716 +01:00 [INF] Route matched with {action = "Index", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:47:55.717 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:47:55.717 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__postId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsFavourite", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."UpdatedAt", "p"."ViewCount"
+FROM "Posts" AS "p"
+WHERE "p"."Id" = @__postId_0
+LIMIT 1
+2026-01-17 20:47:55.718 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:47:55.718 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.2393ms.
+2026-01-17 20:47:55.718 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:47:55.719 +01:00 [INF] Executed ViewResult - view Index executed in 0.3589ms.
+2026-01-17 20:47:55.719 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.Index (MVCBlogApp) in 2.2479ms
+2026-01-17 20:47:55.719 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.Index (MVCBlogApp)'
+2026-01-17 20:47:55.719 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/Index/8 - 200 null text/html; charset=utf-8 2.9453ms
+2026-01-17 20:48:00.464 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2026-01-17 20:48:00.464 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:48:00.465 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2026-01-17 20:48:00.465 +01:00 [INF] Executing action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:48:00.465 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:48:00.466 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__pickFavourite_0='?' (DbType = Boolean), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."IsFavourite" = @__pickFavourite_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:48:00.466 +01:00 [INF] Executed action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.2343ms.
+2026-01-17 20:48:00.466 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:48:00.467 +01:00 [INF] Executed ViewResult - view Index executed in 0.5913ms.
+2026-01-17 20:48:00.467 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 2.4202ms
+2026-01-17 20:48:00.467 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:48:00.467 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 3.1462ms
+2026-01-17 20:48:01.448 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2026-01-17 20:48:01.448 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:48:01.448 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2026-01-17 20:48:01.449 +01:00 [INF] Executing action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:48:01.450 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:48:01.450 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__pickFavourite_0='?' (DbType = Boolean), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."IsFavourite" = @__pickFavourite_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:48:01.451 +01:00 [INF] Executed action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.317ms.
+2026-01-17 20:48:01.451 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:48:01.452 +01:00 [INF] Executed ViewResult - view Index executed in 0.8205ms.
+2026-01-17 20:48:01.452 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 3.3284ms
+2026-01-17 20:48:01.452 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:48:01.452 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 4.1467ms
+2026-01-17 20:48:04.465 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/Index/8 - null null
+2026-01-17 20:48:04.465 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.Index (MVCBlogApp)'
+2026-01-17 20:48:04.465 +01:00 [INF] Route matched with {action = "Index", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:48:04.465 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:48:04.466 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__postId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsFavourite", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title", "p"."UpdatedAt", "p"."ViewCount"
+FROM "Posts" AS "p"
+WHERE "p"."Id" = @__postId_0
+LIMIT 1
+2026-01-17 20:48:04.467 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:48:04.467 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.6727ms.
+2026-01-17 20:48:04.467 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:48:04.468 +01:00 [INF] Executed ViewResult - view Index executed in 0.3899ms.
+2026-01-17 20:48:04.468 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.Index (MVCBlogApp) in 2.6775ms
+2026-01-17 20:48:04.468 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.Index (MVCBlogApp)'
+2026-01-17 20:48:04.468 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/Index/8 - 200 null text/html; charset=utf-8 3.4788ms
+2026-01-17 20:48:21.367 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/lib/bootstrap/dist/css/bootstrap.min.css.map - null null
+2026-01-17 20:48:21.368 +01:00 [INF] The file /lib/bootstrap/dist/css/bootstrap.min.css.map was not modified
+2026-01-17 20:48:21.368 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/lib/bootstrap/dist/css/bootstrap.min.css.map - 304 null text/plain 0.6524ms
+2026-01-17 20:48:30.729 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2026-01-17 20:48:30.729 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:48:30.729 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2026-01-17 20:48:30.730 +01:00 [INF] Executing action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:48:30.730 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:48:30.731 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__pickFavourite_0='?' (DbType = Boolean), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."IsFavourite" = @__pickFavourite_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:48:30.731 +01:00 [INF] Executed action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.4103ms.
+2026-01-17 20:48:30.731 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:48:30.732 +01:00 [INF] Executed ViewResult - view Index executed in 0.7392ms.
+2026-01-17 20:48:30.732 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 2.7806ms
+2026-01-17 20:48:30.732 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:48:30.732 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 3.7679ms
+2026-01-17 20:48:47.876 +01:00 [INF] Application is shutting down...
+2026-01-17 20:48:55.519 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "PostCategories" AS "p")
+2026-01-17 20:48:55.574 +01:00 [INF] User profile is available. Using '/home/kornel/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2026-01-17 20:48:55.599 +01:00 [INF] Now listening on: http://localhost:5008
+2026-01-17 20:48:55.602 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-01-17 20:48:55.603 +01:00 [INF] Hosting environment: Development
+2026-01-17 20:48:55.603 +01:00 [INF] Content root path: /home/kornel/Documents/GitHub/MVCBlogApp/MVCBlogApp/MVCBlogApp
+2026-01-17 20:48:55.737 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2026-01-17 20:48:55.741 +01:00 [WRN] Failed to determine the https port for redirect.
+2026-01-17 20:48:55.755 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:48:55.762 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2026-01-17 20:48:55.868 +01:00 [INF] Executing action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:48:55.930 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:48:56.075 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[@__pickFavourite_0='?' (DbType = Boolean), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."IsFavourite" = @__pickFavourite_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:48:56.101 +01:00 [INF] Executed action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 229.9575ms.
+2026-01-17 20:48:56.107 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:48:56.186 +01:00 [INF] Executed ViewResult - view Index executed in 79.9107ms.
+2026-01-17 20:48:56.186 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 423.7985ms
+2026-01-17 20:48:56.187 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:48:56.192 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 455.9907ms
+2026-01-17 20:48:57.995 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5008/Post/SearchResult - application/x-www-form-urlencoded 193
+2026-01-17 20:48:57.998 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp)'
+2026-01-17 20:48:58.005 +01:00 [INF] Route matched with {action = "SearchResult", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchResult(System.String, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:48:58.021 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:48:58.072 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__ToLower_0='?' (Size = 4), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE instr(lower("p"."Title"), @__ToLower_0) > 0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:48:58.073 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:48:58.074 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 52.4257ms.
+2026-01-17 20:48:58.076 +01:00 [INF] Executing ViewResult, running view SearchResult.
+2026-01-17 20:48:58.087 +01:00 [INF] Executed ViewResult - view SearchResult executed in 12.8794ms.
+2026-01-17 20:48:58.087 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp) in 82.2158ms
+2026-01-17 20:48:58.088 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.SearchResult (MVCBlogApp)'
+2026-01-17 20:48:58.088 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5008/Post/SearchResult - 200 null text/html; charset=utf-8 92.3879ms
+2026-01-17 20:49:03.373 +01:00 [INF] Application is shutting down...
+2026-01-17 20:49:26.679 +01:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "PostCategories" AS "p")
+2026-01-17 20:49:26.738 +01:00 [INF] User profile is available. Using '/home/kornel/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2026-01-17 20:49:26.767 +01:00 [INF] Now listening on: http://localhost:5008
+2026-01-17 20:49:26.768 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-01-17 20:49:26.768 +01:00 [INF] Hosting environment: Development
+2026-01-17 20:49:26.768 +01:00 [INF] Content root path: /home/kornel/Documents/GitHub/MVCBlogApp/MVCBlogApp/MVCBlogApp
+2026-01-17 20:49:27.308 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2026-01-17 20:49:27.313 +01:00 [WRN] Failed to determine the https port for redirect.
+2026-01-17 20:49:27.331 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:49:27.339 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2026-01-17 20:49:27.455 +01:00 [INF] Executing action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:49:27.524 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:49:27.671 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__pickFavourite_0='?' (DbType = Boolean), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."IsFavourite" = @__pickFavourite_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:49:27.696 +01:00 [INF] Executed action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 237.7339ms.
+2026-01-17 20:49:27.702 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:49:27.781 +01:00 [INF] Executed ViewResult - view Index executed in 79.0577ms.
+2026-01-17 20:49:27.782 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 442.6683ms
+2026-01-17 20:49:27.782 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:49:27.787 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 479.3645ms
+2026-01-17 20:49:29.782 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=1 - null null
+2026-01-17 20:49:29.784 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:49:29.795 +01:00 [INF] Route matched with {action = "Category", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Category(Int32, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:49:29.804 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:49:29.853 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__categoryId_0='?' (DbType = Int32), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."PostCategoryId" = @__categoryId_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:49:29.865 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+WHERE "p"."Id" = @__id_0
+LIMIT 1
+2026-01-17 20:49:29.866 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:49:29.867 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 62.1105ms.
+2026-01-17 20:49:29.868 +01:00 [INF] Executing ViewResult, running view Category.
+2026-01-17 20:49:29.881 +01:00 [INF] Executed ViewResult - view Category executed in 13.93ms.
+2026-01-17 20:49:29.882 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) in 86.0312ms
+2026-01-17 20:49:29.882 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:49:29.882 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=1 - 200 null text/html; charset=utf-8 100.5318ms
+2026-01-17 20:49:30.639 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=2 - null null
+2026-01-17 20:49:30.641 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:49:30.641 +01:00 [INF] Route matched with {action = "Category", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Category(Int32, Int32) on controller MVCBlogApp.Controllers.PostController (MVCBlogApp).
+2026-01-17 20:49:30.644 +01:00 [INF] Executing action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:49:30.650 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__categoryId_0='?' (DbType = Int32), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."PostCategoryId" = @__categoryId_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:49:30.651 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+WHERE "p"."Id" = @__id_0
+LIMIT 1
+2026-01-17 20:49:30.652 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:49:30.652 +01:00 [INF] Executed action method MVCBlogApp.Controllers.PostController.Category (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 8.0338ms.
+2026-01-17 20:49:30.652 +01:00 [INF] Executing ViewResult, running view Category.
+2026-01-17 20:49:30.654 +01:00 [INF] Executed ViewResult - view Category executed in 1.6125ms.
+2026-01-17 20:49:30.654 +01:00 [INF] Executed action MVCBlogApp.Controllers.PostController.Category (MVCBlogApp) in 12.3105ms
+2026-01-17 20:49:30.654 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.PostController.Category (MVCBlogApp)'
+2026-01-17 20:49:30.654 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/Post/Category?categoryId=2 - 200 null text/html; charset=utf-8 14.7607ms
+2026-01-17 20:49:31.798 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5008/ - null null
+2026-01-17 20:49:31.798 +01:00 [INF] Executing endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:49:31.798 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MVCBlogApp.Controllers.HomeController (MVCBlogApp).
+2026-01-17 20:49:31.799 +01:00 [INF] Executing action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) - Validation state: "Valid"
+2026-01-17 20:49:31.800 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."IconBootstrapLink", "p"."Name"
+FROM "PostCategories" AS "p"
+2026-01-17 20:49:31.803 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__pickFavourite_0='?' (DbType = Boolean), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Title", "t"."Slug", "t"."CreatedAt", "t"."IsPublished", "t"."Excerpt", "p0"."Id", "p0"."AltText", "p0"."FileExtension", "p0"."FileName", "p0"."FilePath", "p0"."FileSize", "p0"."UploadDate", "p1"."Id", "p1"."IconBootstrapLink", "p1"."Name"
+FROM (
+    SELECT "p"."Id", "p"."CreatedAt", "p"."Excerpt", "p"."FeaturedImageId", "p"."IsPublished", "p"."PostCategoryId", "p"."Slug", "p"."Title"
+    FROM "Posts" AS "p"
+    WHERE "p"."IsPublished" AND "p"."IsFavourite" = @__pickFavourite_0
+    ORDER BY "p"."CreatedAt" DESC
+    LIMIT @__p_1
+) AS "t"
+LEFT JOIN "PostImages" AS "p0" ON "t"."FeaturedImageId" = "p0"."Id"
+LEFT JOIN "PostCategories" AS "p1" ON "t"."PostCategoryId" = "p1"."Id"
+ORDER BY "t"."CreatedAt" DESC
+2026-01-17 20:49:31.804 +01:00 [INF] Executed action method MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 5.1853ms.
+2026-01-17 20:49:31.804 +01:00 [INF] Executing ViewResult, running view Index.
+2026-01-17 20:49:31.806 +01:00 [INF] Executed ViewResult - view Index executed in 2.2807ms.
+2026-01-17 20:49:31.807 +01:00 [INF] Executed action MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp) in 8.2733ms
+2026-01-17 20:49:31.807 +01:00 [INF] Executed endpoint 'MVCBlogApp.Controllers.HomeController.Index (MVCBlogApp)'
+2026-01-17 20:49:31.807 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5008/ - 200 null text/html; charset=utf-8 9.4055ms
+2026-01-17 20:49:34.878 +01:00 [INF] Application is shutting down...

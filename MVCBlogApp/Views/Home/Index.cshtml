@@ -44,10 +44,12 @@
     <div class="main-content">
         <div class="header-section">
             <div class="greeting">☀️ Welcome to my blog!</div>
-            <div class="search-box">
-                <input type="text" class="search-input" placeholder="Search here...">
-                <button class="search-btn">🔍</button>
-            </div>
+            <form asp-action="SearchResult" asp-controller="Post">
+                <div class="search-box">
+                    <input type="text" class="search-input" name="query" placeholder="Search here...">
+                    <button class="search-btn" type="submit" >🔍</button>
+                </div>
+            </form>
         </div>
         
         <div class="hero-banner">
