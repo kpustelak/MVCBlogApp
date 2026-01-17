@@ -61,14 +61,7 @@
             <div class="feature-card">
                 <img src="@featuredPost.FeaturedImage.FilePath" alt="@featuredPost.FeaturedImage.AltText" class="feature-img">
                 <div class="feature-content">
-                    <div class="feature-category"><span class="nav-icon"><i class="bi @featuredPost.Category?.IconBootstrapLink"></i> </span> @featuredPost.Category?.Name</div>
                     <div class="feature-title">@featuredPost.Title</div>
-                    <div class="feature-meta">
-                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="Author" class="author-img">
-                        <span>Kornel Pustelak</span>
-                        <span>•</span>
-                        <span>@featuredDateTime.Year/@featuredDateTime.Month/@featuredDateTime.Day</span>
-                    </div>
                     <div>
                         <a asp-action="Index" asp-controller="Post" asp-route-id="@featuredPost.Id" class="read-more pt-4">See more →</a>
                     </div>

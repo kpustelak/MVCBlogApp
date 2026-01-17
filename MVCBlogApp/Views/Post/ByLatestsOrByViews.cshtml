@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="~/css/blog-main.css"/>
 <link rel="stylesheet" href="~/css/category.css"/>
 
+
 @{
     ViewData["Title"] = "Blog";
 }
@@ -70,7 +71,7 @@
                 @foreach(var post in Model.Posts)
                 {
                     var postDateTime = DateTime.Parse(post.CreatedAt);
-                    <a asp-action="PostDetail" asp-controller="Home" asp-route-id="@post.Id" class="post-list-item">
+                    <a asp-action="Index" asp-controller="Post" asp-route-id="@post.Id" class="post-list-item">
                         @if (post.FeaturedImage != null)
                         {
                             <img src="@post.FeaturedImage.FilePath" alt="@post.FeaturedImage.AltText" class="post-list-img">

@@ -74,7 +74,7 @@
                 @foreach(var post in Model.Posts)
                 {
                     var postDateTime = DateTime.Parse(post.CreatedAt);
-                    <a asp-action="PostDetail" asp-controller="Home" asp-route-id="@post.Id" class="post-list-item">
+                    <a asp-action="Index" asp-controller="Post" asp-route-id="@post.Id" class="post-list-item">
                         <img src="@post.FeaturedImage?.FilePath" alt="@post.FeaturedImage?.AltText" class="post-list-img">
                         <div class="post-list-content">
                             @if (post.Category != null)
@@ -96,14 +96,12 @@
                     </a>
                 }
             </div>
-
-            <!-- Pagination -->
+            
             <div class="pagination-section">
                 @if (Model.PageNumber > 1)
                 {
                     <a asp-action="Category" 
                        asp-route-pageNumber="@(Model.PageNumber - 1)" 
-                       asp-route-pageSize="@Model.PageSize"
                        asp-route-categoryId="@Model.PostsCategory?.Id"
                        class="pagination-btn">
                         <i class="bi bi-arrow-left"></i> Previous
@@ -116,7 +114,6 @@
                 {
                     <a asp-action="Category" 
                        asp-route-pageNumber="@(Model.PageNumber + 1)" 
-                       asp-route-pageSize="@Model.PageSize"
                        asp-route-categoryId="@Model.PostsCategory?.Id"
                        class="pagination-btn">
                         Next <i class="bi bi-arrow-right"></i>
