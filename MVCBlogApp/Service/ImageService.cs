@@ -1,20 +1,17 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MVCBlogApp.Db;
 using MVCBlogApp.Interface;
 using MVCBlogApp.Models;
 using MVCBlogApp.Models.DTO.PostImage;
-using MVCBlogApp.Models.Entities;
-using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace MVCBlogApp.Service;
 
 public class ImageService : IImageService
 {
     private readonly BlogDbContext _context;
-    private readonly IHostingEnvironment _environment;
+    private readonly IWebHostEnvironment _environment;
     private readonly ILogger<ImageService> _logger;
-    public ImageService(BlogDbContext context, IHostingEnvironment environment, ILogger<ImageService> logger)
+    public ImageService(BlogDbContext context, IWebHostEnvironment environment, ILogger<ImageService> logger)
     {
         _context = context;
         _environment = environment;
@@ -57,41 +54,31 @@ public class ImageService : IImageService
     }
     public async Task DeleteImageAsync(int id)
     {
-        var image = await _context.PostImages.FindAsync(id); 
-        if (image == null)
-            throw new InvalidOperationException($"Image with ID {id} not found");
-        
-        var physicalPath = Path.Combine(
-            _environment.WebRootPath, 
-            image.FilePath.TrimStart('/').Replace('/', Path.DirectorySeparatorChar)
-        );
-        
-        if (File.Exists(physicalPath))
-        {
-            try
-            {
-                File.Delete(physicalPath);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogWarning($"There is some error with file deleting {physicalPath}: {ex.Message}");
-            }
-        }
-        
+        var image = await _context.PostImages.FindAsync(id);
+        if (image == null) throw new KeyNotFoundException($"Image ID {id} not found");
+
+        var root = _environment.WebRootPath;
+        var physicalPath = Path.GetFullPath(Path.Combine(root, image.FilePath.TrimStart('/').Replace('/', Path.DirectorySeparatorChar)));
+
+        if (!physicalPath.StartsWith(root))
+            throw new UnauthorizedAccessException("Attempted to delete file outside of web root.");
+
         _context.PostImages.Remove(image);
         await _context.SaveChangesAsync();
-    }
 
-    public async Task<PostImage> GetImageDataAsync(int id)
-    {
-        return await _context.PostImages.FindAsync(id);
+        try
+        {
+            if (File.Exists(physicalPath)) File.Delete(physicalPath);
+        }
+        catch (IOException ex)
+        {
+            _logger.LogError(ex, "Physical file deletion failed for ID {Id} at {Path}", id, physicalPath);
+        }
     }
-
     public async Task<int> GetTotalImageCountAsync()
     {
         return await _context.PostImages.CountAsync();
     }
-
     public async Task<List<PostImage>> GetImageDataListAsync(int page, int pageSize)
     {
         return await _context.PostImages
@@ -100,7 +87,6 @@ public class ImageService : IImageService
             .Take(pageSize)
             .ToListAsync();                         
     }
-
     public async Task EditImageAltTextAsync(int id, string fileText)
     {
         var image = _context.PostImages.FirstOrDefault(x => x.Id == id);
@@ -109,14 +95,12 @@ public class ImageService : IImageService
         image.AltText = fileText;
         await _context.SaveChangesAsync();
     }
-    
     private bool IsValidImageExtension(string fileName)
     {
         var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif", ".webp" };
         var extension = Path.GetExtension(fileName).ToLower();
         return allowedExtensions.Contains(extension);
     }
-    
     private string GenerateUniqueFileName(string originalFileName)
     {
         var extension = Path.GetExtension(originalFileName);

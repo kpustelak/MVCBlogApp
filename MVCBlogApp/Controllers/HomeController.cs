@@ -15,21 +15,17 @@ public class HomeController : Controller
         _categoryService = categoryService;
         _postService = postService;
     }
-
+    [HttpGet]
     public async Task<IActionResult> Index()
     {
-        var categories = await _categoryService.GetCategoriesAsync();
-        var homeViewModel = new HomeViewModel
-        {
-            PostCategories = categories,
-            PostsToDisplay = await _postService.GetListOfPostsAsync(4, true)
-        };
-        return View(homeViewModel);
+        return View(new HomeViewModel(
+            await _categoryService.GetCategoriesAsync() ,
+            await _postService.GetListOfPostsAsync(4, true)));
     }
     
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    /*[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }
+    }*/
 }

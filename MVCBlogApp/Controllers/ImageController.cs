@@ -19,38 +19,27 @@ public class ImageController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> Index(int page = 1)
+    public async Task<IActionResult> Index(int currentPage = 1)
     {
         try
         {
             var pageSize = 20;
             var totalItems = await _imageService.GetTotalImageCountAsync();
-            var images = await _imageService.GetImageDataListAsync(page, pageSize);
-            
-            var vm = new ImageIndex
-            {
-                listOfImages = images,
-                postImageRequest = new AddPostImageRequest(),
-                CurrentPage = page,
-                PageSize = pageSize,
-                TotalItems = totalItems,
-                TotalPages = (int)Math.Ceiling(totalItems / (double)pageSize),
-                editAltTextRequest = new EditPostImageAltTextRequest()
-            };
-            
-            _logger.LogInformation("Loaded image index page {PageNumber} with {ImageCount} images", page, images.Count);
-            return View(vm);
+            var images = await _imageService.GetImageDataListAsync(currentPage, pageSize);
+
+            return View(new ImageIndex(new AddPostImageRequest(), 
+                images, 
+                new EditPostImageAltTextRequest(), 
+                currentPage, 
+                (int)Math.Ceiling(totalItems / (double)pageSize), 
+                pageSize, 
+                totalItems));
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error loading image index page {PageNumber}", page);
+            _logger.LogError(ex, "Error loading image index page {PageNumber}", currentPage);
             TempData["ErrorMessage"] = "An error occurred while loading images.";
-            return View(new ImageIndex 
-            { 
-                listOfImages = new List<Models.PostImage>(),
-                postImageRequest = new AddPostImageRequest(),
-                editAltTextRequest = new EditPostImageAltTextRequest()
-            });
+            return RedirectToAction("Index", "Home");
         }
     }
 
@@ -87,7 +76,7 @@ public class ImageController : Controller
     }
 
     [HttpPost("delete")]
-    [IgnoreAntiforgeryToken]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteImageAsync(int id)
     {
         if (id <= 0)

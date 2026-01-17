@@ -1,10 +1,4 @@
 using MVCBlogApp.Models.DTO.Post;
 using PostCategory = MVCBlogApp.Models.Entities.PostCategory;
-
 namespace MVCBlogApp.Models;
-
-public class HomeViewModel
-{
-    public List<PostCategory>? PostCategories { get; set; }
-    public List<ShortPostModelDto>? PostsToDisplay { get; set; } 
-}
+public record HomeViewModel(List<PostCategory>? PostCategories, List<ShortPostModelDto>? PostsToDisplay);
