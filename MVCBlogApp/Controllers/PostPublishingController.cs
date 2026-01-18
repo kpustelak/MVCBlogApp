@@ -28,22 +28,14 @@ public class PostPublishingController : Controller
 
     [HttpGet]
     [Route("PostPublishing")]
-    public async Task<IActionResult> Index(int page = 1)
+    public async Task<IActionResult> Index(int currentPage = 1)
     {
         try
         {
             var pageSize = 20;
             var totalItems = await _postPublishingService.GetTotalPostCountAsync();
-            var posts = await _postPublishingService.GetPostDataListAsync(page, pageSize);
-
-            var vm = new PostIndex
-            {
-                Posts = posts,
-                TotalItems = totalItems,
-                TotalPages = (int)Math.Ceiling(totalItems / (double)pageSize),
-                CurrentPage = page
-            };
-            return View(vm);
+            var posts = await _postPublishingService.GetPostDataListAsync(currentPage, pageSize);
+            return View(new PostIndex(posts, totalItems, currentPage, (int)Math.Ceiling(totalItems / (double)pageSize)));
         }
         catch (Exception ex)
         {
@@ -55,19 +47,24 @@ public class PostPublishingController : Controller
     [Route("PostPublishing/Edit")] 
     public async Task<IActionResult> Edit(int? postId) 
     {
-        var viewModel = new EditPostView 
-        { 
-            PostCategories = await _categoryService.GetCategoriesAsync() 
-        };
-        
-        if (postId.HasValue && postId > 0) 
+        try
         {
-            var post = await _postPublishingService.GetWholePostAsync(postId.Value);
-            viewModel.EditedPostId = postId;
-            viewModel.PostDto = _mapper.Map<AddOrEditPostDto>(post);
-        }
+            var viewModel = new EditPostView 
+            { 
+                PostCategories = await _categoryService.GetCategoriesAsync() 
+            };
         
-        return View(viewModel);
+            if (postId.HasValue && postId > 0) 
+            {
+                viewModel.EditedPostId = postId;
+                viewModel.PostDto = _mapper.Map<AddOrEditPostDto>(await _postPublishingService.GetWholePostAsync(postId.Value));
+            }
+        
+            return View(viewModel);
+        }catch(Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
     }
     
     [HttpPost]

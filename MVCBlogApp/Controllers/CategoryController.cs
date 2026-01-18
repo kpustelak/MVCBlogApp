@@ -22,8 +22,7 @@ public class CategoryController : Controller
     [Route("Category")]
     public async Task<IActionResult> Index()
     {
-        var vm = new CategoryIndex(await _publicService.GetCategoriesAsync());
-        return View(vm);
+        return View(new CategoryIndex(await _publicService.GetCategoriesAsync()));
     }
 
     [HttpGet]
@@ -76,11 +75,12 @@ public class CategoryController : Controller
         try
         {
             await _service.Delete(id);
+            _logger.LogInformation($"Category with id: {id} was deleted");
+            return RedirectToAction("Index");
         }
         catch (Exception ex)
         {
             throw new Exception(ex.Message);
         }
-        return RedirectToAction("Index");
     }
 }
