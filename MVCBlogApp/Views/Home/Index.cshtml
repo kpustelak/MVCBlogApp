@@ -1,8 +1,128 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using MVCBlogApp.Models.Entities
+@model MVCBlogApp.Models.HomeViewModel;
+
+<link rel="stylesheet" href="~/css/blog-main.css"/>
+@{
+    ViewData["Title"] = "Blog home page";
+    var featuredPost = Model.PostsToDisplay?.FirstOrDefault();
+    var remainingPosts = Model.PostsToDisplay?.Skip(1).Take(3);
+    var featuredDateTime = DateTime.Parse(featuredPost.CreatedAt);
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="blog-container">
+    <div class="sidebar">
+        <div class="profile-section">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&h=200&fit=crop" alt="Profile" class="profile-img">
+            <div class="profile-name">Kornel Pustelak</div>
+            <div class="profile-role">Author</div>
+        </div>
+        <div class="nav-menu">
+            <a href="/" class="nav-menu text-decoration-none">
+                <div class="nav-item active">
+                    <span class="nav-icon"><i class="bi bi-house"></i></span>
+                    <span>Home</span>
+                </div>
+            </a>
+            @foreach (var category in Model.PostCategories)
+            {
+                <a asp-action="Category" asp-controller="Post" asp-route-categoryId="@category.Id" class="text-decoration-none"> 
+                    <div class="nav-item" class="text-decoration-none">
+                        <span class="nav-icon"><i class="bi @category.IconBootstrapLink"></i></span>
+                        <span >@category.Name</span>
+                    </div>   
+                </a> 
+            }
+        </div>
+
+        <div class="download-section">
+            <p class="download-text">Find me:</p>
+            <a href="https://github.com/kpustelak" class="text-decoration-none"><button class="download-btn github" ><i class="bi bi-github"></i> Github</button></a>
+            <a href="https://www.linkedin.com/in/kornel-pustelak-274205284/" class="text-decoration-none"><button class="download-btn linkedin"><i class="bi bi-linkedin"></i>Linkedin</button></a>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div class="header-section">
+            <div class="greeting">☀️ Welcome to my blog!</div>
+            <form asp-action="SearchResult" asp-controller="Post">
+                <div class="search-box">
+                    <input type="text" class="search-input" name="query" placeholder="Search here...">
+                    <button class="search-btn" type="submit" >🔍</button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="hero-banner">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">Study the past if you would define the future</h1>
+            </div>
+        </div>
+        
+        <div class="cards-row">
+            <div class="feature-card">
+                <img src="@featuredPost.FeaturedImage.FilePath" alt="@featuredPost.FeaturedImage.AltText" class="feature-img">
+                <div class="feature-content">
+                    <div class="feature-title">@featuredPost.Title</div>
+                    <div>
+                        <a asp-action="Index" asp-controller="Post" asp-route-id="@featuredPost.Id" class="read-more pt-4">See more →</a>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="info-cards-container">
+                <div class="info-card">
+                    <span class="info-icon">📄</span>
+                    <div class="info-text">
+                        <div class="info-label">Find out the latest posts </div>
+                        <a asp-controller="Post" 
+                           asp-action="ByLatestsOrByViews" 
+                           asp-route-byLatest="true"  
+                           class="info-link">See more →</a>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <span class="info-icon">📋</span>
+                    <div class="info-text">
+                        <div class="info-label">Top posts that viewers found interesting</div>
+                        <a asp-controller="Post" 
+                           asp-action="ByLatestsOrByViews" 
+                           asp-route-byViews="true" 
+                           class="info-link">See more →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="posts-grid">
+            @if (Model.PostsToDisplay != null)
+            {
+                @foreach(var postCard in remainingPosts)
+                {
+                    <div class="post-card">
+                        <img src="@postCard.FeaturedImage?.FilePath" alt="@postCard.FeaturedImage?.AltText" class="post-img">
+                        <div class="post-content">
+                            <div class="feature-category"><span class="nav-icon"><i class="bi @postCard.Category?.IconBootstrapLink"></i> </span> @postCard.Category?.Name</div>
+                            <div class="post-title">@postCard.Title</div>
+                            <div class="post-excerpt">@postCard.Excerpt</div>
+                            <div class="feature-meta">
+                                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="Author" class="author-img">
+                                <span>Kornel Pustelak</span>
+                                <span>•</span>
+                                @{
+                                    var date = postCard.CreatedAt.Split(" ");
+                                    date[0] = date[0].Replace("-", "/");
+                                }
+                                <span>@date[0]</span>
+                            </div>
+                            <div>
+                                <a asp-action="Index" asp-controller="Post" asp-route-id="@postCard.Id" class="read-more pt-4">See more →</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
 </div>

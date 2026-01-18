@@ -1,0 +1,87 @@
+@model MVCBlogApp.Models.ViewModel.Post.EditPostView
+
+@{
+    ViewBag.Title = Model.EditedPostId == null ? "Add Post" : "Edit Post";
+    Layout = "_Layout";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            
+            <div class="card shadow-sm border-0 bg-white">
+                <div class="card-body p-4 p-md-5">
+                    
+                    <h2 class="mb-4 fw-bold text-dark border-bottom pb-3">@ViewBag.Title</h2>
+
+                    <form asp-controller="PostPublishing" asp-action="Save" method="post">
+                        
+                        @if (Model.EditedPostId != null)
+                        {
+                            <input type="hidden" asp-for="EditedPostId" />
+                        }
+                        
+                        <div class="row g-3 mb-4">
+                            <div class="col-12">
+                                <label asp-for="PostDto.Title" class="form-label fw-bold text-secondary">Title</label>
+                                <input asp-for="PostDto.Title" type="text" class="form-control form-control-lg" placeholder="Enter post title..." />
+                                <span asp-validation-for="PostDto.Title" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label asp-for="PostDto.PostCategoryId" class="form-label fw-bold text-secondary">Category</label>
+                                <select asp-for="PostDto.PostCategoryId" class="form-select" asp-items="@(new SelectList(Model.PostCategories, "Id", "Name"))">
+                                    <option value="">-- Choose a category --</option>
+                                </select>
+                                <span asp-validation-for="PostDto.PostCategoryId" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label asp-for="PostDto.Slug" class="form-label fw-bold text-secondary">Slug</label>
+                                <input asp-for="PostDto.Slug" type="text" class="form-control" placeholder="post-url-slug" />
+                                <span asp-validation-for="PostDto.Slug" class="text-danger small"></span>
+                            </div>
+                            
+                            <div class="col-12">
+                                <label asp-for="PostDto.FeaturedImageId" class="form-label fw-bold text-secondary">Featured Image ID </label>
+                                <input asp-for="PostDto.FeaturedImageId" type="text" class="form-control" placeholder="id" />
+                                <span asp-validation-for="PostDto.FeaturedImageId" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-check form-switch mt-2">
+                                    <input asp-for="PostDto.IsPublished" class="form-check-input" type="checkbox" role="switch" id="isPublishedSwitch" />
+                                    <label class="form-check-label fw-bold" for="isPublishedSwitch">
+                                        Publish immediately
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label asp-for="PostDto.Excerpt" class="form-label fw-bold text-secondary">Excerpt</label>
+                            <textarea asp-for="PostDto.Excerpt" class="form-control" rows="4" placeholder="Write your excerpt here..."></textarea>
+                            <span asp-validation-for="PostDto.Excerpt" class="text-danger small"></span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label asp-for="PostDto.Content" class="form-label fw-bold text-secondary">Content</label>
+                            <textarea asp-for="PostDto.Content" class="form-control" rows="12" placeholder="Write your post content here..."></textarea>
+                            <span asp-validation-for="PostDto.Content" class="text-danger small"></span>
+                        </div>
+                        
+                        <div class="d-flex gap-2 pt-3 border-top">
+                            <button type="submit" class="btn btn-primary px-4 py-2 fw-bold">
+                                <i class="bi bi-save me-2"></i>@(Model.EditedPostId == null ? "Add Post" : "Save Changes")
+                            </button>
+                            <a asp-action="Index" class="btn btn-outline-secondary px-4 py-2">
+                                Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+@model MVCBlogApp.Models.ViewModel.Category.CategoryIndex;
+@{
+    ViewData["Title"] = "Category page";
+}
+<div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+    <div>
+        <h2 class="fw-bold mb-0">Your Categories</h2>
+        <small class="text-muted">Total uploads: @(Model.PostCategories?.Count ?? 0)</small>
+    </div>
+    <a asp-action="AddOrEdit" class="btn btn-primary px-4 fw-bold">
+        <i class="bi bi-plus-lg"></i> Add New Category
+    </a>
+</div>
+@if (Model.PostCategories != null && Model.PostCategories.Any())
+    {
+        <div class="row g-3" style="max-width: 98vw !important;">
+            @foreach (var category in Model.PostCategories)
+            {
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="card h-100 shadow-sm border-0 bg-white">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title text-truncate fw-bold mb-1" title="@category.Name"><span class="nav-icon"><i class="w-50 bi @($"{category.IconBootstrapLink}")"></i></span> @category.Name</h5>
+                            <p class="card-title text-truncate fw-bold mb-1" title="@category.IconBootstrapLink">@category.IconBootstrapLink</p>
+                            <div class="mt-auto d-flex gap-2">
+                                <a href="@Url.Action("AddOrEditView", "Category", new { id = category.Id})" class="btn btn-outline-primary btn-sm flex-fill fw-bold">
+                                    Edit
+                                </a>
+                                <form asp-action="DeleteCategory" asp-controller="Category" method="post" class="flex-fill">
+                                    <input type="hidden" name="id" value="@category.Id"/>
+                                    <button type="submit" onclick="return confirm('Delete this category?')" class="btn btn-outline-danger btn-sm w-100 fw-bold">
+                                        Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="text-center py-5 bg-light rounded-3">
+            <h3 class="fw-bold text-secondary">No category found</h3>
+            <p class="text-muted">Get started by creating your first category.</p>
+            <a asp-action="Edit" class="btn btn-primary mt-2">Create Category</a>
+        </div>
+    }

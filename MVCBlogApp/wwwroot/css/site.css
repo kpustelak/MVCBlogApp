@@ -17,6 +17,19 @@ html {
   min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
+
+.container, .container-fluid {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+}
+
+.download-btn.github {
+    background-color: #24292e; 
+    color: white;
+}
+
+.download-btn.linkedin {
+    background-color: #0a66c2;
+    color: white;
 }

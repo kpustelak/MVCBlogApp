@@ -1,0 +1,111 @@
+@model MVCBlogApp.Models.ViewModel.Post.PostDetailsViewModel;
+
+<link rel="stylesheet" href="~/css/blog-main.css"/>
+<link rel="stylesheet" href="~/css/post-detail.css"/>
+
+@{
+    ViewData["Title"] = Model.PostModel.Title;
+    var postDateTime = DateTime.Parse(Model.PostModel.CreatedAt);
+    var readingTime = Math.Round((double)Model.PostModel.Content.Length / 1250);
+    
+}
+
+<div class="blog-container">
+    <div class="sidebar">
+        <div class="profile-section">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&h=200&fit=crop" alt="Profile" class="profile-img">
+            <div class="profile-name">Kornel Pustelak</div>
+            <div class="profile-role">Author</div>
+        </div>
+        <div class="nav-menu text-decoration-none">
+            <a href="/" class="nav-menu text-decoration-none">
+                <div class="nav-item active">
+                    <span class="nav-icon"><i class="bi bi-house"></i></span>
+                    <span>Home</span>
+                </div>
+            </a>
+            @foreach (var category in Model.PostCategories)
+            {
+                <a asp-action="Category" asp-controller="Post" asp-route-categoryId="@category.Id" class="text-decoration-none">
+                    <div class="nav-item" class="text-decoration-none">
+                        <span class="nav-icon"><i class="bi @category.IconBootstrapLink"></i></span>
+                        <span >@category.Name</span>
+                    </div>
+                </a>
+            }
+        </div>
+
+        <div class="download-section">
+            <p class="download-text">Find me:</p>
+            <a href="https://github.com/kpustelak" class="text-decoration-none"><button class="download-btn github" ><i class="bi bi-github"></i> Github</button></a>
+            <a href="https://www.linkedin.com/in/kornel-pustelak-274205284/" class="text-decoration-none"><button class="download-btn linkedin"><i class="bi bi-linkedin"></i>Linkedin</button></a>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div class="breadcrumb">
+            <a asp-action="Index" asp-controller="Home">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            @if (Model.PostModel.PostCategory != null)
+            {
+                <a href="#">@Model.PostModel.PostCategory.Name</a>
+                <span class="breadcrumb-separator">/</span>
+            }
+            <span class="breadcrumb-current">@Model.PostModel.Title</span>
+        </div>
+
+        <article class="post-detail">
+            <div class="post-header">
+                @if (Model.PostModel.PostCategory != null)
+                {
+                    <div class="post-category">
+                        <span class="nav-icon"><i class="bi @Model.PostModel.PostCategory.IconBootstrapLink"></i></span>
+                        @Model.PostModel.PostCategory.Name
+                    </div>
+                }
+                <h1 class="post-main-title">@Model.PostModel.Title</h1>
+                
+                <div class="post-meta-header">
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="Author" class="author-img-large">
+                    <div class="author-info">
+                        <div class="author-name">Kornel Pustelak</div>
+                        <div class="post-date">
+                            <span>@postDateTime.ToString("MMMM dd, yyyy")</span>
+                            <span class="dot">•</span>
+                            <span>@readingTime minutes of reading</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @if (Model.PostModel.FeaturedImage != null)
+            {
+                <div class="post-featured-image">
+                    <img src="@Model.PostModel.FeaturedImage.FilePath" alt="@Model.PostModel.FeaturedImage.AltText">
+                </div>
+            }
+
+            <div class="post-body">
+                @Html.Raw(Model.PostModel.Content)
+            </div>
+
+            <div class="post-footer">
+                <div class="post-share">
+                    <span class="share-label">Share:</span>
+                    <button class="share-btn" onclick="copyToClipboard()"><i class="bi bi-link-45deg"></i></button>
+                </div>
+            </div>
+        </article>
+    </div>
+</div>
+
+<script>
+    function copyToClipboard(text) {
+      var inputc = document.body.appendChild(document.createElement("input"));
+      inputc.value = window.location.href;
+      inputc.focus();
+      inputc.select();
+      document.execCommand('copy');
+      inputc.parentNode.removeChild(inputc);
+    }
+  </script>

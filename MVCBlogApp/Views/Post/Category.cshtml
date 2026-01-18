@@ -1,0 +1,136 @@
+@model MVCBlogApp.Models.ViewModel.Post.CategoryViewModel
+
+<link rel="stylesheet" href="~/css/blog-main.css"/>
+<link rel="stylesheet" href="~/css/category.css"/>
+
+@{
+    ViewData["Title"] = Model.PostsCategory?.Name ?? "Category";
+    var activeText = "active";
+}
+
+<div class="blog-container">
+    <div class="sidebar">
+        <div class="profile-section">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&h=200&fit=crop" alt="Profile" class="profile-img">
+            <div class="profile-name">Kornel Pustelak</div>
+            <div class="profile-role">Author</div>
+        </div>
+        <div class="nav-menu">
+            <a href="/" class="nav-menu text-decoration-none">
+                <div class="nav-item">
+                    <span class="nav-icon"><i class="bi bi-house"></i></span>
+                    <span>Home</span>
+                </div>
+            </a>
+            @foreach (var category in Model.PostCategories)
+            {
+                <a asp-action="Category" asp-controller="Post" asp-route-categoryId="@category.Id" class="text-decoration-none"> 
+                    <div class="nav-item @if(Model.PostsCategory.Id == category.Id){ @activeText }" class="text-decoration-none">
+                        <span class="nav-icon"><i class="bi @category.IconBootstrapLink"></i></span>
+                        <span >@category.Name</span>
+                    </div>   
+                </a> 
+            }
+        </div>
+
+        <div class="download-section">
+            <p class="download-text">Find me:</p>
+            <a href="https://github.com/kpustelak" class="text-decoration-none"><button class="download-btn github" ><i class="bi bi-github"></i> Github</button></a>
+            <a href="https://www.linkedin.com/in/kornel-pustelak-274205284/" class="text-decoration-none"><button class="download-btn linkedin"><i class="bi bi-linkedin"></i>Linkedin</button></a>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div class="breadcrumb">
+            <a asp-action="Index" asp-controller="Home">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">@Model.PostsCategory?.Name</span>
+        </div>
+
+        <div class="category-header">
+            <div class="category-icon-large">
+                <i class="bi @Model.PostsCategory?.IconBootstrapLink"></i>
+            </div>
+            <div class="category-info">
+                <h1 class="category-title">@Model.PostsCategory?.Name</h1>
+                <div class="category-stats">
+                    <span class="stat-item">
+                        <i class="bi bi-file-text"></i>
+                        @Model.Posts.Count @(Model.Posts.Count == 1 ? "post" : "posts") on this page
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="filter-section">
+            <div class="filter-left">
+                <span class="results-count">Page @Model.PageNumber - Showing @Model.Posts.Count results</span>
+            </div>
+        </div>
+
+        @if (Model.Posts != null && Model.Posts.Any())
+        {
+            <div class="posts-list">
+                @foreach(var post in Model.Posts)
+                {
+                    var postDateTime = DateTime.Parse(post.CreatedAt);
+                    <a asp-action="Index" asp-controller="Post" asp-route-id="@post.Id" class="post-list-item">
+                        <img src="@post.FeaturedImage?.FilePath" alt="@post.FeaturedImage?.AltText" class="post-list-img">
+                        <div class="post-list-content">
+                            @if (post.Category != null)
+                            {
+                                <div class="post-list-category">
+                                    <span class="nav-icon"><i class="bi @post.Category.IconBootstrapLink"></i></span>
+                                    @post.Category.Name
+                                </div>
+                            }
+                            <h2 class="post-list-title">@post.Title</h2>
+                            <p class="post-list-excerpt">@post.Excerpt</p>
+                            <div class="post-list-meta">
+                                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="Author" class="author-img-small">
+                                <span class="author-name-small">Kornel Pustelak</span>
+                                <span class="dot">•</span>
+                                <span>@postDateTime.ToString("MMM dd, yyyy")</span>
+                            </div>
+                        </div>
+                    </a>
+                }
+            </div>
+            
+            <div class="pagination-section">
+                @if (Model.PageNumber > 1)
+                {
+                    <a asp-action="Category" 
+                       asp-route-pageNumber="@(Model.PageNumber - 1)" 
+                       asp-route-categoryId="@Model.PostsCategory?.Id"
+                       class="pagination-btn">
+                        <i class="bi bi-arrow-left"></i> Previous
+                    </a>
+                }
+                
+                <span class="pagination-info">Page @Model.PageNumber</span>
+                
+                @if (Model.Posts.Count == Model.PageSize)
+                {
+                    <a asp-action="Category" 
+                       asp-route-pageNumber="@(Model.PageNumber + 1)" 
+                       asp-route-categoryId="@Model.PostsCategory?.Id"
+                       class="pagination-btn">
+                        Next <i class="bi bi-arrow-right"></i>
+                    </a>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="empty-state">
+                <div class="empty-icon">📝</div>
+                <h3 class="empty-title">No posts yet</h3>
+                <p class="empty-description">There are no posts in this category yet. Check back later!</p>
+                <a asp-action="Index" asp-controller="Home" class="empty-btn">
+                    <i class="bi bi-arrow-left"></i> Back to Home
+                </a>
+            </div>
+        }
+    </div>
+</div>
