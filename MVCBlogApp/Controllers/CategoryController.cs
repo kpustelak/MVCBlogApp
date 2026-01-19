@@ -1,9 +1,10 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MVCBlogApp.Interface;
 using MVCBlogApp.Models.ViewModel.Category;
 
 namespace MVCBlogApp.Controllers;
-
+[Authorize]
 public class CategoryController : Controller
 {
     private readonly ICategoryManagmentService _service;

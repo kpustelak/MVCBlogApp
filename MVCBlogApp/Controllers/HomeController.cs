@@ -22,10 +22,4 @@ public class HomeController : Controller
             await _categoryService.GetCategoriesAsync() ,
             await _postService.GetListOfPostsAsync(4, true)));
     }
-    
-    /*[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }*/
 }

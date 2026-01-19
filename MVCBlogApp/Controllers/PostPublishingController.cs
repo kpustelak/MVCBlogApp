@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MVCBlogApp.Interface;
 using MVCBlogApp.Models.DTO.Post;
@@ -6,7 +7,7 @@ using MVCBlogApp.Models.ViewModel.Post;
 using ImageIndex = MVCBlogApp.Models.ViewModel.Image.ImageIndex;
 
 namespace MVCBlogApp.Controllers;
-
+[Authorize]
 public class PostPublishingController : Controller
 {
     private readonly IPostPublishingService _postPublishingService;

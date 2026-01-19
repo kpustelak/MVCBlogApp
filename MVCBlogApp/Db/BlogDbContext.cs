@@ -1,10 +1,11 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MVCBlogApp.Models;
 using MVCBlogApp.Models.Entities;
 
 namespace MVCBlogApp.Db;
 
-public class BlogDbContext : DbContext
+public class BlogDbContext : IdentityDbContext
 {
     public DbSet<Post> Posts { get; set; }
     public DbSet<PostImage> PostImages { get; set; }

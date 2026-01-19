@@ -26,7 +26,7 @@ public class PostPublishingService : IPostPublishingService
             IsPublished = addPostDto.IsPublished,
             CreatedAt = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss"),
             UpdatedAt = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss"),
-            FeaturedImageId = addPostDto.FeaturedImageId == null ? 0: addPostDto.FeaturedImageId,
+            FeaturedImageId = addPostDto.FeaturedImageId,
             Excerpt = addPostDto.Excerpt == null ? string.Empty : addPostDto.Excerpt,
         };
         
@@ -91,7 +91,8 @@ public class PostPublishingService : IPostPublishingService
     {
         return await _context.Posts
             .OrderByDescending(x => x.CreatedAt) 
-            .Skip((page - 1) * pageSize)          
+            .Skip((page - 1) * pageSize)      
+            .Include(x => x.FeaturedImage)
             .Take(pageSize)
             .ToListAsync();           
     }

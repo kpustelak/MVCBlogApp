@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MVCBlogApp.Interface;
 using MVCBlogApp.Model.DTO.PostImage;
@@ -7,6 +8,7 @@ using MVCBlogApp.Models.ViewModel.Image;
 namespace MVCBlogApp.Controllers;
 
 [Route("[controller]")]
+[Authorize]
 public class ImageController : Controller
 {
     private readonly IImageService _imageService;

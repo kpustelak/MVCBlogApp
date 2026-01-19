@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
@@ -13,6 +15,35 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 </head>
 <body>
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="bg-dark text-white py-2 shadow-sm">
+        <div class="container d-flex justify-content-between align-items-center">
+            <span>
+                <i class="bi bi-shield-lock-fill"></i> 
+                <strong>Admin Panel</strong>
+            </span>
+            <div>
+                <a asp-controller="PostPublishing" asp-action="Index" class="btn btn-sm btn-success me-2">
+                    <i class="bi bi-plus-circle"></i> Post Manager
+                </a>
+                <a asp-controller="Category" asp-action="Index" class="btn btn-sm btn-info me-2">
+                    <i class="bi bi-tags"></i> Category Manager
+                </a>
+                <a asp-controller="Image" asp-action="Index" class="btn btn-sm btn-info me-2">
+                    <i class="bi bi-tags"></i> Image Manager
+                </a>
+                <form method="post" asp-controller="Admin" asp-action="Logout" class="d-inline">
+                    <button type="submit" class="btn btn-sm btn-danger">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+
 <div class="container">
     <main role="main">
         @RenderBody()
@@ -25,7 +56,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-<partial name="_Notifications" />
+<partial name="_Notifications"/>
 
 @await RenderSectionAsync("Scripts", required: false)
 </body>
