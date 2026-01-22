@@ -10,10 +10,12 @@ public class HomeController : Controller
 {
     private readonly ICategoryService _categoryService;
     private readonly IPostService _postService;
-    public HomeController(ICategoryService categoryService, IPostService postService)
+    private readonly IConfiguration _configuration;
+    public HomeController(ICategoryService categoryService, IPostService postService, IConfiguration configuration)
     {
         _categoryService = categoryService;
         _postService = postService;
+        _configuration = configuration;
     }
     [HttpGet]
     public async Task<IActionResult> Index()

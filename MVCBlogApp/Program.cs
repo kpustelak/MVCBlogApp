@@ -6,6 +6,7 @@ using MVCBlogApp.Interface;
 using MVCBlogApp.Service;
 using Serilog;
 using Microsoft.AspNetCore.Identity;
+using MVCBlogApp.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,6 +46,7 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IImageService, ImageService>();
 builder.Services.AddTransient<DbSeeder>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.Configure<BlogSettings>(builder.Configuration.GetSection("BlogSettings"));
 
 builder.Host.UseSerilog((context, configuration) =>
 {

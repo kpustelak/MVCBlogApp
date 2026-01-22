@@ -1,6 +1,8 @@
-﻿@using MVCBlogApp.Models.DTO.Post
+﻿@using Microsoft.Extensions.Options
+@using MVCBlogApp.Models.DTO.Post
 @using MVCBlogApp.Models.Entities
 @model MVCBlogApp.Models.HomeViewModel;
+@inject IOptions<BlogSettings> BlogSettings
 
 <link rel="stylesheet" href="~/css/blog-main.css"/>
 @{
@@ -13,8 +15,8 @@
 <div class="blog-container">
     <div class="sidebar">
         <div class="profile-section">
-            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&h=200&fit=crop" alt="Profile" class="profile-img">
-            <div class="profile-name">Kornel Pustelak</div>
+            <img src="/@BlogSettings.Value.AuthorImage" alt="Profile" class="profile-img">
+            <div class="profile-name">@BlogSettings.Value.AuthorNameAndSurname</div>
             <div class="profile-role">Author</div>
         </div>
         <div class="nav-menu">
@@ -40,8 +42,8 @@
 
         <div class="download-section">
             <p class="download-text">Find me:</p>
-            <a href="https://github.com/kpustelak" class="text-decoration-none"><button class="download-btn github" ><i class="bi bi-github"></i> Github</button></a>
-            <a href="https://www.linkedin.com/in/kornel-pustelak-274205284/" class="text-decoration-none"><button class="download-btn linkedin"><i class="bi bi-linkedin"></i>Linkedin</button></a>
+            <a href="@BlogSettings.Value.AuthorGithub" class="text-decoration-none"><button class="download-btn github" ><i class="bi bi-github"></i> Github</button></a>
+            <a href="@BlogSettings.Value.AuthorLinkedin" class="text-decoration-none"><button class="download-btn linkedin"><i class="bi bi-linkedin"></i>Linkedin</button></a>
         </div>
     </div>
     
@@ -113,8 +115,8 @@
                             <div class="post-title">@postCard.Title</div>
                             <div class="post-excerpt">@postCard.Excerpt</div>
                             <div class="feature-meta">
-                                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="Author" class="author-img">
-                                <span>Kornel Pustelak</span>
+                                <img src="/@BlogSettings.Value.AuthorImage" alt="Author" class="author-img">
+                                <span>@BlogSettings.Value.AuthorNameAndSurname</span>
                                 <span>•</span>
                                 @{
                                     var date = postCard.CreatedAt.Split(" ");
