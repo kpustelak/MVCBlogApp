@@ -3,3 +3,31 @@ obj/
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
+
+
+# Secrets
+appsettings.Production.json
+appsettings.Development.json
+
+# Database
+*.db
+*.db-shm
+*.db-wal
+
+# Logs
+Logs/
+
+# Environment
+.env
+.env.local
+
+# Build
+bin/
+obj/
+publish/
+
+# User specific
+*.user
+*.suo
+
+

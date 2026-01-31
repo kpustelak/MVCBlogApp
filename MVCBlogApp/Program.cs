@@ -15,10 +15,18 @@ builder.Services.AddControllersWithViews(options =>
     options.Filters.Add<HandleExceptionAttribute>();
 });
 
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<BlogDbContext>(options =>
 {
-    options.UseSqlite("Data Source=blog.db");
+    if (builder.Environment.IsDevelopment())
+    {
+        options.UseSqlite("Data Source=blog.db");
+    }
+    else
+    {
+        options.UseNpgsql(connectionString); 
+    }
 });
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
@@ -26,8 +34,13 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
         options.SignIn.RequireConfirmedAccount = false;
         options.Password.RequireDigit = true;
         options.Password.RequireLowercase = true;
-        options.Password.RequiredLength = 10;
+        options.Password.RequireUppercase = true;
+        options.Password.RequireNonAlphanumeric = true;
+        options.Password.RequiredLength = 20;
         
+        options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+        options.Lockout.MaxFailedAccessAttempts = 5;
+        options.Lockout.AllowedForNewUsers = true;
     })
     .AddEntityFrameworkStores<BlogDbContext>()
     .AddDefaultTokenProviders();
@@ -37,6 +50,8 @@ builder.Services.ConfigureApplicationCookie(options =>
         options.LoginPath = "/Admin/Login";
         options.LogoutPath = "/Admin/Logout";
         options.AccessDeniedPath = "/BlogAdmin/AccessDenied";
+        options.ExpireTimeSpan = TimeSpan.FromDays(14);
+        options.SlidingExpiration = true;
     });
 
 builder.Services.AddScoped<IPostService, PostService>();
@@ -73,10 +88,20 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 using (var scope = app.Services.CreateScope())
 {
-    var seeder = scope.ServiceProvider.GetRequiredService<DbSeeder>();
-    seeder.SeedData();
+    try
+    {
+        var seeder = scope.ServiceProvider.GetRequiredService<DbSeeder>();
+        seeder.SeedData();
+    }
+    catch (Exception ex)
+    {
+        var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "Error occurred seeding the database");
+        throw;
+    }
 }
 
 app.Run();
