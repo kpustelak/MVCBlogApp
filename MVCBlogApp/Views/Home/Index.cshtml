@@ -1,19 +1,22 @@
-﻿@using MVCBlogApp.Models.Entities
+﻿@using Microsoft.Extensions.Options
+@using MVCBlogApp.Models.DTO.Post
+@using MVCBlogApp.Models.Entities
 @model MVCBlogApp.Models.HomeViewModel;
+@inject IOptions<BlogSettings> BlogSettings
 
 <link rel="stylesheet" href="~/css/blog-main.css"/>
 @{
     ViewData["Title"] = "Blog home page";
     var featuredPost = Model.PostsToDisplay?.FirstOrDefault();
     var remainingPosts = Model.PostsToDisplay?.Skip(1).Take(3);
-    var featuredDateTime = DateTime.Parse(featuredPost.CreatedAt);
+    DateTime featuredDateTime = featuredPost != null ?  DateTime.Parse(featuredPost.CreatedAt) : new  DateTime();
 }
 
 <div class="blog-container">
     <div class="sidebar">
         <div class="profile-section">
-            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&h=200&fit=crop" alt="Profile" class="profile-img">
-            <div class="profile-name">Kornel Pustelak</div>
+            <img src="/@BlogSettings.Value.AuthorImage" alt="Profile" class="profile-img">
+            <div class="profile-name">@BlogSettings.Value.AuthorNameAndSurname</div>
             <div class="profile-role">Author</div>
         </div>
         <div class="nav-menu">
@@ -23,21 +26,24 @@
                     <span>Home</span>
                 </div>
             </a>
-            @foreach (var category in Model.PostCategories)
+            @if (Model?.PostCategories != null)
             {
-                <a asp-action="Category" asp-controller="Post" asp-route-categoryId="@category.Id" class="text-decoration-none"> 
-                    <div class="nav-item" class="text-decoration-none">
-                        <span class="nav-icon"><i class="bi @category.IconBootstrapLink"></i></span>
-                        <span >@category.Name</span>
-                    </div>   
-                </a> 
+                @foreach (var category in Model.PostCategories)
+                {
+                    <a asp-action="Category" asp-controller="Post" asp-route-categoryId="@category.Id" class="text-decoration-none"> 
+                        <div class="nav-item" class="text-decoration-none">
+                            <span class="nav-icon"><i class="bi @category.IconBootstrapLink"></i></span>
+                            <span >@category.Name</span>
+                        </div>   
+                    </a> 
+                }
             }
         </div>
 
         <div class="download-section">
             <p class="download-text">Find me:</p>
-            <a href="https://github.com/kpustelak" class="text-decoration-none"><button class="download-btn github" ><i class="bi bi-github"></i> Github</button></a>
-            <a href="https://www.linkedin.com/in/kornel-pustelak-274205284/" class="text-decoration-none"><button class="download-btn linkedin"><i class="bi bi-linkedin"></i>Linkedin</button></a>
+            <a href="@BlogSettings.Value.AuthorGithub" class="text-decoration-none"><button class="download-btn github" ><i class="bi bi-github"></i> Github</button></a>
+            <a href="@BlogSettings.Value.AuthorLinkedin" class="text-decoration-none"><button class="download-btn linkedin"><i class="bi bi-linkedin"></i>Linkedin</button></a>
         </div>
     </div>
     
@@ -59,56 +65,58 @@
             </div>
         </div>
         
-        <div class="cards-row">
-            <div class="feature-card">
-                <img src="@featuredPost.FeaturedImage.FilePath" alt="@featuredPost.FeaturedImage.AltText" class="feature-img">
-                <div class="feature-content">
-                    <div class="feature-title">@featuredPost.Title</div>
-                    <div>
-                        <a asp-action="Index" asp-controller="Post" asp-route-id="@featuredPost.Id" class="read-more pt-4">See more →</a>
+        @if (featuredPost != null)
+        {
+            <div class="cards-row">
+                <div class="feature-card">
+                    <img src="@(featuredPost.FeaturedImage?.FilePath ?? "https://placehold.co/600x400?text=No+Image")" alt="@(featuredPost.FeaturedImage?.AltText ?? "No image")" class="feature-img">
+                    <div class="feature-content">
+                        <div class="feature-title">@featuredPost.Title</div>
+                        <div>
+                            <a asp-action="Index" asp-controller="Post" asp-route-id="@featuredPost.Id" class="read-more pt-4">See more →</a>
+                        </div>
                     </div>
-                    
                 </div>
-            </div>
 
-            <div class="info-cards-container">
-                <div class="info-card">
-                    <span class="info-icon">📄</span>
-                    <div class="info-text">
-                        <div class="info-label">Find out the latest posts </div>
-                        <a asp-controller="Post" 
-                           asp-action="ByLatestsOrByViews" 
-                           asp-route-byLatest="true"  
-                           class="info-link">See more →</a>
+                <div class="info-cards-container">
+                    <div class="info-card">
+                        <span class="info-icon">📄</span>
+                        <div class="info-text">
+                            <div class="info-label">Find out the latest posts </div>
+                            <a asp-controller="Post" 
+                               asp-action="ByLatestsOrByViews" 
+                               asp-route-byLatest="true"  
+                               class="info-link">See more →</a>
+                        </div>
                     </div>
-                </div>
-                <div class="info-card">
-                    <span class="info-icon">📋</span>
-                    <div class="info-text">
-                        <div class="info-label">Top posts that viewers found interesting</div>
-                        <a asp-controller="Post" 
-                           asp-action="ByLatestsOrByViews" 
-                           asp-route-byViews="true" 
-                           class="info-link">See more →</a>
+                    <div class="info-card">
+                        <span class="info-icon">📋</span>
+                        <div class="info-text">
+                            <div class="info-label">Top posts that viewers found interesting</div>
+                            <a asp-controller="Post" 
+                               asp-action="ByLatestsOrByViews" 
+                               asp-route-byViews="true" 
+                               class="info-link">See more →</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        }
         
         <div class="posts-grid">
-            @if (Model.PostsToDisplay != null)
+            @if (remainingPosts != null && remainingPosts.Any())
             {
                 @foreach(var postCard in remainingPosts)
                 {
                     <div class="post-card">
-                        <img src="@postCard.FeaturedImage?.FilePath" alt="@postCard.FeaturedImage?.AltText" class="post-img">
+                        <img src="@(postCard.FeaturedImage?.FilePath ?? "https://placehold.co/400x300?text=No+Image")" alt="@(postCard.FeaturedImage?.AltText ?? "No image")" class="post-img">
                         <div class="post-content">
-                            <div class="feature-category"><span class="nav-icon"><i class="bi @postCard.Category?.IconBootstrapLink"></i> </span> @postCard.Category?.Name</div>
+                            <div class="feature-category"><span class="nav-icon"><i class="bi @(postCard.Category?.IconBootstrapLink ?? "bi-file-text")"></i> </span> @(postCard.Category?.Name ?? "Uncategorized")</div>
                             <div class="post-title">@postCard.Title</div>
                             <div class="post-excerpt">@postCard.Excerpt</div>
                             <div class="feature-meta">
-                                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="Author" class="author-img">
-                                <span>Kornel Pustelak</span>
+                                <img src="/@BlogSettings.Value.AuthorImage" alt="Author" class="author-img">
+                                <span>@BlogSettings.Value.AuthorNameAndSurname</span>
                                 <span>•</span>
                                 @{
                                     var date = postCard.CreatedAt.Split(" ");

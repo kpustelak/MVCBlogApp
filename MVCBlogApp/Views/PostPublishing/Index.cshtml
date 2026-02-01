@@ -5,19 +5,12 @@
     Layout = "_Layout";
 }
 <style>
-.row {
-    margin-right: 0 !important;
-    margin-left: 0 !important;
-    --bs-gutter-x: 0 !important;
-}
-
-.row > * {
-    padding-right: 0 !important;
-    padding-left: 0 !important;
-}
+    .container-fluid {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
 </style>
-
-<div class="container-fluid py-4">
+<div class="container-fluid py-4 px-4">
     
     <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
         <div>
@@ -31,16 +24,16 @@
 
     @if (Model.Posts != null && Model.Posts.Any())
     {
-        <div class="row g-3" style="max-width: 98vw !important;">
+        <div class="row g-4" >
             @foreach (var post in Model.Posts)
             {
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div class="card h-100 shadow-sm border-0 bg-white">
                         
                         @{
-                            var imgSrc = string.IsNullOrEmpty(post.FeaturedImage?.FilePath)
+                            var imgSrc = post.FeaturedImage?.FilePath == null
                                 ? "https://placehold.co/600x400/f8f9fa/adb5bd?text=No+Cover"
-                                : post.FeaturedImage.FilePath;
+                                : post.FeaturedImage?.FilePath;
                         }
                         
                         <div class="ratio ratio-16x9">

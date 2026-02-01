@@ -10,10 +10,12 @@ public class HomeController : Controller
 {
     private readonly ICategoryService _categoryService;
     private readonly IPostService _postService;
-    public HomeController(ICategoryService categoryService, IPostService postService)
+    private readonly IConfiguration _configuration;
+    public HomeController(ICategoryService categoryService, IPostService postService, IConfiguration configuration)
     {
         _categoryService = categoryService;
         _postService = postService;
+        _configuration = configuration;
     }
     [HttpGet]
     public async Task<IActionResult> Index()
@@ -22,10 +24,4 @@ public class HomeController : Controller
             await _categoryService.GetCategoriesAsync() ,
             await _postService.GetListOfPostsAsync(4, true)));
     }
-    
-    /*[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }*/
 }
