@@ -40,7 +40,8 @@ public class PostPublishingController : Controller
         }
         catch (Exception ex)
         {
-            throw new Exception(ex.Message);
+            _logger.LogError(ex, "Error loading post publishing page {PageNumber}", currentPage);
+            throw;
         }
     }
     
@@ -64,7 +65,8 @@ public class PostPublishingController : Controller
             return View(viewModel);
         }catch(Exception ex)
         {
-            throw new Exception(ex.Message);
+            _logger.LogError(ex, "Error loading post edit view for post ID {PostId}", postId);
+            throw;
         }
     }
     
@@ -87,7 +89,8 @@ public class PostPublishingController : Controller
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                _logger.LogError(ex, "Error editing post {PostId}", model.EditedPostId);
+                throw;
             }
         }
         else 
@@ -100,7 +103,8 @@ public class PostPublishingController : Controller
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                _logger.LogError(ex, "Error adding a new post");
+                throw;
             }
         }
         return RedirectToAction("Index", "PostPublishing");
@@ -124,7 +128,8 @@ public class PostPublishingController : Controller
         }
         catch (Exception ex)
         {
-            throw new Exception(ex.Message);
+            _logger.LogError(ex, "Error deleting post {PostId}", postId);
+            throw;
         }
         
         return RedirectToAction("Index");
@@ -148,7 +153,8 @@ public class PostPublishingController : Controller
         }
         catch (Exception ex)
         {
-            throw new Exception(ex.Message);
+            _logger.LogError(ex, "Error toggling favourite status for post {PostId}", postId);
+            throw;
         }
         
         return RedirectToAction("Index");

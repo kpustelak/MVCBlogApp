@@ -5,6 +5,7 @@ using MVCBlogApp.Interface;
 using MVCBlogApp.Service;
 using Serilog;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using MVCBlogApp.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews(options =>
 {
     options.Filters.Add<HandleExceptionAttribute>();
+    options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
 });
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");

@@ -83,7 +83,29 @@ public class DbSeeder
         }
         else
         {
-            _logger.LogInformation("Admin already exists");
+            var isValidPassword = _userManager.CheckPasswordAsync(existingUser, adminPassword).GetAwaiter().GetResult();
+            if (!isValidPassword)
+            {
+                var resetToken = _userManager.GeneratePasswordResetTokenAsync(existingUser).GetAwaiter().GetResult();
+                var resetResult = _userManager.ResetPasswordAsync(existingUser, resetToken, adminPassword).GetAwaiter().GetResult();
+
+                if (resetResult.Succeeded)
+                {
+                    _logger.LogInformation("Admin password synchronized from configuration for: {Email}", adminEmail);
+                }
+                else
+                {
+                    _logger.LogError("Failed to synchronize admin password for: {Email}", adminEmail);
+                    foreach (var error in resetResult.Errors)
+                    {
+                        _logger.LogError("Error: {Error}", error.Description);
+                    }
+                }
+            }
+            else
+            {
+                _logger.LogInformation("Admin already exists and password is up to date");
+            }
         }
     }
 }

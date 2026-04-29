@@ -33,7 +33,7 @@ public class PostController : Controller
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error loading post ID: {PostId}", id);
-            throw new Exception(ex.Message);
+            throw;
         }
     }
     
@@ -52,7 +52,7 @@ public class PostController : Controller
         catch(Exception ex)
         {
             _logger.LogError(ex, "Error loading category {CategoryId}, page {PageNumber}", categoryId, pageNumber);
-            throw new Exception(ex.Message);
+            throw;
         }
     }
 
@@ -81,7 +81,7 @@ public class PostController : Controller
         catch(Exception ex)
         {
             _logger.LogError(ex, "Error loading posts page {PageNumber}", pageNumber);
-            throw new Exception(ex.Message);
+            throw;
         }
     }
 
@@ -104,7 +104,7 @@ public class PostController : Controller
         catch(Exception ex)
         {
             _logger.LogError(ex, "Error searching for '{Query}', page {PageNumber}", query, pageNumber);
-            throw new Exception(ex.Message);
+            throw;
         }
     }
 }

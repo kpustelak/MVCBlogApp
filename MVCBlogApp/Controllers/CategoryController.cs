@@ -64,7 +64,8 @@ public class CategoryController : Controller
             }
         }catch(Exception ex)
         {
-            throw new Exception(ex.Message);
+            _logger.LogError(ex, "Error adding or editing category");
+            throw;
         }
         return RedirectToAction("Index");
     }
@@ -81,7 +82,8 @@ public class CategoryController : Controller
         }
         catch (Exception ex)
         {
-            throw new Exception(ex.Message);
+            _logger.LogError(ex, "Error deleting category {CategoryId}", id);
+            throw;
         }
     }
 }
